@@ -1,0 +1,16 @@
+Index: .gitignore
+===================================================================
+diff --git a/.gitignore b/gaeb-viewer/.gitignore
+rename from .gitignore
+rename to gaeb-viewer/.gitignore
+--- a/.gitignore	(revision 6d88795def8ba4003968514a4c8790052a137a36)
++++ b/gaeb-viewer/.gitignore	(date 1754062458331)
+@@ -8,7 +8,7 @@
+ *.log
+ 
+ # IDEs
+-.idea/
++../.idea/
+ *.iml
+ *.ipr
+ *.iws
