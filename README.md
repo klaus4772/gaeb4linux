@@ -84,25 +84,33 @@ gaeb-viewer/
 
 ### Requirements
 
-- Java 21
-- Maven 3.8+
-- BaseX 10.7+ or eXist-db 6+
+- Java 21  
+- Maven 3.8+  
+- PostgreSQL 14+ (for structured project/user data)  
+- BaseX 10.7+ or eXist-db 6+ (for GAEB XML files)
 
 ### Setup Instructions
+
+Before running the application, ensure that **both** your PostgreSQL and XML database servers are installed and running.  
+PostgreSQL is used for project metadata and user management, while GAEB XML files are stored in the XML database.
 
 ```bash
 # Clone the repository
 git clone https://github.com/yourname/gaeb-viewer.git
 cd gaeb-viewer
 
-# Start your XML database server (BaseX or eXist-db)
+# Start your PostgreSQL server
+# (Make sure to create the database and schema using available SQL scripts)
 
-# Deploy XQuery endpoints
+# Start your XML database (BaseX or eXist-db)
+
+# Deploy XQuery endpoints to your XML DB
 cp gaeb-basex-server/webapp/restxq/ <your database's REST folder>
 
 # Run the web application
 cd gaeb-webui
 mvn spring-boot:run
+
 ```
 
 ---
