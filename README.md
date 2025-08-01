@@ -50,11 +50,17 @@ gaeb-viewer/
 └── README.md             # You are here
 
 Technologies
+
 Java 21
+
 Vaadin Flow (Java-based Web UI Framework)
+
 BaseX (native XML database, used via REST interface)
+
 XQuery (for querying GAEB XML)
+
 Maven (build system)
+
 MPL 2.0 license
 
 License Compatibility
