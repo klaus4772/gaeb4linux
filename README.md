@@ -64,11 +64,13 @@ Maven (build system)
 MPL 2.0 license
 
 License Compatibility
+
 BaseX is licensed under GPLv3, which is incompatible with MPL for direct integration.To avoid license conflicts, this project interacts with BaseX exclusively via REST API.This keeps the GAEB Viewer under the MPL 2.0 license, allowing broader reuse and modification.
 
 Getting Started
 
 Requirements
+
 Java 21
 Maven 3.8+
 BaseX 10.7+ (installed and running)
