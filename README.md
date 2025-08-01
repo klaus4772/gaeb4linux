@@ -36,11 +36,17 @@ Modular design prepared for multi-user collaboration
 Open Source under the Mozilla Public License 2.0 (MPL 2.0)
 
 Project Structure
+
 gaeb-viewer/
+
 ├── gaeb-core/            # Java logic for GAEB parsing and domain model
+
 ├── gaeb-webui/           # Vaadin-based web application (frontend)
+
 ├── gaeb-basex-server/    # BaseX RESTXQ services (XQuery API for GAEB XML)
+
 ├── pom.xml               # Maven parent configuration
+
 └── README.md             # You are here
 
 Technologies
