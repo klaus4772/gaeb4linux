@@ -14,6 +14,30 @@ The project aims to provide a free, open-source alternative to the proprietary s
 - Maintain an open-source and extensible architecture.
 
 ---
+## 🧠 Architectural Approach: Hybrid Storage Model
+
+GAEB4Linux uses a hybrid database architecture to leverage the strengths of both XML-native and relational data models:
+
+### XML Database (BaseX or eXist-db)
+
+- Stores GAEB XML files in their original structure.
+- Ideal for executing complex XQuery/XPath operations.
+- Maintains full fidelity of the GAEB format.
+
+### Relational Database (PostgreSQL)
+
+- Manages project metadata, users, roles, and transactional data.
+- Suitable for multi-user environments, project tracking, invoicing, and master data (e.g., materials, personnel).
+- Ensures consistency and reliability with ACID compliance.
+
+### Integration Strategy
+
+- Projects reference GAEB XML files via URI or unique IDs.
+- The backend synchronizes business logic between both data sources.
+- This design ensures scalability, fast query performance for structured data, and flexibility for XML-based processing.
+
+**Result**: A robust, scalable system combining the semantic richness of XML with the structural integrity of relational databases.
+---
 
 ## 🧩 Planned Features
 
@@ -56,15 +80,14 @@ The project aims to provide a free, open-source alternative to the proprietary s
 
 ## 🧪 Technologies Used
 
-| Component      | Technology        |
-| -------------- | ----------------- |
-| Programming    | Java 21           |
-| Web UI         | Vaadin Flow       |
-| Database       | BaseX or eXist-db |
-| Query Language | XQuery            |
-| Build Tool     | Maven             |
-| License        | MPL 2.0           |
-
+| Component      | Technology                     |
+| -------------- | ------------------------------ |
+| Programming    | Java 21                        |
+| Web UI         | Vaadin Flow                    |
+| Database       | BaseX or eXist-db + PostgreSQL |
+| Query Language | XQuery                         |
+| Build Tool     | Maven                          |
+| License        | MPL 2.0                        |
 ---
 
 ## 🗂️ Project Structure
