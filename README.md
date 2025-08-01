@@ -31,7 +31,7 @@ Master data management for equipment, personnel, materials, subcontractors and/o
 Features
 Load and parse GAEB XML files
 View GAEB structures in a modern Vaadin UI
-Communicate with BaseX XML database via REST
+Communicate with an XML database (BaseX or eXist-db) via REST
 Modular design prepared for multi-user collaboration
 Open Source under the Mozilla Public License 2.0 (MPL 2.0)
 
@@ -43,7 +43,7 @@ gaeb-viewer/
 
 ├── gaeb-webui/           # Vaadin-based web application (frontend)
 
-├── gaeb-basex-server/    # BaseX RESTXQ services (XQuery API for GAEB XML)
+├── gaeb-xml-db-server/   # REST-based XML database API (BaseX or eXist-db)
 
 ├── pom.xml               # Maven parent configuration
 
@@ -55,7 +55,7 @@ Java 21
 
 Vaadin Flow (Java-based Web UI Framework)
 
-BaseX (native XML database, used via REST interface)
+BaseX or eXist-db (XML database, accessed via REST)
 
 XQuery (for querying GAEB XML)
 
@@ -65,7 +65,7 @@ MPL 2.0 license
 
 License Compatibility
 
-BaseX is licensed under GPLv3, which is incompatible with MPL for direct integration.To avoid license conflicts, this project interacts with BaseX exclusively via REST API.This keeps the GAEB Viewer under the MPL 2.0 license, allowing broader reuse and modification.
+This project avoids direct dependencies on GPL-licensed libraries like BaseX by using REST APIs.This keeps the codebase under MPL 2.0, enabling broader reuse and combination with other systems.As an alternative, eXist-db can be used if preferred.
 
 Getting Started
 
@@ -73,7 +73,7 @@ Requirements
 
 Java 21
 Maven 3.8+
-BaseX 10.7+ (installed and running)
+Either BaseX 10.7+ or eXist-db 6+
 
 Steps
 
@@ -81,34 +81,13 @@ Clone this repository:
 git clone https://github.com/yourname/gaeb-viewer.git
 cd gaeb-viewer
 
-Start BaseX HTTP server:
-./basex/bin/basexhttp
+Start your preferred XML database server (BaseX or eXist-db)
 
 Deploy your XQuery endpoints in gaeb-basex-server/webapp/restxq/
 
 Run the Java Web UI:
 cd gaeb-webui
 mvn spring-boot:run
-
-Communication Example
-
-BaseX RESTXQ Endpoint (gaeb-basex-server/webapp/restxq/hello.xq)
-
-declare
-  %rest:GET
-  %rest:path("/gaeb/hello")
-function local:hello() {
-  <message>Hello from BaseX!</message>
-};
-
-Java REST Client
-
-public String getHello() throws IOException {
-    var connection = (HttpURLConnection)
-        new URL("http://localhost:8984/gaeb/hello").openConnection();
-    connection.setRequestMethod("GET");
-    return new String(connection.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-}
 
 Contributing
 
