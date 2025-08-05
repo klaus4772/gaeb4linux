@@ -1,99 +1,153 @@
-Project name
-GAEB4Linux
+# GAEB4Linux
 
-Goal
-GAEB XML is a standard for data exchange that is used in the German construction industry. The GAEB (Gemeinsame Ausschuss Elektronik
-im Bauwesen) is responsible for its maintenance and further development.
-Working with GAEB files is essential in the German construction industry. There is a wide range of tools for this, practically all
-software that works with commercial data in the construction industry uses the GAEB standard. The standard includes service
-specifications, prices, quantity takeoffs, invoices and even detailed calculation and measurement data. Unfortunately, almost all
-available IT programs are proprietary. There are virtually no open source tools, especially for Linux.
-This project aims to make GAEB software available as open source for Linux.
+**GAEB4Linux** is an open-source GAEB viewer and editor designed for Linux systems. GAEB XML is a standardized data exchange format used extensively in the German construction industry for specifications, pricing, quantity takeoffs, invoicing, and calculations.
 
-Planned range of functions
+The project aims to provide a free, open-source alternative to the proprietary software currently dominating this field, with a modern and modular architecture based on Java and Vaadin.
 
-GAEB Viewer
-Step 1 is a simple GAEB viewer with which GAEB files for service specifications (X81-X87) can be opened and displayed. It should be
-possible to import and export from/to all formats. Prices, text additions and other bidder details can be entered and saved/exported.
-The viewer should offer options to show/hide the XML tags. Export should also be possible as pdf file with the possibility to generate
-a complete offer as pdf (text header/text footer).
-Tender specifications
-In the next step, it should be possible to create your own service specifications. Enter texts or take them from templates. The
-connection to the interface of the standard service book or alternative functionality for text generation.
-At this stage at the latest, project management would also be useful with management of extended data that goes beyond the gaeb data set. database connection.
-Functions for managing and sending requests or offers.
-further
-module for price calculation
-module for quantity determination
-module for invoicing
-Master data management for equipment, personnel, materials, subcontractors and/or corresponding interfaces to special software
+---
 
-Features
-Load and parse GAEB XML files
-View GAEB structures in a modern Vaadin UI
-Communicate with an XML database (BaseX or eXist-db) via REST
-Modular design prepared for multi-user collaboration
-Open Source under the Mozilla Public License 2.0 (MPL 2.0)
+## 🎯 Project Goals
 
-Project Structure
+- Enable Linux users to work with GAEB XML files.
+- Support standard formats (X81–X87) used for tender specifications.
+- Provide a modern, web-based user interface.
+- Maintain an open-source and extensible architecture.
 
+---
+## 🧠 Architectural Approach: Hybrid Storage Model
+
+GAEB4Linux uses a hybrid database architecture to leverage the strengths of both XML-native and relational data models:
+
+### XML Database (BaseX or eXist-db)
+
+- Stores GAEB XML files in their original structure.
+- Ideal for executing complex XQuery/XPath operations.
+- Maintains full fidelity of the GAEB format.
+
+### Relational Database (PostgreSQL)
+
+- Manages project metadata, users, roles, and transactional data.
+- Suitable for multi-user environments, project tracking, invoicing, and master data (e.g., materials, personnel).
+- Ensures consistency and reliability with ACID compliance.
+
+### Integration Strategy
+
+- Projects reference GAEB XML files via URI or unique IDs.
+- The backend synchronizes business logic between both data sources.
+- This design ensures scalability, fast query performance for structured data, and flexibility for XML-based processing.
+
+**Result**: A robust, scalable system combining the semantic richness of XML with the structural integrity of relational databases.
+---
+
+## 🧩 Planned Features
+
+### Step 1 – GAEB Viewer
+
+- Load and display GAEB files (X81–X87).
+- Import/export to and from all GAEB XML formats.
+- Edit prices, text additions, and bidder details.
+- Show/hide XML tags.
+- Export complete tender documents as PDF, including headers and footers.
+
+### Step 2 – Create Tender Specifications
+
+- Create new tender documents.
+- Import texts or select from templates.
+- Optional connection to standard service catalogs or text-generation features.
+- Basic project management integration.
+- XML database support for data persistence.
+
+### Future Modules
+
+- Request and offer management.
+- Price calculation module.
+- Quantity determination module.
+- Invoicing module.
+- Master data management (equipment, personnel, materials, subcontractors).
+- Interfaces to third-party construction software.
+
+---
+
+## ⚙️ Features
+
+- Load and parse GAEB XML files
+- Display GAEB structures in a Vaadin-based web interface
+- Communicate with an XML database (BaseX or eXist-db) via REST
+- Modular code structure designed for collaboration
+- Licensed under the Mozilla Public License 2.0 (MPL 2.0)
+
+---
+
+## 🧪 Technologies Used
+
+| Component      | Technology                     |
+| -------------- | ------------------------------ |
+| Programming    | Java 21                        |
+| Web UI         | Vaadin Flow                    |
+| Database       | BaseX or eXist-db + PostgreSQL |
+| Query Language | XQuery                         |
+| Build Tool     | Maven                          |
+| License        | MPL 2.0                        |
+---
+
+## 🗂️ Project Structure
+
+```
 gaeb-viewer/
+├── gaeb-core/          # Java logic for GAEB parsing and domain model
+├── gaeb-webui/         # Vaadin-based web application (frontend)
+├── gaeb-xml-db-server/ # REST-based XML database API (BaseX or eXist-db)
+├── pom.xml             # Maven parent configuration
+└── README.md           # You are here
+```
 
-├── gaeb-core/            # Java logic for GAEB parsing and domain model
+---
 
-├── gaeb-webui/           # Vaadin-based web application (frontend)
+## 🚀 Getting Started
 
-├── gaeb-xml-db-server/   # REST-based XML database API (BaseX or eXist-db)
+### Requirements
 
-├── pom.xml               # Maven parent configuration
+- Java 21  
+- Maven 3.8+  
+- PostgreSQL 14+ (for structured project/user data)  
+- BaseX 10.7+ or eXist-db 6+ (for GAEB XML files)
 
-└── README.md             # You are here
+### Setup Instructions
 
-Technologies
+Before running the application, ensure that **both** your PostgreSQL and XML database servers are installed and running.  
+PostgreSQL is used for project metadata and user management, while GAEB XML files are stored in the XML database.
 
-Java 21
-
-Vaadin Flow (Java-based Web UI Framework)
-
-BaseX or eXist-db (XML database, accessed via REST)
-
-XQuery (for querying GAEB XML)
-
-Maven (build system)
-
-MPL 2.0 license
-
-License Compatibility
-
-This project avoids direct dependencies on GPL-licensed libraries like BaseX by using REST APIs.This keeps the codebase under MPL 2.0, enabling broader reuse and combination with other systems.As an alternative, eXist-db can be used if preferred.
-
-Getting Started
-
-Requirements
-
-Java 21
-Maven 3.8+
-Either BaseX 10.7+ or eXist-db 6+
-
-Steps
-
-Clone this repository:
+```bash
+# Clone the repository
 git clone https://github.com/yourname/gaeb-viewer.git
 cd gaeb-viewer
 
-Start your preferred XML database server (BaseX or eXist-db)
+# Start your PostgreSQL server
+# (Make sure to create the database and schema using available SQL scripts)
 
-Deploy your XQuery endpoints in gaeb-basex-server/webapp/restxq/
+# Start your XML database (BaseX or eXist-db)
 
-Run the Java Web UI:
+# Deploy XQuery endpoints to your XML DB
+cp gaeb-basex-server/webapp/restxq/ <your database's REST folder>
+
+# Run the web application
 cd gaeb-webui
 mvn spring-boot:run
 
-Contributing
+```
 
-Feel free to fork, open issues, or submit pull requests.This project is designed to grow into a collaborative GAEB project platform.
+---
 
-License
+## 🤝 Contributing
 
-This project is licensed under the Mozilla Public License 2.0 (MPL 2.0).
+Contributions are welcome! Feel free to fork the repository, open issues, or submit pull requests. The goal is to develop a collaborative platform for open GAEB tools.
+
+---
+
+## 🪪 License
+
+This project is licensed under the [Mozilla Public License 2.0 (MPL 2.0)](https://www.mozilla.org/en-US/MPL/2.0/).
+
+To ensure license compatibility, all XML databases are accessed via REST to avoid linking with GPL-licensed code like BaseX directly. You may use eXist-db as an alternative.
+
 
