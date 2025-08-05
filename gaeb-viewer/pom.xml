@@ -1,12 +1,52 @@
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.example.gaeb</groupId>
+
+  <groupId>com.example</groupId>
   <artifactId>gaeb-viewer</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+
+  <name>GAEB4Linux Project Root</name>
+
   <modules>
     <module>gaeb-core</module>
     <module>gaeb-webui</module>
     <module>gaeb-xml-db-server</module>
   </modules>
+
+  <properties>
+    <java.version>21</java.version>
+    <vaadin.version>24.1.3</vaadin.version>
+    <spring-boot.version>3.2.4</spring-boot.version>
+    <jaxb.version>4.0.0</jaxb.version>
+    <slf4j.version>2.0.9</slf4j.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>${spring-boot.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
 </project>
