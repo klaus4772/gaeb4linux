@@ -1,9 +1,10 @@
-package com.example.gaeb.core.model;
+package com.example.gaeb.core.parser;
 import org.w3c.dom.*;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import com.example.gaeb.core.model.*;
 
 public class GaebXmlParser {
 

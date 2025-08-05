@@ -10,9 +10,9 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.router.Route;
-import de.example.gaeb.core.model.Position;
-import de.example.gaeb.core.model.Tender;
-import de.example.gaeb.core.parser.GaebXmlParser;
+import com.example.gaeb.core.model.Position;
+import com.example.gaeb.core.model.Tender;
+import com.example.gaeb.core.parser.GaebXmlParser;
 
 import java.io.InputStream;
 import java.nio.file.Files;

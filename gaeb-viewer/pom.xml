@@ -9,8 +9,6 @@
   <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>GAEB4Linux Project Root</name>
-
   <modules>
     <module>gaeb-core</module>
     <module>gaeb-webui</module>
