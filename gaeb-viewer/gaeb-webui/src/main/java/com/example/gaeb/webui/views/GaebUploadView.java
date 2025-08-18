@@ -1,8 +1,7 @@
-// Package: de.example.gaeb.webui.view
+// Package: com.example.gaeb.webui.view
 
-package de.example.gaeb.webui.view;
+package com.example.gaeb.webui.views;
 
-import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.notification.Notification;
