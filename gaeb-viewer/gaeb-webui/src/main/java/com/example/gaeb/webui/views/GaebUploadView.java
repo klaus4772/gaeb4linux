@@ -18,7 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-@Route("")
+@Route("upload")
 public class GaebUploadView extends VerticalLayout {
 
     private final Grid<Position> positionGrid = new Grid<>(Position.class);

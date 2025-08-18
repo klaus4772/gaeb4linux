@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7749ff4e-d53b-46e8-8afe-a7763deeb05e" name="Changes" comment="not running">
+      <change beforePath="$PROJECT_DIR$/gaeb-viewer/gaeb-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gaeb-viewer/gaeb-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gaeb-viewer/gaeb-webui/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gaeb-viewer/gaeb-webui/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gaeb-viewer/gaeb-xml-db-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gaeb-viewer/gaeb-xml-db-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gaeb-viewer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/gaeb-viewer/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;klaus4772&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/klaus4772/gaeb4linux.git&quot;,
+    &quot;accountId&quot;: &quot;2a3dab93-58fc-4fc7-952e-f35033d968dc&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="30pdTk177iwKagfICIPELhyXre2" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Unnamed.executor": "Run",
+    "Maven.Unnamed.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.gaeb-viewer">
+    <configuration name="gaeb-viewer" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.gaeb.webui.Application" />
+      <module name="gaeb4linux" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/gaeb-viewer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="cmdOptions" />
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="insta" />
+              </list>
+            </option>
+            <option name="multimoduleDir" />
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="projectsCmdOptionValues">
+              <list />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/gaeb-viewer" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.gaeb-viewer" />
+      <item itemvalue="Maven.Unnamed" />
+    </list>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7749ff4e-d53b-46e8-8afe-a7763deeb05e" name="Changes" comment="Set up repository metadata and parent structure" />
+      <created>1754328462654</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754328462654</updated>
+    </task>
+    <task id="LOCAL-00001" summary="not running">
+      <option name="closed" value="true" />
+      <created>1754391814191</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1754391814191</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="not running" />
+    <option name="LAST_COMMIT_MESSAGE" value="not running" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/gaeb-viewer/gaeb-webui/src/main/java/com/example/gaeb/webui/Application.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

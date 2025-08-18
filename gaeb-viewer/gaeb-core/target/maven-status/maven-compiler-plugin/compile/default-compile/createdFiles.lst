@@ -1,0 +1,4 @@
+com/example/gaeb/core/model/Tender.class
+com/example/gaeb/core/parser/GaebXmlParser.class
+com/example/gaeb/core/model/ItemText.class
+com/example/gaeb/core/model/Position.class

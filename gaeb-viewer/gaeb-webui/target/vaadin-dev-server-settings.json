@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer/gaeb-webui/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer/gaeb-webui/frontend/generated/jar-resources",
+  "staticOutput": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer/gaeb-webui/target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer/gaeb-webui/target/classes/META-INF/VAADIN/config",
+  "frontendBundleOutput": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer/gaeb-webui/target/classes/META-INF/VAADIN/webapp",
+  "devBundleOutput": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer/gaeb-webui/src/main/dev-bundle/webapp",
+  "devBundleStatsOutput": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer/gaeb-webui/src/main/dev-bundle/config",
+  "jarResourcesFolder": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer/gaeb-webui/frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "/home/klaus/IdeaProjects/gaeb4linux/gaeb-viewer/gaeb-webui/target/sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}
