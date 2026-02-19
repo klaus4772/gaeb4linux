@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>gaebviewer</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>gaeb-schema-da80</artifactId>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
+                <version>4.0.8</version>
+
+                <executions>
+                    <execution>
+                        <id>generate-da80</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+
+                        <configuration>
+
+                            <schemaDirectory>
+                                src/main/resources/xsd
+                            </schemaDirectory>
+
+                            <schemaIncludes>
+                                <include>GAEB_DA_XML_Lib_3.3_2021-05.xsd</include>
+                                <include>GAEB_DA_XML_80_3.3_2021-05.xsd</include>
+                            </schemaIncludes>
+
+                            <generatePackage>
+                                com.example.gaebviewer.schema.da80
+                            </generatePackage>
+
+                            <bindingDirectory>
+                                src/main/resources/xsd
+                            </bindingDirectory>
+
+                            <bindingIncludes>
+                                <include>bindings.xjb</include>
+                            </bindingIncludes>
+
+                            <args>
+                                <arg>-extension</arg>
+                                <arg>-XautoNameResolution</arg>
+                            </args>
+
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>

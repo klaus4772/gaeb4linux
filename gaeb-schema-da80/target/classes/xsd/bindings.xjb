@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings
+        xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        version="3.0">
+
+    <!-- tgOutlTxt: Attribut style umbenennen -->
+    <jaxb:bindings schemaLocation="GAEB_DA_XML_Lib_3.3_2021-05.xsd"
+                   node="//xs:complexType[@name='tgOutlTxt']/xs:attribute[@name='style']">
+        <jaxb:property name="styleAttr"/>
+    </jaxb:bindings>
+
+    <!-- tgBoQText: Attribut style umbenennen -->
+    <jaxb:bindings schemaLocation="GAEB_DA_XML_Lib_3.3_2021-05.xsd"
+                   node="//xs:complexType[@name='tgBoQText']/xs:attribute[@name='style']">
+        <jaxb:property name="styleAttr"/>
+    </jaxb:bindings>
+
+</jaxb:bindings>

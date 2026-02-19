@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="3.0" xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Diese Datei wurde mit der Eclipse Implementation of JAXB, v4.0.5 generiert 
+Siehe https://eclipse-ee4j.github.io/jaxb-ri 
+Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
+Generiert: 2026.02.19 um 03:29:02 PM CET
+  -->
+  <jaxb:bindings scd="x-schema::tns" if-exists="true" auto-acknowledge="true" xmlns:tns="http://www.gaeb.de/GAEB_DA_XML/DA80/3.3">
+    <jaxb:schemaBindings map="false">
+      <jaxb:package name="com.example.gaebviewer.schema.da80"/>
+    </jaxb:schemaBindings>
+    <jaxb:bindings scd="~tns:tgQDetermItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQDetermItem2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgRefItems" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefItems2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgQuotation" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQuotation2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgPriceModification" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPriceModification2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCashDiscount" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCashDiscount2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgGAEB" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgGAEB2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgGAEBInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgGAEBInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgPrjInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPrjInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAward" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgAward2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAwardInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgAwardInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCOInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCOInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMaintInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMaintInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMastAgrInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMastAgrInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgContrValCode" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgContrValCode2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAddText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgAddText2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgOWN" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOWN2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAddress" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgAddress2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBank" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBank2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCtlgAssign" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCtlgAssign2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgRequester" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRequester2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCTR" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCTR2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInsAs" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInsAs2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCnstSite" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCnstSite2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgNotifSite" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgNotifSite2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgTotals" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgTotals2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgVATPart" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgVATPart2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgTotalNetUpComp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgTotalNetUpComp2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBoQBody" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQBody2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgItemlist" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgItemlist2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBoQ" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQ2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBoQInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBoQBkdn" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQBkdn2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCPVCode" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCPVCode2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCostType" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCostType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgRemark" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRemark2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgDescription" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgDescription2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgPerfDescription" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPerfDescription2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgStLNo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgStLNo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCompleteText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCompleteText2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSTLBBau" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSTLBBau2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSTLBBauCtlg" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSTLBBauCtlg2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSTLBBauID" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSTLBBauID2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgOutlTxt" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOutlTxt2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgPerfDescr" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPerfDescr2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBoQCtgy" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQCtgy2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgItem2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgQtySplit" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQtySplit2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSubDescr" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSubDescr2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgProduct" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgProduct2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgArticle" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgArticle2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCostApproach" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCostApproach2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMarkupItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMarkupItem2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMarkupSubQty" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMarkupSubQty2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgLotGrp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgLotGrp2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgWgChange" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgWgChange2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBoQText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQText2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgTextComplement" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgTextComplement2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgFTextTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgFTextTC2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgFText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgFText2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMLText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMLText2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgp2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgpTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgpTC2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgpMLText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgpMLText2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgspan" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgspan2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgdiv" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgdiv2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgdivTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgdivTC2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgul" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgul2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgulTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgulTC2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgol" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgol2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgolTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgolTC2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgli" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgli2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgliTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgliTC2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgtable" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgtable2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgtableTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgtableTC2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgtr" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgtr2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgtrTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgtrTC2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgth" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgth2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgtd" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgtd2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgtdTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgtdTC2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgImage" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgImage2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgRefBoQCtgy" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefBoQCtgy2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgRefLotGrp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefLotGrp2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgRefBoQ" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefBoQ2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgOutlineText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOutlineText2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCtlg" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCtlg2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgQtyDetermInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQtyDetermInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgStyle" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgStyle2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgRefItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefItem2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCashDiscDays" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCashDiscDays2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgComplBodyDec" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgComplBodyDec2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgComplBodyInt" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgComplBodyInt2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgLblUpComp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgLblUpComp2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgISOCur" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgISOCur2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgOrder" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOrder2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgOrderInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOrderInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSupplierInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSupplierInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCustomerInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCustomerInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgDeliveryPlaceInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgDeliveryPlaceInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgPlannerInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPlannerInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInvoiceInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgOrderTotals" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOrderTotals2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgWeightPart" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgWeightPart2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgUserValue" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgUserValue2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgDimension" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgDimension2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgOrderItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOrderItem2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMetalResources" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMetalResources2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCheckNote" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCheckNote2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgPaymentMade" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPaymentMade2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInvoiceMadeOut" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceMadeOut2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInvoiceHeader" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceHeader2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInvoiceCreator" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceCreator2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInvoiceRecipient" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceRecipient2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInvoiceShare" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceShare2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInvoice" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoice2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgQtyDeterm" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQtyDeterm2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgIndivAgrInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgIndivAgrInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMastAgrItems" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMastAgrItems2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgHourItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgHourItem2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMaterialItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMaterialItem2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMarkupItemOWN" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMarkupItemOWN2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMarkupItemCTR" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMarkupItemCTR2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCtlgAssignQuantity" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCtlgAssignQuantity2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgTextComplement" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgTextComplement"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMarkupItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgMarkupItem"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSubDescr" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgSubDescr"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgItem"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBoQCtgy" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgBoQCtgy"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgPerfDescr" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgPerfDescr"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgRemark" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgRemark"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBoQInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgBoQInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgItemlist" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgItemlist"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAwardInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgAwardInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAward" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgAward"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgGAEB" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.OriginalTgGAEB"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCertific" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCertific2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCOPhase" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCOPhase2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCOStatus" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCOStatus2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCntryType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCntryType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgBoQBkdnType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgBoQBkdnType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgYesNo" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgYesNo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAccepted" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAccepted2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgProvis" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgProvis2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCat" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCat2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSpecialType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgSpecialType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgWarrUnit" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgWarrUnit2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSectorType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgSectorType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgPrefBidType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgPrefBidType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSCType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgSCType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgYes" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgYes2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgLeftRight" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgLeftRight2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgRefDescr" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgRefDescr2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAttKind" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttKind2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAttAlign" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttAlign2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAttAlignTable" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttAlignTable2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAttFrame" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttFrame2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAttValign" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttValign2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAttOrg" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttOrg2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCtlgEnum" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCtlgEnum2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgAlterBidStatus" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAlterBidStatus2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgOutlCompl" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgOutlCompl2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgUpCompType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgUpCompType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgPriceInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgPriceInfo2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgMarkupType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgMarkupType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgHoldOutType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgHoldOutType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgUseDurLblTime" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgUseDurLblTime2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgCheckNoteState" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCheckNoteState2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInvoiceType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgInvoiceType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgInvoiceShareType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgInvoiceShareType2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgQUHour" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgQUHour2"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tns:tgSettlementType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgSettlementType2"/>
+    </jaxb:bindings>
+  </jaxb:bindings>
+  <jaxb:bindings scd="x-schema::" if-exists="true" auto-acknowledge="true">
+    <jaxb:schemaBindings map="false">
+      <jaxb:package name="com.example.gaebviewer.schema.da80"/>
+    </jaxb:schemaBindings>
+    <jaxb:bindings scd="~tgQDetermItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQDetermItem"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgRefItems" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefItems"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgQuotation" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQuotation"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgPriceModification" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPriceModification"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCashDiscount" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCashDiscount"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgGAEB" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgGAEB"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgGAEBInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgGAEBInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgPrjInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPrjInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAward" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgAward"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAwardInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgAwardInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCOInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCOInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMaintInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMaintInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMastAgrInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMastAgrInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgContrValCode" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgContrValCode"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAddText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgAddText"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgOWN" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOWN"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAddress" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgAddress"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgBank" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBank"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCtlgAssign" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCtlgAssign"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgRequester" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRequester"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCTR" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCTR"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInsAs" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInsAs"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCnstSite" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCnstSite"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgNotifSite" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgNotifSite"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgTotals" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgTotals"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgVATPart" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgVATPart"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgTotalNetUpComp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgTotalNetUpComp"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgBoQBody" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQBody"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgItemlist" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgItemlist"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgBoQ" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQ"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgBoQInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgBoQBkdn" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQBkdn"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCPVCode" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCPVCode"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCostType" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCostType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgRemark" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRemark"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgDescription" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgDescription"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgPerfDescription" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPerfDescription"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgStLNo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgStLNo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCompleteText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCompleteText"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgSTLBBau" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSTLBBau"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgSTLBBauCtlg" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSTLBBauCtlg"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgSTLBBauID" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSTLBBauID"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgOutlTxt" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOutlTxt"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgPerfDescr" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPerfDescr"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgBoQCtgy" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQCtgy"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgItem"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgQtySplit" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQtySplit"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgSubDescr" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSubDescr"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgProduct" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgProduct"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgArticle" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgArticle"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCostApproach" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCostApproach"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMarkupItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMarkupItem"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMarkupSubQty" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMarkupSubQty"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgLotGrp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgLotGrp"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgWgChange" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgWgChange"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgBoQText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgBoQText"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgTextComplement" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgTextComplement"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgFTextTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgFTextTC"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgFText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgFText"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMLText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMLText"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgp"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgpTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgpTC"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgpMLText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgpMLText"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgspan" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgspan"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgdiv" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgdiv"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgdivTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgdivTC"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgul" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgul"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgulTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgulTC"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgol" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgol"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgolTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgolTC"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgli" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgli"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgliTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgliTC"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgtable" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgtable"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgtableTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgtableTC"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgtr" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgtr"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgtrTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgtrTC"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgth" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgth"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgtd" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.Tgtd"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgtdTC" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgtdTC"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgImage" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgImage"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgRefBoQCtgy" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefBoQCtgy"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgRefLotGrp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefLotGrp"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgRefBoQ" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefBoQ"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgOutlineText" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOutlineText"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCtlg" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCtlg"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgQtyDetermInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQtyDetermInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgStyle" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgStyle"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgRefItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgRefItem"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCashDiscDays" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCashDiscDays"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgComplBodyDec" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgComplBodyDec"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgComplBodyInt" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgComplBodyInt"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgLblUpComp" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgLblUpComp"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgISOCur" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgISOCur"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgOrder" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOrder"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgOrderInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOrderInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgSupplierInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgSupplierInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCustomerInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCustomerInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgDeliveryPlaceInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgDeliveryPlaceInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgPlannerInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPlannerInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInvoiceInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgOrderTotals" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOrderTotals"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgWeightPart" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgWeightPart"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgUserValue" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgUserValue"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgDimension" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgDimension"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgOrderItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgOrderItem"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMetalResources" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMetalResources"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCheckNote" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCheckNote"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgPaymentMade" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgPaymentMade"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInvoiceMadeOut" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceMadeOut"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInvoiceHeader" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceHeader"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInvoiceCreator" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceCreator"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInvoiceRecipient" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceRecipient"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInvoiceShare" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoiceShare"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInvoice" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgInvoice"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgQtyDeterm" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgQtyDeterm"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgIndivAgrInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgIndivAgrInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMastAgrItems" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMastAgrItems"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgHourItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgHourItem"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMaterialItem" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMaterialItem"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMarkupItemOWN" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMarkupItemOWN"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMarkupItemCTR" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgMarkupItemCTR"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCtlgAssignQuantity" if-exists="true" auto-acknowledge="true">
+      <jaxb:class ref="com.example.gaebviewer.schema.da80.TgCtlgAssignQuantity"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCertific" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCertific"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCOPhase" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCOPhase"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCOStatus" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCOStatus"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCntryType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCntryType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgBoQBkdnType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgBoQBkdnType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgYesNo" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgYesNo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAccepted" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAccepted"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgProvis" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgProvis"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCat" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCat"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgSpecialType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgSpecialType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgWarrUnit" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgWarrUnit"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgSectorType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgSectorType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgPrefBidType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgPrefBidType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgSCType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgSCType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgYes" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgYes"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgLeftRight" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgLeftRight"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgRefDescr" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgRefDescr"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAttKind" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttKind"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAttAlign" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttAlign"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAttAlignTable" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttAlignTable"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAttFrame" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttFrame"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAttValign" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttValign"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAttOrg" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAttOrg"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCtlgEnum" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCtlgEnum"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgAlterBidStatus" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgAlterBidStatus"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgOutlCompl" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgOutlCompl"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgUpCompType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgUpCompType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgPriceInfo" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgPriceInfo"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgMarkupType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgMarkupType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgHoldOutType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgHoldOutType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgUseDurLblTime" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgUseDurLblTime"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgCheckNoteState" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgCheckNoteState"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInvoiceType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgInvoiceType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgInvoiceShareType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgInvoiceShareType"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgQUHour" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgQUHour"/>
+    </jaxb:bindings>
+    <jaxb:bindings scd="~tgSettlementType" if-exists="true" auto-acknowledge="true">
+      <jaxb:typesafeEnumClass ref="com.example.gaebviewer.schema.da80.TgSettlementType"/>
+    </jaxb:bindings>
+  </jaxb:bindings>
+</jaxb:bindings>
+

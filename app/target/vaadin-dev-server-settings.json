@@ -1,0 +1,17 @@
+{
+  "frontendFolder": "C:/Users/kjahn/IdeaProjects/gaeb4linux/gaebviewer/app/frontend",
+  "themeFolder": "themes",
+  "themeResourceFolder": "C:/Users/kjahn/IdeaProjects/gaeb4linux/gaebviewer/app/frontend/generated/jar-resources",
+  "staticOutput": "target/classes/META-INF/VAADIN/webapp/VAADIN/static",
+  "generatedFolder": "generated",
+  "statsOutput": "target/classes/META-INF/VAADIN/webapp/../config/",
+  "frontendBundleOutput": "target/classes/META-INF/VAADIN/webapp/",
+  "devBundleOutput": "C:/Users/kjahn/IdeaProjects/gaeb4linux/gaebviewer/app/src/main/dev-bundle/webapp",
+  "devBundleStatsOutput": "C:/Users/kjahn/IdeaProjects/gaeb4linux/gaebviewer/app/src/main/dev-bundle/config",
+  "jarResourcesFolder": "C:/Users/kjahn/IdeaProjects/gaeb4linux/gaebviewer/app/frontend/generated/jar-resources",
+  "themeName": "",
+  "clientServiceWorkerSource": "C:\\Users\\kjahn\\IdeaProjects\\gaeb4linux\\gaebviewer\\app\\target\\sw.ts",
+  "pwaEnabled": false,
+  "offlineEnabled": false,
+  "offlinePath": "'offline.html'"
+}

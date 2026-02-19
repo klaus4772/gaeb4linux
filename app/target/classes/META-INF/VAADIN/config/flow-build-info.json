@@ -1,0 +1,16 @@
+{
+  "productionMode": false,
+  "eagerServerLoad": false,
+  "npmFolder": "C:\\Users\\kjahn\\IdeaProjects\\gaeb4linux\\gaebviewer\\app",
+  "node.version": "v18.16.1",
+  "node.download.root": "https://nodejs.org/dist/",
+  "frontendFolder": "C:\\Users\\kjahn\\IdeaProjects\\gaeb4linux\\gaebviewer\\app\\frontend",
+  "connect.javaSourceFolder": "C:\\Users\\kjahn\\IdeaProjects\\gaeb4linux\\gaebviewer\\app\\src\\main\\java",
+  "javaResourceFolder": "C:\\Users\\kjahn\\IdeaProjects\\gaeb4linux\\gaebviewer\\app\\src\\main\\resources",
+  "connect.applicationProperties": "C:\\Users\\kjahn\\IdeaProjects\\gaeb4linux\\gaebviewer\\app\\src\\main\\resources\\application.properties",
+  "connect.openApiFile": "C:\\Users\\kjahn\\IdeaProjects\\gaeb4linux\\gaebviewer\\app\\target\\generated-resources\\openapi.json",
+  "project.frontend.generated": "C:\\Users\\kjahn\\IdeaProjects\\gaeb4linux\\gaebviewer\\app\\frontend\\generated",
+  "pnpm.enable": false,
+  "require.home.node": false,
+  "build.folder": "target"
+}
