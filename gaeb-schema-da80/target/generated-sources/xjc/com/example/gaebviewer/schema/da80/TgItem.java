@@ -139,8 +139,8 @@ public class TgItem {
      * <p>
      * Sie rufen diese "catch-all"-Eigenschaft aus folgendem Grund ab: 
      * Der Feldname "Qty" wird von zwei verschiedenen Teilen eines Schemas verwendet. Siehe: 
-     * Zeile 2506 von file:/C:/Users/kjahn/IdeaProjects/gaeb4linux/gaebviewer/gaeb-schema-da80/src/main/resources/xsd/GAEB_DA_XML_Lib_3.3_2021-05.xsd
-     * Zeile 2499 von file:/C:/Users/kjahn/IdeaProjects/gaeb4linux/gaebviewer/gaeb-schema-da80/src/main/resources/xsd/GAEB_DA_XML_Lib_3.3_2021-05.xsd
+     * Zeile 2506 von file:/C:/Users/kjahn/IdeaProjects/gaeb4linux/gaeb4linux/gaeb-schema-da80/src/main/resources/xsd/GAEB_DA_XML_Lib_3.3_2021-05.xsd
+     * Zeile 2499 von file:/C:/Users/kjahn/IdeaProjects/gaeb4linux/gaeb4linux/gaeb-schema-da80/src/main/resources/xsd/GAEB_DA_XML_Lib_3.3_2021-05.xsd
      * <p>
      * Um diese Eigenschaft zu entfernen, wenden Sie eine Eigenschaftenanpassung für eine
      * der beiden folgenden Deklarationen an, um deren Namen zu ändern:
@@ -229,8 +229,8 @@ public class TgItem {
      * <p>
      * Sie rufen diese "catch-all"-Eigenschaft aus folgendem Grund ab: 
      * Der Feldname "Qty" wird von zwei verschiedenen Teilen eines Schemas verwendet. Siehe: 
-     * Zeile 2506 von file:/C:/Users/kjahn/IdeaProjects/gaeb4linux/gaebviewer/gaeb-schema-da80/src/main/resources/xsd/GAEB_DA_XML_Lib_3.3_2021-05.xsd
-     * Zeile 2499 von file:/C:/Users/kjahn/IdeaProjects/gaeb4linux/gaebviewer/gaeb-schema-da80/src/main/resources/xsd/GAEB_DA_XML_Lib_3.3_2021-05.xsd
+     * Zeile 2506 von file:/C:/Users/kjahn/IdeaProjects/gaeb4linux/gaeb4linux/gaeb-schema-da80/src/main/resources/xsd/GAEB_DA_XML_Lib_3.3_2021-05.xsd
+     * Zeile 2499 von file:/C:/Users/kjahn/IdeaProjects/gaeb4linux/gaeb4linux/gaeb-schema-da80/src/main/resources/xsd/GAEB_DA_XML_Lib_3.3_2021-05.xsd
      * <p>
      * Um diese Eigenschaft zu entfernen, wenden Sie eine Eigenschaftenanpassung für eine
      * der beiden folgenden Deklarationen an, um deren Namen zu ändern:
