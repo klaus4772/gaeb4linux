@@ -125,3 +125,112 @@ JAXBContext.newInstance("com.example.gaebviewer.schema.da80")
 JAXBContext.newInstance("com.example.gaebviewer.schema.da81")
 
 Danach: Parser/Service-Code refactoren, sodass Import generisch wird.
+
+25.2.2026:
+1) ui.gaeb.GaebView
+
+Was ist das?
+Deine Vaadin-View (UI-Schicht) unter der Route /gaeb.
+
+Was macht sie konkret?
+
+Baut die Oberfläche: Überschrift, Upload-Komponente, Grid.
+
+Nimmt eine Datei über Upload + MemoryBuffer entgegen.
+
+Ruft beim erfolgreichen Upload nur einen Use Case auf:
+
+gaebImportService.importGaeb(inputStream)
+
+Nimmt das Ergebnis (GaebProject) und zeigt daraus die Positionen im Grid an.
+
+Wichtiges Architekturprinzip hier:
+
+UI macht keine XML-/GAEB-Logik.
+
+UI kennt keine JAXB/DOM-Details.
+
+UI zeigt nur Domain-Daten an.
+
+2) application.gaeb.GaebImportService
+
+Was ist das?
+Ein Application-Service (Use-Case-Schicht).
+
+Was macht er konkret?
+
+Er repräsentiert den Anwendungsfall: „GAEB-Datei importieren“.
+
+Er ist die “Fassade” für die UI: Die UI muss nur diesen Service kennen.
+
+Er delegiert die technische Arbeit an einen Importer (ideal: ein Interface/Port wie GaebImporter).
+
+Warum ist das wichtig?
+
+Wenn du später umstellst von DOM → JAXB, ändert sich nicht die UI.
+
+Wenn du später Projektverwaltung/DB einbaust, kommt Logik hier rein wie:
+
+„nach Import als Projekt speichern“
+
+„letzte Projekte laden“
+
+„Versionierung“
+
+3) infrastructure.gaeb.GaebXmlParser
+
+Was ist das?
+Ein technischer Importer (Infrastruktur-Schicht). Im Moment ist es ein DOM-basierter Import.
+
+Was macht er konkret?
+
+Liest das XML mit DocumentBuilderFactory (namespace-aware).
+
+Holt den Root-Namespace (damit erkennst du grundsätzlich schon DA80/DA81-artige Welten).
+
+Sucht nach Item-Elementen und liest daraus:
+
+OZ (RNoPart)
+
+Kurztext (OutlineText)
+
+Menge (Qty)
+
+Einheit (QU)
+
+Einheitspreis (UP)
+
+Baut daraus Domain-Objekte:
+
+GaebProject (ein Projekt)
+
+GaebBoQ (ein LV, derzeit nur eins)
+
+GaebPosition (Positionen)
+
+Warum gehört das in infrastructure?
+
+Weil DOM/XML parsing Technik ist.
+
+Später ersetzt du diese Klasse durch:
+
+Da80JaxbImporter
+
+Da81JaxbImporter
+…ohne die Domain oder UI anfassen zu müssen.
+
+Zusammenspiel als Ablauf
+
+User lädt Datei hoch (UI)
+
+GaebView ruft GaebImportService.importGaeb(InputStream) auf (Application)
+
+GaebImportService ruft den technischen Importer/Parser auf (Infrastructure)
+
+Infrastructure baut ein GaebProject (Domain)
+
+UI zeigt GaebPosition-Daten an
+
+Kurz:
+
+UI → Application → Infrastructure → Domain (Objekte zurück) → UI

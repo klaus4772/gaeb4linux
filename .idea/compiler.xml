@@ -18,6 +18,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="app" options="-parameters" />
+      <module name="gaeb-schema-da80" options="-parameters" />
+      <module name="gaeb-schema-da81" options="-parameters" />
       <module name="gaeb4linux" options="" />
       <module name="gaebviewer (1) (org.springframework.boot)" options="-parameters" />
     </option>
