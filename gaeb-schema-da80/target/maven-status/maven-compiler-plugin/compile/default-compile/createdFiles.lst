@@ -3,6 +3,7 @@ com\example\gaebviewer\schema\da80\TgGAEBInfo2.class
 com\example\gaebviewer\schema\da80\TgpMLText.class
 com\example\gaebviewer\schema\da80\TgRemark2.class
 com\example\gaebviewer\schema\da80\TgPaymentMade.class
+com\example\Main.class
 com\example\gaebviewer\schema\da80\TgDeliveryPlaceInfo.class
 com\example\gaebviewer\schema\da80\TgRemark.class
 com\example\gaebviewer\schema\da80\TgCPVCode.class

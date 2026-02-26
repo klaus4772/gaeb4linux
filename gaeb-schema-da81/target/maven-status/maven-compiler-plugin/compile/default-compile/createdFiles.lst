@@ -1,5 +1,6 @@
 com\example\gaebviewer\schema\da81\TgBank.class
 com\example\gaebviewer\schema\da81\TgQDetermItem.class
+com\example\Main.class
 com\example\gaebviewer\schema\da81\TgBoQText.class
 com\example\gaebviewer\schema\da81\TgInvoiceHeader.class
 com\example\gaebviewer\schema\da81\TgPrefBidType2.class
