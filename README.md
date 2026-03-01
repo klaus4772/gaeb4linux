@@ -105,3 +105,19 @@ http://localhost:8080/gaeb
 Most GAEB tools are Windows-only.
 GAEB4Linux is a native Linux alternative – open and extensible.
 
+📜 License
+
+GAEB4Linux is licensed under the **Mozilla Public License 2.0 (MPL-2.0)**.
+
+The MPL is a weak copyleft license designed for modular platforms.
+
+What this means in practice:
+
+- You are free to use GAEB4Linux in open or commercial projects.
+- Improvements to existing GAEB4Linux source files must be published under MPL-2.0.
+- Independent modules or extensions built on top of GAEB4Linux may use any license.
+
+This ensures that the core platform remains open, while still allowing commercial or proprietary extensions.
+
+See the [LICENSE](LICENSE) file for details.
+
