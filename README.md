@@ -21,8 +21,11 @@ Full GAEB tree preservation (lossless XML import)
 Multi-module Maven project:
 
 gaeb4linux
+
 ├── gaebviewer
+
 ├── gaeb-schema-da80
+
 └── gaeb-schema-da81
 
 Layered Architecture:
