@@ -89,8 +89,11 @@ Maven Multi-Module
 Linux-first development
 
 🚀 How to run
+
 mvn clean install
+
 cd gaebviewer
+
 mvn spring-boot:run
 
 Open:
@@ -101,6 +104,3 @@ http://localhost:8080/gaeb
 Most GAEB tools are Windows-only.
 GAEB4Linux is a native Linux alternative – open and extensible.
 
-Das wirkt direkt professionell.
-
-Wenn du willst, schreibe ich dir eine komplett fertige README.md zum Copy-Paste.
