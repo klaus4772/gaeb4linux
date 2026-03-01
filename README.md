@@ -1,69 +1,103 @@
-GAEB4Linux
+🔷 GAEB4Linux
 
-GAEB4Linux is an open-source GAEB viewer and editor designed for Linux systems. GAEB XML is a standardized data exchange format used extensively in the German construction industry for specifications, pricing, quantity takeoffs, invoicing, and calculations.
+Open Source GAEB XML Viewer & future GAEB Processing Platform
+Built with Java 21, Spring Boot & Vaadin
+Native focus: Linux
 
-The project aims to provide a free, open-source alternative to the proprietary software currently dominating this field, with a modern and modular architecture based on Java and Vaadin.
-🎯 Project Goals
+🎯 Vision
 
-    Enable Linux users to work with GAEB XML files.
-    Support standard formats (X81–X87) used for tender specifications.
-    Provide a modern, web-based user interface.
-    Maintain an open-source and extensible architecture.
+GAEB4Linux aims to become a modular, extensible GAEB processing platform:
 
-🧠 Architectural Approach: Hybrid Storage Model
+View GAEB XML files (DA80, DA81, X81, …)
 
-GAEB4Linux uses a hybrid database architecture to leverage the strengths of both XML-native and relational data models:
-XML Database (BaseX or eXist-db)
+Parse and display BoQs
 
-    Stores GAEB XML files in their original structure.
-    Ideal for executing complex XQuery/XPath operations.
-    Maintains full fidelity of the GAEB format.
+Future modules: Calculation, Costing, Export, Project Management
 
-Relational Database (PostgreSQL)
+Full GAEB tree preservation (lossless XML import)
 
-    Manages project metadata, users, roles, and transactional data.
-    Suitable for multi-user environments, project tracking, invoicing, and master data (e.g., materials, personnel).
-    Ensures consistency and reliability with ACID compliance.
+🏗 Architecture
 
-Integration Strategy
+Multi-module Maven project:
 
-    Projects reference GAEB XML files via URI or unique IDs.
-    The backend synchronizes business logic between both data sources.
-    This design ensures scalability, fast query performance for structured data, and flexibility for XML-based processing.
+gaeb4linux
+├── gaebviewer
+├── gaeb-schema-da80
+└── gaeb-schema-da81
 
-Result: A robust, scalable system combining the semantic richness of XML with the structural integrity of relational databases.
-🧩 Planned Features
-Step 1 – GAEB Viewer
+Layered Architecture:
 
-    Load and display GAEB files (X81–X87).
-    Import/export to and from all GAEB XML formats.
-    Edit prices, text additions, and bidder details.
-    Show/hide XML tags.
-    Export complete tender documents as PDF, including headers and footers.
+UI → Application → Infrastructure → Domain
 
-Step 2 – Create Tender Specifications
+UI only depends on Application
 
-    Create new tender documents.
-    Import texts or select from templates.
-    Optional connection to standard service catalogs or text-generation features.
-    Basic project management integration.
-    XML database support for data persistence.
+Domain is pure and independent
 
-Future Modules
+Import process supports versioned importers
 
-    Request and offer management.
-    Price calculation module.
-    Quantity determination module.
-    Invoicing module.
-    Master data management (equipment, personnel, materials, subcontractors).
-    Interfaces to third-party construction software.
+🔥 Current Status
 
-⚙️ Features
+✅ DA81 JAXB integration working
 
-    Load and parse GAEB XML files
-    Display GAEB structures in a Vaadin-based web interface
-    Communicate with an XML database (BaseX or eXist-db) via REST
-    Modular code structure designed for collaboration
-    Licensed under the Mozilla Public License 2.0 (MPL 2.0)
+✅ Namespace detection
 
-🧪
+✅ Positions (OZ) extracted
+
+🚧 Refactoring toward full GAEB Tree Model
+
+🚧 Clean typed mapping instead of reflection
+
+🧠 Planned Core Concept
+
+The system will internally use:
+
+A complete GAEB Tree model (lossless XML representation)
+
+Modular domain projections for:
+
+Viewer
+
+Calculation
+
+Billing
+
+Export
+
+This enables:
+
+Future-proof extensibility
+
+Support for all GAEB tags
+
+Minimal refactoring for new modules
+
+🛠 Tech Stack
+
+Java 21
+
+Spring Boot
+
+Vaadin
+
+JAXB (Jakarta XML Binding)
+
+Maven Multi-Module
+
+Linux-first development
+
+🚀 How to run
+mvn clean install
+cd gaebviewer
+mvn spring-boot:run
+
+Open:
+
+http://localhost:8080/gaeb
+📌 Why this project?
+
+Most GAEB tools are Windows-only.
+GAEB4Linux is a native Linux alternative – open and extensible.
+
+Das wirkt direkt professionell.
+
+Wenn du willst, schreibe ich dir eine komplett fertige README.md zum Copy-Paste.
