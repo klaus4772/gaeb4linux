@@ -1,2 +1,24 @@
-*/target/
+# Ignore Maven build directories
+**/target/
+
+# Ignore generated sources from JAXB/maven plugins
+**/generated-sources/
+
+# Java / build artifacts
+*.class
+*.jar
+*.war
+*.ear
+
+# IDEs
 .idea/
+.vscode/
+*.iml
+.settings/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Keep XSD files in src/main/resources/xsd tracked (we want the official schemas in repo)
+!src/main/resources/xsd/*.xsd
