@@ -20,6 +20,12 @@
         <module>gaebviewer</module>
         <module>gaeb-schema-da80</module>
         <module>gaeb-schema-da81</module>
+        <module>gaeb-schema-da82</module>
+        <module>gaeb-schema-da83</module>
+        <module>gaeb-schema-da84</module>
+        <module>gaeb-schema-da85</module>
+        <module>gaeb-schema-da86</module>
+        <module>gaeb-schema-da87</module>
     </modules>
     <dependencies>
         <dependency>
