@@ -5,7 +5,7 @@ import com.example.gaebviewer.application.gaeb.GaebSchemaVersion;
 import com.example.gaebviewer.domain.gaeb.GaebBoQ;
 import com.example.gaebviewer.domain.gaeb.GaebPosition;
 import com.example.gaebviewer.domain.gaeb.GaebProject;
-import com.example.gaebviewer.schema.da81.*;
+import com.example.gaebviewer.schema.da81.TgGAEB;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.Unmarshaller;
@@ -41,7 +41,7 @@ public class Da81JaxbImporter implements GaebImporterFactory.VersionedGaebImport
             Object result = unmarshaller.unmarshal(inputStream);
             Object root = (result instanceof jakarta.xml.bind.JAXBElement<?> j) ? j.getValue() : result;
 
-            TgGAEB2 gaeb = (TgGAEB2) root;
+            TgGAEB gaeb = (TgGAEB) root;
 
             GaebProject project = new GaebProject();
             project.setGaebVersion("DA81");
