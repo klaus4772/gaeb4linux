@@ -21,20 +21,8 @@
         <vaadin.version>24.1.3</vaadin.version>
     </properties>
 
-    <!-- Vaadin BOM -->
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>com.example</groupId>
-                <artifactId>gaeb-schema-da81</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.example</groupId>
-                <artifactId>gaeb-schema-da80</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <dependency>
                 <groupId>com.vaadin</groupId>
                 <artifactId>vaadin-bom</artifactId>
@@ -47,54 +35,52 @@
 
     <dependencies>
 
-
-
     <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>gaeb-schema-da80</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
     </dependency>
 
     <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>gaeb-schema-da81</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
     </dependency>
 
     <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>gaeb-schema-da82</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
     </dependency>
 
     <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>gaeb-schema-da83</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
     </dependency>
 
     <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>gaeb-schema-da84</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
     </dependency>
 
     <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>gaeb-schema-da85</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
     </dependency>
 
     <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>gaeb-schema-da86</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
     </dependency>
 
     <dependency>
                 <groupId>com.example</groupId>
                 <artifactId>gaeb-schema-da87</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>${project.version}</version>
     </dependency>
 
 

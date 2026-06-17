@@ -33,11 +33,13 @@ public class GaebView extends VerticalLayout {
 
         upload.setAcceptedFileTypes(
                 ".xml",
+                ".x80",
                 ".x81",
                 ".x82",
                 ".x83",
                 ".x84",
                 ".x85",
+                ".x86",
                 ".x87"
         );
 

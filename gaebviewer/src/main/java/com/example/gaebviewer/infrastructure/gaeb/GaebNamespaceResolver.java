@@ -38,11 +38,16 @@ public class GaebNamespaceResolver {
             return GaebSchemaVersion.UNKNOWN;
         }
 
-        // Robust: viele GAEB Namespaces enthalten DA80/DA81 in irgendeiner Form
         String ns = namespace.toUpperCase();
 
         if (ns.contains("DA80")) return GaebSchemaVersion.DA80;
         if (ns.contains("DA81")) return GaebSchemaVersion.DA81;
+        if (ns.contains("DA82")) return GaebSchemaVersion.DA82;
+        if (ns.contains("DA83")) return GaebSchemaVersion.DA83;
+        if (ns.contains("DA84")) return GaebSchemaVersion.DA84;
+        if (ns.contains("DA85")) return GaebSchemaVersion.DA85;
+        if (ns.contains("DA86")) return GaebSchemaVersion.DA86;
+        if (ns.contains("DA87")) return GaebSchemaVersion.DA87;
 
         return GaebSchemaVersion.UNKNOWN;
     }
