@@ -13,19 +13,28 @@ import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.IdentityHashMap;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.LinkedHashMap;
 
 @Component
 public class Da81JaxbImporter implements GaebImporterFactory.VersionedGaebImporter {
 
-    // ⚠️ JAXBContext ist teuer → einmal erzeugen
-    private static final JAXBContext CONTEXT = createContext();
+    private static JAXBContext CONTEXT;
 
-    private static JAXBContext createContext() {
-        try {
-            return JAXBContext.newInstance("com.example.gaebviewer.schema.da81");
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to create JAXBContext for DA81", e);
+    private static synchronized JAXBContext getContext() {
+        if (CONTEXT == null) {
+            try {
+                CONTEXT = JAXBContext.newInstance("com.example.gaebviewer.schema.da81");
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to create JAXBContext for DA81. Ensure gaeb-schema-da81 is built and ObjectFactory is present.", e);
+            }
         }
+        return CONTEXT;
     }
 
     @Override
@@ -36,10 +45,10 @@ public class Da81JaxbImporter implements GaebImporterFactory.VersionedGaebImport
     @Override
     public GaebProject importGaeb(InputStream inputStream) {
         try {
-            Unmarshaller unmarshaller = CONTEXT.createUnmarshaller();
+            Unmarshaller unmarshaller = getContext().createUnmarshaller();
 
             Object result = unmarshaller.unmarshal(inputStream);
-            Object root = (result instanceof jakarta.xml.bind.JAXBElement<?> j) ? j.getValue() : result;
+            Object root = (result instanceof JAXBElement<?> j) ? j.getValue() : result;
 
             TgGAEB gaeb = (TgGAEB) root;
 
@@ -62,112 +71,61 @@ public class Da81JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         }
     }
 
-    private int countObjectsByClassNameContains(Object root, String needle) {
-        java.util.IdentityHashMap<Object, Boolean> visited = new java.util.IdentityHashMap<>();
-        java.util.ArrayDeque<Object> queue = new java.util.ArrayDeque<>();
+    private List<GaebPosition> extractPositions(Object root) {
+        IdentityHashMap<Object, Boolean> visited = new IdentityHashMap<>();
+        ArrayDeque<Object> queue = new ArrayDeque<>();
         queue.add(root);
 
-        int count = 0;
+        List<GaebPosition> out = new ArrayList<>();
 
         while (!queue.isEmpty()) {
             Object cur = queue.poll();
             if (cur == null) continue;
             if (visited.put(cur, Boolean.TRUE) != null) continue;
 
-            String cn = cur.getClass().getSimpleName();
-            if (cn.contains(needle)) count++;
-
-            // Primitive wrappers / Strings überspringen
-            if (cur instanceof String
-                    || cur instanceof Number
-                    || cur instanceof Boolean
-                    || cur.getClass().isEnum()) {
+            if (cur instanceof JAXBElement<?> je) {
+                Object val = je.getValue();
+                if (val != null) queue.add(val);
                 continue;
             }
 
-            // Listen/Collections
-            if (cur instanceof java.lang.Iterable<?> it) {
-                for (Object x : it) queue.add(x);
-                continue;
-            }
-
-            // JAXBElements
-            if (cur instanceof jakarta.xml.bind.JAXBElement<?> je) {
-                queue.add(je.getValue());
-                continue;
-            }
-
-            // Alle Getter/Fields grob traversieren (nur public getters ohne Params)
-            for (java.lang.reflect.Method m : cur.getClass().getMethods()) {
-                if (m.getParameterCount() != 0) continue;
-                if (!m.getName().startsWith("get")) continue;
-                if (m.getName().equals("getClass")) continue;
-
-                Class<?> rt = m.getReturnType();
-                // zu viel Müll vermeiden
-                if (rt.isPrimitive()) continue;
-
-                try {
-                    Object val = m.invoke(cur);
-                    if (val == null) continue;
-
-                    // String/Number etc skippt oben
-                    queue.add(val);
-                } catch (Exception ignore) {
-                }
-            }
-        }
-
-        return count;
-    }
-    private java.util.List<GaebPosition> extractPositions(Object root) {
-        java.util.IdentityHashMap<Object, Boolean> visited = new java.util.IdentityHashMap<>();
-        java.util.ArrayDeque<Object> queue = new java.util.ArrayDeque<>();
-        queue.add(root);
-
-        java.util.List<GaebPosition> out = new java.util.ArrayList<>();
-
-        while (!queue.isEmpty()) {
-            Object cur = queue.poll();
-            if (cur == null) continue;
-            if (visited.put(cur, Boolean.TRUE) != null) continue;
-
-            // JAXBElement unwrap
-            if (cur instanceof jakarta.xml.bind.JAXBElement<?> je) {
-                queue.add(je.getValue());
-                continue;
-            }
-
-            // Kandidat: hat getRNoPart()
             String rNoPart = invokeStringGetter(cur, "getRNoPart");
             if (rNoPart != null && !rNoPart.isBlank()) {
                 GaebPosition p = new GaebPosition();
                 p.setNumber(rNoPart.trim());
 
-                // ShortText (häufig OutlineText)
                 String shortText = extractOutlineText(cur);
+                if (shortText == null || shortText.isBlank()) {
+                    shortText = findAnyOutlineText(cur);
+                }
                 if (shortText != null && !shortText.isBlank()) {
-                    p.setShortText(shortText);
-                    // fürs Grid erstmal auch als LongText verwenden
-                    p.setLongText(shortText);
+                    p.setShortText(shortText.trim());
                 }
 
-                // Qty / QU / UP
-                java.math.BigDecimal qty = invokeBigDecimalGetter(cur, "getQty");
+                String longText = extractLongText(cur);
+                if (longText == null || longText.isBlank()) {
+                    longText = findAnyDetailText(cur);
+                }
+                if (longText != null && !longText.isBlank()) {
+                    p.setLongText(longText.trim());
+                } else if (p.getShortText() != null) {
+                    p.setLongText(p.getShortText());
+                }
+
+                BigDecimal qty = invokeBigDecimalGetter(cur, "getQty");
                 if (qty != null) p.setQuantity(qty);
 
                 String unit = invokeStringGetter(cur, "getQU");
                 if (unit != null) p.setUnit(unit);
 
-                java.math.BigDecimal up = invokeBigDecimalGetter(cur, "getUP");
+                BigDecimal up = invokeBigDecimalGetter(cur, "getUP");
                 if (up != null) p.setUnitPrice(up);
 
                 out.add(p);
             }
 
-            // Traversiere weiter durch Getter
-            if (cur instanceof Iterable<?> it) {
-                for (Object x : it) queue.add(x);
+            if (cur instanceof Collection<?> it) {
+                for (Object x : it) if (x != null) queue.add(x);
                 continue;
             }
 
@@ -191,13 +149,12 @@ public class Da81JaxbImporter implements GaebImporterFactory.VersionedGaebImport
             }
         }
 
-        // Duplikate nach number entfernen (kommt bei so einem Graph-Scan manchmal vor)
         return out.stream()
-                .collect(java.util.stream.Collectors.toMap(
+                .collect(Collectors.toMap(
                         GaebPosition::getNumber,
                         p -> p,
                         (a, b) -> a,
-                        java.util.LinkedHashMap::new
+                        LinkedHashMap::new
                 ))
                 .values()
                 .stream()
@@ -205,20 +162,18 @@ public class Da81JaxbImporter implements GaebImporterFactory.VersionedGaebImport
     }
 
     private String extractOutlineText(Object cur) {
-        // 1) direkter Getter getOutlineText(): String
         String direct = invokeStringGetter(cur, "getOutlineText");
         if (direct != null) return direct.trim();
 
-        // 2) getOutlineText() liefert evtl. Liste oder komplexen Typ
         Object val = invokeGetter(cur, "getOutlineText");
         if (val == null) return null;
 
-        if (val instanceof Iterable<?> it) {
+        if (val instanceof Collection<?> it) {
             StringBuilder sb = new StringBuilder();
             for (Object x : it) {
                 String t = x == null ? null : x.toString();
                 if (t != null && !t.isBlank()) {
-                    if (!sb.isEmpty()) sb.append("\n");
+                    if (sb.length() > 0) sb.append("\n");
                     sb.append(t.trim());
                 }
             }
@@ -226,6 +181,135 @@ public class Da81JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         }
 
         return val.toString();
+    }
+    
+    private String extractLongText(Object cur) {
+        Object description = invokeGetter(cur, "getDescription");
+        if (description == null) return null;
+
+        Object completeText = invokeGetter(description, "getCompleteText");
+        if (completeText == null) return null;
+
+        Object detailTxt = invokeGetter(completeText, "getDetailTxt");
+        if (detailTxt == null) return null;
+
+        Object text = invokeGetter(detailTxt, "getTextOrTextComplementOrAttachment");
+        if (text == null) {
+            return extractAllText(detailTxt);
+        }
+
+        if (text instanceof Collection<?> it) {
+            StringBuilder sb = new StringBuilder();
+            for (Object x : it) {
+                if (x != null) {
+                    if (sb.length() > 0) sb.append("\n");
+                    sb.append(extractAllText(x));
+                }
+            }
+            return sb.toString();
+        }
+
+        return extractAllText(text);
+    }
+
+    private String extractAllText(Object obj) {
+        if (obj == null) return "";
+        if (obj instanceof String s) return s.trim();
+        if (obj instanceof JAXBElement<?> je) {
+            Object val = je.getValue();
+            if (val instanceof String s) return s.trim();
+            return extractAllText(val);
+        }
+
+        StringBuilder sb = new StringBuilder();
+        if (obj instanceof Collection<?> coll) {
+            for (Object item : coll) {
+                String t = extractAllText(item);
+                if (!t.isEmpty()) {
+                    if (sb.length() > 0) sb.append(" ");
+                    sb.append(t);
+                }
+            }
+            return sb.toString().trim();
+        }
+
+        // Handle specific GAEB types that hold lists of content
+        Object content = invokeGetter(obj, "getPOrDivOrSpan");
+        if (content == null) content = invokeGetter(obj, "getSpanOrBr");
+        if (content == null) content = invokeGetter(obj, "getTextOutlTxtOrTextComplement");
+        
+        if (content instanceof Collection<?> coll) {
+            return extractAllText(coll);
+        }
+
+        for (java.lang.reflect.Method m : obj.getClass().getMethods()) {
+            if (m.getParameterCount() == 0 && (m.getName().startsWith("get") || m.getName().startsWith("is")) && !m.getName().equals("getClass")) {
+                try {
+                    Object val = m.invoke(obj);
+                    if (val != null) {
+                        if (val instanceof Collection<?> it) {
+                            for (Object child : it) {
+                                String t = extractAllText(child);
+                                if (!t.isEmpty()) {
+                                    if (sb.length() > 0) sb.append(" ");
+                                    sb.append(t);
+                                }
+                            }
+                        } else if (val instanceof String s) {
+                             String t = s.trim();
+                             if (!t.isEmpty()) {
+                                 if (sb.length() > 0) sb.append(" ");
+                                 sb.append(t);
+                             }
+                        } else if (!val.getClass().isPrimitive() && !val.getClass().getName().startsWith("java.")) {
+                             if (val.getClass().getName().contains("gaebviewer.schema")) {
+                                 String t = extractAllText(val);
+                                 if (!t.isEmpty()) {
+                                     if (sb.length() > 0) sb.append(" ");
+                                     sb.append(t);
+                                 }
+                             }
+                        }
+                    }
+                } catch (Exception ignore) {}
+            }
+        }
+        return sb.toString().trim();
+    }
+
+    private String findAnyOutlineText(Object obj) {
+        if (obj == null) return null;
+        Object ot = invokeGetter(obj, "getOutlineText");
+        if (ot != null) return extractOutlineText(obj);
+
+        for (java.lang.reflect.Method m : obj.getClass().getMethods()) {
+            if (m.getName().startsWith("get") && m.getName().contains("OutlineText") && m.getParameterCount() == 0) {
+                try {
+                    Object val = m.invoke(obj);
+                    if (val != null) {
+                        String t = extractAllText(val);
+                        if (!t.isBlank()) return t;
+                    }
+                } catch (Exception ignore) {}
+            }
+        }
+        return null;
+    }
+
+    private String findAnyDetailText(Object obj) {
+        if (obj == null) return null;
+        for (java.lang.reflect.Method m : obj.getClass().getMethods()) {
+            if (m.getName().startsWith("get") && (m.getName().contains("DetailTxt") || m.getName().contains("CompleteText")) && m.getParameterCount() == 0) {
+                try {
+                    Object val = m.invoke(obj);
+                    if (val != null) {
+                        String t = extractAllText(val);
+                        if (!t.isBlank()) return t;
+                    }
+                } catch (Exception ignore) {}
+            }
+        }
+        return null;
     }
 
     private Object invokeGetter(Object target, String methodName) {
@@ -242,10 +326,10 @@ public class Da81JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         return (v instanceof String s) ? s : null;
     }
 
-    private java.math.BigDecimal invokeBigDecimalGetter(Object target, String methodName) {
+    private BigDecimal invokeBigDecimalGetter(Object target, String methodName) {
         Object v = invokeGetter(target, methodName);
-        if (v instanceof java.math.BigDecimal bd) return bd;
-        if (v instanceof Number n) return java.math.BigDecimal.valueOf(n.doubleValue());
+        if (v instanceof BigDecimal bd) return bd;
+        if (v instanceof Number n) return BigDecimal.valueOf(n.doubleValue());
         return null;
     }
 }

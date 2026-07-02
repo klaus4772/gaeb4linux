@@ -6,14 +6,12 @@ import com.example.gaebviewer.domain.gaeb.GaebPosition;
 import com.example.gaebviewer.domain.gaeb.GaebProject;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.*;
-import org.springframework.context.annotation.Primary;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.InputStream;
 import java.math.BigDecimal;
 
 @Component
-@Primary
 public class GaebXmlParser implements GaebImporter {
 
     @Override
@@ -39,7 +37,7 @@ public class GaebXmlParser implements GaebImporter {
             boq.setTitle("Leistungsverzeichnis");
             project.addBoQ(boq);
 
-            NodeList itemNodes = doc.getElementsByTagNameNS(namespace, "Item");
+            NodeList itemNodes = doc.getElementsByTagNameNS("*", "Item");
 
             for (int i = 0; i < itemNodes.getLength(); i++) {
                 Element item = (Element) itemNodes.item(i);
@@ -48,22 +46,28 @@ public class GaebXmlParser implements GaebImporter {
 
                 position.setNumber(item.getAttribute("RNoPart"));
 
-                NodeList outlineNodes = item.getElementsByTagNameNS(namespace, "OutlineText");
+                NodeList outlineNodes = item.getElementsByTagNameNS("*", "OutlineText");
                 if (outlineNodes.getLength() > 0) {
                     position.setShortText(outlineNodes.item(0).getTextContent().trim());
                 }
 
-                NodeList qtyNodes = item.getElementsByTagNameNS(namespace, "Qty");
+                // Langtext extrahieren
+                NodeList detailTxtNodes = item.getElementsByTagNameNS("*", "DetailTxt");
+                if (detailTxtNodes.getLength() > 0) {
+                    position.setLongText(recursiveExtractText(detailTxtNodes.item(0)));
+                }
+
+                NodeList qtyNodes = item.getElementsByTagNameNS("*", "Qty");
                 if (qtyNodes.getLength() > 0) {
                     position.setQuantity(parseBigDecimal(qtyNodes.item(0).getTextContent()));
                 }
 
-                NodeList unitNodes = item.getElementsByTagNameNS(namespace, "QU");
+                NodeList unitNodes = item.getElementsByTagNameNS("*", "QU");
                 if (unitNodes.getLength() > 0) {
                     position.setUnit(unitNodes.item(0).getTextContent());
                 }
 
-                NodeList upNodes = item.getElementsByTagNameNS(namespace, "UP");
+                NodeList upNodes = item.getElementsByTagNameNS("*", "UP");
                 if (upNodes.getLength() > 0) {
                     position.setUnitPrice(parseBigDecimal(upNodes.item(0).getTextContent()));
                 }
@@ -78,10 +82,34 @@ public class GaebXmlParser implements GaebImporter {
         }
     }
 
+    private String recursiveExtractText(Node node) {
+        if (node == null) return "";
+        if (node.getNodeType() == Node.TEXT_NODE) {
+            return node.getNodeValue().trim();
+        }
+        if (node.getNodeType() == Node.ELEMENT_NODE) {
+            StringBuilder sb = new StringBuilder();
+            NodeList children = node.getChildNodes();
+            for (int i = 0; i < children.getLength(); i++) {
+                String childText = recursiveExtractText(children.item(i));
+                if (!childText.isEmpty()) {
+                    if (!sb.isEmpty()) sb.append(" ");
+                    sb.append(childText);
+                }
+            }
+            return sb.toString().trim();
+        }
+        return "";
+    }
+
     private BigDecimal parseBigDecimal(String value) {
         if (value == null || value.isBlank()) {
             return BigDecimal.ZERO;
         }
-        return new BigDecimal(value.replace(",", "."));
+        try {
+            return new BigDecimal(value.replace(",", "."));
+        } catch (NumberFormatException e) {
+            return BigDecimal.ZERO;
+        }
     }
 }

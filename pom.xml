@@ -16,6 +16,11 @@
 
     <packaging>pom</packaging>
 
+    <properties>
+        <!-- Ensure source files are compiled using UTF-8 to avoid \uFEFF/BOM parsing errors -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <modules>
         <module>gaebviewer</module>
         <module>gaeb-schema-da80</module>
