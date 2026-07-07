@@ -99,9 +99,11 @@ public class GaebView extends VerticalLayout {
         });
 
         shortTextDisplay.setReadOnly(true);
-        shortTextDisplay.setSizeFull();
+        shortTextDisplay.setWidthFull();
+        shortTextDisplay.setHeight("200px");
         longTextDisplay.setReadOnly(true);
-        longTextDisplay.setSizeFull();
+        longTextDisplay.setWidthFull();
+        longTextDisplay.setHeight("400px");
 
         VerticalLayout detailLayout = new VerticalLayout(shortTextDisplay, longTextDisplay);
         detailLayout.setSizeFull();
