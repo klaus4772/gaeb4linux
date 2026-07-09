@@ -20,11 +20,35 @@ import java.util.ArrayDeque;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.LinkedHashMap;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.util.StreamReaderDelegate;
+import javax.xml.transform.stream.StreamSource;
 
 @Component
 public class Da83JaxbImporter implements GaebImporterFactory.VersionedGaebImporter {
 
     private static JAXBContext CONTEXT;
+    private static final XMLInputFactory XML_INPUT_FACTORY = XMLInputFactory.newFactory();
+    
+    // Namespace filter to map DA83/3.2 to DA83/3.3
+    private static class NamespaceFilter extends StreamReaderDelegate {
+        private static final String OLD_NS = "http://www.gaeb.de/GAEB_DA_XML/DA83/3.2";
+        private static final String NEW_NS = "http://www.gaeb.de/GAEB_DA_XML/DA83/3.3";
+        
+        public NamespaceFilter(XMLStreamReader reader) {
+            super(reader);
+        }
+        
+        @Override
+        public String getNamespaceURI() {
+            String uri = super.getNamespaceURI();
+            if (OLD_NS.equals(uri)) {
+                return NEW_NS;
+            }
+            return uri;
+        }
+    }
 
     private static synchronized JAXBContext getContext() {
         if (CONTEXT == null) {
@@ -47,10 +71,12 @@ public class Da83JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         try {
             Unmarshaller unmarshaller = getContext().createUnmarshaller();
 
-            Object result = unmarshaller.unmarshal(inputStream);
-            Object root = (result instanceof JAXBElement<?> j) ? j.getValue() : result;
+            // Apply namespace filter to map DA83/3.2 to DA83/3.3
+            XMLStreamReader xmlReader = XML_INPUT_FACTORY.createXMLStreamReader(inputStream);
+            XMLStreamReader filteredReader = new NamespaceFilter(xmlReader);
 
-            TgGAEB gaeb = (TgGAEB) root;
+            Object result = unmarshaller.unmarshal(filteredReader);
+            Object root = (result instanceof JAXBElement<?> j) ? j.getValue() : result;
 
             GaebProject project = new GaebProject();
             project.setGaebVersion("DA83");
@@ -59,10 +85,8 @@ public class Da83JaxbImporter implements GaebImporterFactory.VersionedGaebImport
             boq.setTitle("Leistungsverzeichnis");
             project.addBoQ(boq);
 
-            var positions = extractPositions(gaeb);
+            var positions = extractPositions(root);
             positions.forEach(boq::addPosition);
-
-            System.out.println("DA83 extracted positions: " + positions.size());
 
             return project;
 
@@ -171,7 +195,7 @@ public class Da83JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         if (val instanceof Collection<?> it) {
             StringBuilder sb = new StringBuilder();
             for (Object x : it) {
-                String t = x == null ? null : x.toString();
+                String t = extractAllText(x);
                 if (t != null && !t.isBlank()) {
                     if (sb.length() > 0) sb.append("\n");
                     sb.append(t.trim());
@@ -180,7 +204,8 @@ public class Da83JaxbImporter implements GaebImporterFactory.VersionedGaebImport
             return sb.toString();
         }
 
-        return val.toString();
+        // Use extractAllText for complex objects
+        return extractAllText(val);
     }
     
     private String extractLongText(Object cur) {
@@ -236,10 +261,17 @@ public class Da83JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         // Handle specific GAEB types that hold lists of content
         Object content = invokeGetter(obj, "getPOrDivOrSpan");
         if (content == null) content = invokeGetter(obj, "getSpanOrBr");
+        if (content == null) content = invokeGetter(obj, "getSpanOrBrOrImage");
         if (content == null) content = invokeGetter(obj, "getTextOutlTxtOrTextComplement");
         
         if (content instanceof Collection<?> coll) {
             return extractAllText(coll);
+        }
+
+        // Check for getValue() method (used by Tgspan and similar classes)
+        Object value = invokeGetter(obj, "getValue");
+        if (value instanceof String s && !s.trim().isEmpty()) {
+            return s.trim();
         }
 
         for (java.lang.reflect.Method m : obj.getClass().getMethods()) {

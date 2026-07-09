@@ -39,15 +39,15 @@ public class GaebView extends VerticalLayout {
         upload.setWidthFull();
 
         upload.setAcceptedFileTypes(
-                ".xml",
-                ".x80",
-                ".x81",
-                ".x82",
-                ".x83",
-                ".x84",
-                ".x85",
-                ".x86",
-                ".x87"
+                ".xml", ".XML",
+                ".x80", ".X80",
+                ".x81", ".X81",
+                ".x82", ".X82",
+                ".x83", ".X83",
+                ".x84", ".X84",
+                ".x85", ".X85",
+                ".x86", ".X86",
+                ".x87", ".X87"
         );
 
         upload.setMaxFiles(1);
@@ -77,21 +77,8 @@ public class GaebView extends VerticalLayout {
         positionGrid.addSelectionListener(event -> {
             GaebPosition selected = event.getFirstSelectedItem().orElse(null);
             if (selected != null) {
-                String shortT = selected.getShortText() == null ? "" : selected.getShortText();
-                String longT = selected.getLongText() == null ? "" : selected.getLongText();
-                
-                shortTextDisplay.setValue(shortT);
-                longTextDisplay.setValue(longT);
-                
-                String debugMsg = "Ausgewählt: " + selected.getNumber() 
-                    + " | Short len: " + shortT.length()
-                    + " | Long len: " + longT.length();
-                Notification.show(debugMsg);
-                
-                // Debug logging to console
-                System.out.println("[DEBUG_LOG] Selected Position: " + selected.getNumber());
-                System.out.println("[DEBUG_LOG] Short Text: [" + shortT + "]");
-                System.out.println("[DEBUG_LOG] Long Text: [" + longT + "]");
+                shortTextDisplay.setValue(selected.getShortText() == null ? "" : selected.getShortText());
+                longTextDisplay.setValue(selected.getLongText() == null ? "" : selected.getLongText());
             } else {
                 shortTextDisplay.clear();
                 longTextDisplay.clear();

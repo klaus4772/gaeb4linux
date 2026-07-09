@@ -171,7 +171,7 @@ public class Da84JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         if (val instanceof Collection<?> it) {
             StringBuilder sb = new StringBuilder();
             for (Object x : it) {
-                String t = x == null ? null : x.toString();
+                String t = extractAllText(x);
                 if (t != null && !t.isBlank()) {
                     if (sb.length() > 0) sb.append("\n");
                     sb.append(t.trim());
@@ -180,7 +180,8 @@ public class Da84JaxbImporter implements GaebImporterFactory.VersionedGaebImport
             return sb.toString();
         }
 
-        return val.toString();
+        // Use extractAllText for complex objects
+        return extractAllText(val);
     }
     
     private String extractLongText(Object cur) {
@@ -236,10 +237,17 @@ public class Da84JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         // Handle specific GAEB types that hold lists of content
         Object content = invokeGetter(obj, "getPOrDivOrSpan");
         if (content == null) content = invokeGetter(obj, "getSpanOrBr");
+        if (content == null) content = invokeGetter(obj, "getSpanOrBrOrImage");
         if (content == null) content = invokeGetter(obj, "getTextOutlTxtOrTextComplement");
         
         if (content instanceof Collection<?> coll) {
             return extractAllText(coll);
+        }
+
+        // Check for getValue() method (used by Tgspan and similar classes)
+        Object value = invokeGetter(obj, "getValue");
+        if (value instanceof String s && !s.trim().isEmpty()) {
+            return s.trim();
         }
 
         for (java.lang.reflect.Method m : obj.getClass().getMethods()) {
