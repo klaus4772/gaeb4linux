@@ -7,7 +7,7 @@ Eine benutzerfreundliche Web-Anwendung zur Anzeige und Verarbeitung von GAEB-Dat
 ### Windows
 
 1. **Download:**
-   - Lade die neueste Version von [GitHub Releases](https://github.com/user/gaeb4linux/releases) herunter
+   - Lade die neueste Version von [GitHub Releases](https://github.com/klaus4772/gaeb4linux/releases) herunter
    - Datei: `gaebviewer-*.zip`
 
 2. **Entpacken:**
@@ -22,7 +22,7 @@ Eine benutzerfreundliche Web-Anwendung zur Anzeige und Verarbeitung von GAEB-Dat
 ### Linux / Mac
 
 1. **Download:**
-   - Lade die neueste Version von [GitHub Releases](https://github.com/user/gaeb4linux/releases) herunter
+   - Lade die neueste Version von [GitHub Releases](https://github.com/klaus4772/gaeb4linux/releases) herunter
    - Datei: `gaebviewer-*.zip`
 
 2. **Entpacken:**
@@ -175,7 +175,7 @@ Weitere Infos: Siehe `INSTALL_LINUX.md`
 ## 🐛 Bug-Reports & Feature Requests
 
 Erstelle ein Issue auf GitHub:
-- https://github.com/user/gaeb4linux/issues
+- https://github.com/klaus4772/gaeb4linux/issues
 
 ## 📄 Lizenz
 

@@ -6,7 +6,7 @@ The project aims to provide a free, open-source alternative to the proprietary s
 
 ## 📥 Quick Start - Download & Run (No Java Installation Required)
 
-**Latest Release:** https://github.com/user/gaeb4linux/releases
+**Latest Release:** https://github.com/klaus4772/gaeb4linux/releases
 
 1. Download `gaebviewer-*.zip` from GitHub Releases
 2. Extract the ZIP file
@@ -115,8 +115,8 @@ PostgreSQL is used for project metadata and user management, while GAEB XML file
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourname/gaeb-viewer.git
-cd gaeb-viewer
+git clone https://github.com/klaus4772/gaeb4linux.git
+cd gaeb4linux
 
 # Build the project
 mvn clean package -DskipTests
@@ -128,9 +128,10 @@ cd gaebviewer
 
 For more detailed build instructions, see: [gaebviewer/BUILD_INSTRUCTIONS.md](gaebviewer/BUILD_INSTRUCTIONS.md)
 
-🤝 Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Feel free to fork the repository, open issues, or submit pull requests. The goal is to develop a collaborative platform for open GAEB tools.
+Contributions are welcome! Feel free to fork the repository, open issues, or submit pull requests:
+- https://github.com/klaus4772/gaeb4linux
 🪪 License
 
 This project is licensed under the Mozilla Public License 2.0 (MPL 2.0).
