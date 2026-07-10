@@ -16,7 +16,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.IdentityHashMap;
-import java.util.ArrayDeque;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.LinkedHashMap;
@@ -73,81 +72,8 @@ public class Da86JaxbImporter implements GaebImporterFactory.VersionedGaebImport
 
     private List<GaebPosition> extractPositions(Object root) {
         IdentityHashMap<Object, Boolean> visited = new IdentityHashMap<>();
-        ArrayDeque<Object> queue = new ArrayDeque<>();
-        queue.add(root);
-
         List<GaebPosition> out = new ArrayList<>();
-
-        while (!queue.isEmpty()) {
-            Object cur = queue.poll();
-            if (cur == null) continue;
-            if (visited.put(cur, Boolean.TRUE) != null) continue;
-
-            if (cur instanceof JAXBElement<?> je) {
-                Object val = je.getValue();
-                if (val != null) queue.add(val);
-                continue;
-            }
-
-            String rNoPart = invokeStringGetter(cur, "getRNoPart");
-            if (rNoPart != null && !rNoPart.isBlank()) {
-                GaebPosition p = new GaebPosition();
-                p.setNumber(rNoPart.trim());
-
-                String shortText = extractOutlineText(cur);
-                if (shortText == null || shortText.isBlank()) {
-                    shortText = findAnyOutlineText(cur);
-                }
-                if (shortText != null && !shortText.isBlank()) {
-                    p.setShortText(shortText.trim());
-                }
-
-                String longText = extractLongText(cur);
-                if (longText == null || longText.isBlank()) {
-                    longText = findAnyDetailText(cur);
-                }
-                if (longText != null && !longText.isBlank()) {
-                    p.setLongText(longText.trim());
-                } else if (p.getShortText() != null) {
-                    p.setLongText(p.getShortText());
-                }
-
-                BigDecimal qty = invokeBigDecimalGetter(cur, "getQty");
-                if (qty != null) p.setQuantity(qty);
-
-                String unit = invokeStringGetter(cur, "getQU");
-                if (unit != null) p.setUnit(unit);
-
-                BigDecimal up = invokeBigDecimalGetter(cur, "getUP");
-                if (up != null) p.setUnitPrice(up);
-
-                out.add(p);
-            }
-
-            if (cur instanceof Collection<?> it) {
-                for (Object x : it) if (x != null) queue.add(x);
-                continue;
-            }
-
-            if (cur instanceof String || cur instanceof Number || cur instanceof Boolean || cur.getClass().isEnum()) {
-                continue;
-            }
-
-            for (java.lang.reflect.Method m : cur.getClass().getMethods()) {
-                if (m.getParameterCount() != 0) continue;
-                if (!m.getName().startsWith("get")) continue;
-                if (m.getName().equals("getClass")) continue;
-
-                Class<?> rt = m.getReturnType();
-                if (rt.isPrimitive()) continue;
-
-                try {
-                    Object val = m.invoke(cur);
-                    if (val != null) queue.add(val);
-                } catch (Exception ignore) {
-                }
-            }
-        }
+        walkPositions(root, new ArrayList<>(), out, visited);
 
         return out.stream()
                 .collect(Collectors.toMap(
@@ -161,31 +87,138 @@ public class Da86JaxbImporter implements GaebImporterFactory.VersionedGaebImport
                 .toList();
     }
 
+    /**
+     * Recursively walks the GAEB object tree, tracking the chain of ancestor RNoPart values
+     * (the nested BoQCtgy hierarchy levels defined by BoQInfo/BoQBkdn) so each position's
+     * Ordnungszahl reflects its full hierarchical path (e.g. "1.2.12"), not just its own
+     * RNoPart, joined by dots as GAEB specifies.
+     */
+    private void walkPositions(Object cur, List<String> ancestorPath, List<GaebPosition> out, IdentityHashMap<Object, Boolean> visited) {
+        if (cur == null) return;
+        if (visited.put(cur, Boolean.TRUE) != null) return;
+
+        if (cur instanceof JAXBElement<?> je) {
+            walkPositions(je.getValue(), ancestorPath, out, visited);
+            return;
+        }
+
+        List<String> childPath = ancestorPath;
+
+        String rNoPart = invokeStringGetter(cur, "getRNoPart");
+        if (rNoPart != null && !rNoPart.isBlank()) {
+            List<String> fullPath = new ArrayList<>(ancestorPath);
+            fullPath.add(rNoPart.trim());
+            childPath = fullPath;
+
+            GaebPosition p = new GaebPosition();
+            p.setNumber(String.join(".", fullPath));
+
+            String shortText = extractOutlineText(cur);
+            if (shortText == null || shortText.isBlank()) {
+                shortText = findAnyOutlineText(cur);
+            }
+            if (shortText == null || shortText.isBlank()) {
+                // Category/title nodes (e.g. TgBoQCtgy) carry their label in LblTx rather
+                // than Description/OutlineText.
+                Object lblTx = invokeGetter(cur, "getLblTx");
+                if (lblTx != null) {
+                    String t = extractAllText(lblTx);
+                    if (t != null && !t.isBlank()) shortText = t;
+                }
+            }
+            if (shortText != null && !shortText.isBlank()) {
+                p.setShortText(shortText.trim());
+            }
+
+            String longText = extractLongText(cur);
+            if (longText == null || longText.isBlank()) {
+                longText = findAnyDetailText(cur);
+            }
+            if (longText != null && !longText.isBlank()) {
+                p.setLongText(longText.trim());
+            } else if (p.getShortText() != null) {
+                p.setLongText(p.getShortText());
+            }
+
+            BigDecimal qty = invokeBigDecimalGetter(cur, "getQty");
+            if (qty != null) p.setQuantity(qty);
+
+            String unit = invokeStringGetter(cur, "getQU");
+            if (unit != null) p.setUnit(unit);
+
+            BigDecimal up = invokeBigDecimalGetter(cur, "getUP");
+            if (up != null) p.setUnitPrice(up);
+
+            out.add(p);
+        }
+
+        if (cur instanceof Collection<?> it) {
+            for (Object x : it) if (x != null) walkPositions(x, childPath, out, visited);
+            return;
+        }
+
+        if (cur instanceof String || cur instanceof Number || cur instanceof Boolean || cur.getClass().isEnum()) {
+            return;
+        }
+
+        for (java.lang.reflect.Method m : cur.getClass().getMethods()) {
+            if (m.getParameterCount() != 0) continue;
+            if (!m.getName().startsWith("get")) continue;
+            if (m.getName().equals("getClass")) continue;
+
+            Class<?> rt = m.getReturnType();
+            if (rt.isPrimitive()) continue;
+
+            try {
+                Object val = m.invoke(cur);
+                if (val != null) walkPositions(val, childPath, out, visited);
+            } catch (Exception ignore) {
+            }
+        }
+    }
+
     private String extractOutlineText(Object cur) {
         String direct = invokeStringGetter(cur, "getOutlineText");
         if (direct != null) return direct.trim();
 
         Object val = invokeGetter(cur, "getOutlineText");
-        if (val == null) return null;
-
-        if (val instanceof Collection<?> it) {
-            StringBuilder sb = new StringBuilder();
-            for (Object x : it) {
-                String t = extractAllText(x);
-                if (t != null && !t.isBlank()) {
-                    if (sb.length() > 0) sb.append("\n");
-                    sb.append(t.trim());
+        if (val != null) {
+            if (val instanceof Collection<?> it) {
+                StringBuilder sb = new StringBuilder();
+                for (Object x : it) {
+                    String t = extractAllText(x);
+                    if (t != null && !t.isBlank()) {
+                        if (sb.length() > 0) sb.append("\n");
+                        sb.append(t.trim());
+                    }
                 }
+                return sb.toString();
             }
-            return sb.toString();
+
+            // Use extractAllText for complex objects
+            return extractAllText(val);
         }
 
-        // Use extractAllText for complex objects
-        return extractAllText(val);
+        // For item types (e.g. TgItem) OutlineText is not exposed directly on cur; it lives
+        // nested under Description -> CompleteText -> OutlineText, or (if no CompleteText is
+        // present) directly under Description as an alternative.
+        Object description = resolveDescription(cur);
+        if (description != null) {
+            Object completeText = invokeGetter(description, "getCompleteText");
+            Object nestedOutline = completeText != null ? invokeGetter(completeText, "getOutlineText") : null;
+            if (nestedOutline == null) {
+                nestedOutline = invokeGetter(description, "getOutlineText");
+            }
+            if (nestedOutline != null) {
+                return extractAllText(nestedOutline);
+            }
+        }
+
+        return null;
     }
-    
+
     private String extractLongText(Object cur) {
-        Object description = invokeGetter(cur, "getDescription");
+        Object description = resolveDescription(cur);
         if (description == null) return null;
 
         Object completeText = invokeGetter(description, "getCompleteText");
@@ -338,6 +371,27 @@ public class Da86JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         Object v = invokeGetter(target, methodName);
         if (v instanceof BigDecimal bd) return bd;
         if (v instanceof Number n) return BigDecimal.valueOf(n.doubleValue());
+        return null;
+    }
+
+    /**
+     * Resolves the Description object for a position element. Some item types (e.g. TgItem)
+     * have no direct getDescription() accessor because JAXB collapsed their content model into
+     * a catch-all getContent() list (caused by an XSD field-name collision); in that case the
+     * Description element must be located inside that list instead.
+     */
+    private Object resolveDescription(Object cur) {
+        Object description = invokeGetter(cur, "getDescription");
+        if (description != null) return description;
+
+        Object content = invokeGetter(cur, "getContent");
+        if (content instanceof Collection<?> items) {
+            for (Object item : items) {
+                if (item instanceof JAXBElement<?> je && "Description".equals(je.getName().getLocalPart())) {
+                    return je.getValue();
+                }
+            }
+        }
         return null;
     }
 }

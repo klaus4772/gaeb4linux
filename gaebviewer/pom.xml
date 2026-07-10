@@ -17,6 +17,9 @@
 
 
     <properties>
+        <!-- JDK 26 runtime is used, but bytecode is targeted at 21 so Spring Boot 3.2.5's
+             bundled ASM can scan the classes. Java 26 bytecode (class file major version 70)
+             is only supported from Spring Boot 4.1 / Spring Framework 7 onward. -->
         <java.version>21</java.version>
         <vaadin.version>24.1.3</vaadin.version>
     </properties>
