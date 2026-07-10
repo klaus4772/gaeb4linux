@@ -10,6 +10,8 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -22,6 +24,8 @@ import java.util.LinkedHashMap;
 
 @Component
 public class Da82JaxbImporter implements GaebImporterFactory.VersionedGaebImporter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(Da82JaxbImporter.class);
 
     private static JAXBContext CONTEXT;
 
@@ -172,7 +176,8 @@ public class Da82JaxbImporter implements GaebImporterFactory.VersionedGaebImport
             try {
                 Object val = m.invoke(cur);
                 if (val != null) walkPositions(val, childPath, out, visited);
-            } catch (Exception ignore) {
+            } catch (Exception ex) {
+                LOGGER.debug("Ignored reflection exception during walkPositions", ex);
             }
         }
     }
@@ -188,7 +193,7 @@ public class Da82JaxbImporter implements GaebImporterFactory.VersionedGaebImport
                 for (Object x : it) {
                     String t = extractAllText(x);
                     if (t != null && !t.isBlank()) {
-                        if (sb.length() > 0) sb.append("\n");
+                        if (!sb.isEmpty()) sb.append("\n");
                         sb.append(t.trim());
                     }
                 }
@@ -235,8 +240,8 @@ public class Da82JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         if (text instanceof Collection<?> it) {
             StringBuilder sb = new StringBuilder();
             for (Object x : it) {
-                if (x != null) {
-                    if (sb.length() > 0) sb.append("\n");
+                    if (x != null) {
+                    if (!sb.isEmpty()) sb.append("\n");
                     sb.append(extractAllText(x));
                 }
             }
@@ -260,7 +265,7 @@ public class Da82JaxbImporter implements GaebImporterFactory.VersionedGaebImport
             for (Object item : coll) {
                 String t = extractAllText(item);
                 if (!t.isEmpty()) {
-                    if (sb.length() > 0) sb.append(" ");
+                    if (!sb.isEmpty()) sb.append(" ");
                     sb.append(t);
                 }
             }
@@ -291,28 +296,28 @@ public class Da82JaxbImporter implements GaebImporterFactory.VersionedGaebImport
                         if (val instanceof Collection<?> it) {
                             for (Object child : it) {
                                 String t = extractAllText(child);
-                                if (!t.isEmpty()) {
-                                    if (sb.length() > 0) sb.append(" ");
-                                    sb.append(t);
-                                }
+                                  if (!t.isEmpty()) {
+                                  if (!sb.isEmpty()) sb.append(" ");
+                                  sb.append(t);
+                              }
                             }
                         } else if (val instanceof String s) {
                              String t = s.trim();
-                             if (!t.isEmpty()) {
-                                 if (sb.length() > 0) sb.append(" ");
-                                 sb.append(t);
-                             }
+                                      if (!t.isEmpty()) {
+                                      if (!sb.isEmpty()) sb.append(" ");
+                                      sb.append(t);
+                                  }
                         } else if (!val.getClass().isPrimitive() && !val.getClass().getName().startsWith("java.")) {
                              if (val.getClass().getName().contains("gaebviewer.schema")) {
                                  String t = extractAllText(val);
-                                 if (!t.isEmpty()) {
-                                     if (sb.length() > 0) sb.append(" ");
+                                  if (!t.isEmpty()) {
+                                     if (!sb.isEmpty()) sb.append(" ");
                                      sb.append(t);
                                  }
                              }
                         }
                     }
-                } catch (Exception ignore) {}
+                } catch (Exception ex) { LOGGER.debug("Ignored reflection exception", ex); }
             }
         }
         return sb.toString().trim();
@@ -331,7 +336,7 @@ public class Da82JaxbImporter implements GaebImporterFactory.VersionedGaebImport
                         String t = extractAllText(val);
                         if (!t.isBlank()) return t;
                     }
-                } catch (Exception ignore) {}
+                } catch (Exception ex) { LOGGER.debug("Ignored reflection exception", ex); }
             }
         }
         return null;
@@ -347,7 +352,7 @@ public class Da82JaxbImporter implements GaebImporterFactory.VersionedGaebImport
                         String t = extractAllText(val);
                         if (!t.isBlank()) return t;
                     }
-                } catch (Exception ignore) {}
+                } catch (Exception ex) { LOGGER.debug("Ignored reflection exception", ex); }
             }
         }
         return null;

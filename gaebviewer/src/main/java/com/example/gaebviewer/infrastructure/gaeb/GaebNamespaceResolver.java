@@ -8,9 +8,13 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.InputStream;
 
 import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component
 public class GaebNamespaceResolver {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(GaebNamespaceResolver.class);
 
     private final XMLInputFactory factory = XMLInputFactory.newFactory();
 
@@ -26,7 +30,7 @@ public class GaebNamespaceResolver {
                 }
                 return null;
             } finally {
-                try { r.close(); } catch (Exception ignore) {}
+                try { r.close(); } catch (Exception ex) { LOGGER.debug("Failed to close XMLStreamReader", ex); }
             }
         } catch (Exception e) {
             throw new RuntimeException("Failed to detect GAEB root namespace", e);

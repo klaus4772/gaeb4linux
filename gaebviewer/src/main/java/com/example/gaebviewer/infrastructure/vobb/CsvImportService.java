@@ -30,15 +30,16 @@ public class CsvImportService {
                 }
 
                 String[] parts = line.split(";");
+                // Sicherstellen, dass die erwartete Anzahl an Spalten vorhanden ist
+                int len = parts.length;
+                String lv = len > 0 ? clean(parts[0]) : "";
+                boolean nachtrag = len > 1 && !clean(parts[1]).isEmpty();
+                String oz = len > 2 ? clean(parts[2]) : "";
 
-                String lv = clean(parts[0]);
-                boolean nachtrag = !clean(parts[1]).isEmpty();
-                String oz = clean(parts[2]);
-
-                double ep = parseDouble(parts[5]);
-                double aufMenge = parseDouble(parts[6]);
-                double rechMenge = parseDouble(parts[8]);
-                double rechBetrag = parseDouble(parts[9]);
+                double ep = len > 5 ? parseDoubleSafe(parts[5]) : 0.0;
+                double aufMenge = len > 6 ? parseDoubleSafe(parts[6]) : 0.0;
+                double rechMenge = len > 8 ? parseDoubleSafe(parts[8]) : 0.0;
+                double rechBetrag = len > 9 ? parseDoubleSafe(parts[9]) : 0.0;
 
                 rows.add(new CsvRow(
                         lv,
@@ -74,5 +75,14 @@ public class CsvImportService {
         cleaned = cleaned.replace(",", ".");
 
         return Double.parseDouble(cleaned);
+    }
+
+    // Wrapper, der NumberFormatException abfängt und defensiv 0.0 zurückgibt
+    private double parseDoubleSafe(String value) {
+        try {
+            return parseDouble(value);
+        } catch (NumberFormatException e) {
+            return 0.0;
+        }
     }
 }
