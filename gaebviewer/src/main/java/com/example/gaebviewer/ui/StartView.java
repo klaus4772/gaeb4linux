@@ -18,6 +18,9 @@ public class StartView extends VerticalLayout {
         Button ausgleichButton = new Button("Ausgleichsberechnung",
                 e -> getUI().ifPresent(ui -> ui.navigate("ausgleich")));
 
-        add(gaebButton, ausgleichButton);
+        Button spanRemoverButton = new Button("Span Remover",
+                e -> getUI().ifPresent(ui -> ui.navigate("span-remover")));
+
+        add(gaebButton, ausgleichButton, spanRemoverButton);
     }
 }

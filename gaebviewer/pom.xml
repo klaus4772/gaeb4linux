@@ -151,6 +151,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.example.gaebviewer.Application</mainClass>
+                    <finalName>gaebviewer</finalName>
+                </configuration>
             </plugin>
 
             <!-- Vaadin -->
@@ -164,6 +168,28 @@
                             <goal>prepare-frontend</goal>
                             <goal>build-frontend</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven Assembly Plugin für Deployment-Paket -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/assembly/distribution.xml</descriptor>
+                            </descriptors>
+                            <finalName>gaebviewer-${project.version}</finalName>
+                            <appendAssemblyId>true</appendAssemblyId>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

@@ -3,6 +3,22 @@ GAEB4Linux
 GAEB4Linux is an open-source GAEB viewer and editor designed for Linux systems. GAEB XML is a standardized data exchange format used extensively in the German construction industry for specifications, pricing, quantity takeoffs, invoicing, and calculations.
 
 The project aims to provide a free, open-source alternative to the proprietary software currently dominating this field, with a modern and modular architecture based on Java and Vaadin.
+
+## 📥 Quick Start - Download & Run (No Java Installation Required)
+
+**Latest Release:** https://github.com/user/gaeb4linux/releases
+
+1. Download `gaebviewer-*.zip` from GitHub Releases
+2. Extract the ZIP file
+3. **Windows:** Double-click `start-gaebviewer.bat`  
+   **Linux/Mac:** Run `./start-gaebviewer.sh`
+4. Open http://localhost:8080 in your browser
+
+👉 **Full User Guide:** See [gaebviewer/README.md](gaebviewer/README.md)
+
+---
+
+## 🎯 Project Goals
 🎯 Project Goals
 
     Enable Linux users to work with GAEB XML files.
@@ -83,7 +99,8 @@ gaeb-viewer/
 ├── pom.xml             # Maven parent configuration
 └── README.md           # You are here
 
-🚀 Getting Started
+🚀 Getting Started (For Developers - Building from Source)
+
 Requirements
 
     Java 21
@@ -96,21 +113,20 @@ Setup Instructions
 Before running the application, ensure that both your PostgreSQL and XML database servers are installed and running.
 PostgreSQL is used for project metadata and user management, while GAEB XML files are stored in the XML database.
 
+```bash
 # Clone the repository
 git clone https://github.com/yourname/gaeb-viewer.git
 cd gaeb-viewer
 
-# Start your PostgreSQL server
-# (Make sure to create the database and schema using available SQL scripts)
-
-# Start your XML database (BaseX or eXist-db)
-
-# Deploy XQuery endpoints to your XML DB
-cp gaeb-basex-server/webapp/restxq/ <your database's REST folder>
+# Build the project
+mvn clean package -DskipTests
 
 # Run the web application
-cd gaeb-webui
-mvn spring-boot:run
+cd gaebviewer
+./start-gaebviewer.sh  # or start-gaebviewer.bat on Windows
+```
+
+For more detailed build instructions, see: [gaebviewer/BUILD_INSTRUCTIONS.md](gaebviewer/BUILD_INSTRUCTIONS.md)
 
 🤝 Contributing
 
