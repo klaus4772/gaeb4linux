@@ -145,12 +145,15 @@ public class Da85JaxbImporter implements GaebImporterFactory.VersionedGaebImport
             }
 
             BigDecimal qty = invokeBigDecimalGetter(cur, "getQty");
+            if (qty == null) qty = resolveBigDecimalContent(cur, "Qty");
             if (qty != null) p.setQuantity(qty);
 
             String unit = invokeStringGetter(cur, "getQU");
+            if (unit == null) unit = resolveStringContent(cur, "QU");
             if (unit != null) p.setUnit(unit);
 
             BigDecimal up = invokeBigDecimalGetter(cur, "getUP");
+            if (up == null) up = resolveBigDecimalContent(cur, "UP");
             if (up != null) p.setUnitPrice(up);
 
             out.add(p);
@@ -397,6 +400,36 @@ public class Da85JaxbImporter implements GaebImporterFactory.VersionedGaebImport
                 }
             }
         }
+        return null;
+    }
+
+    /**
+     * Resolves a value element (e.g. Qty, QU, UP) for a position element. Some item types
+     * (e.g. TgItem) have no direct accessor for these because JAXB collapsed their content
+     * model into a catch-all getContent() list (caused by an XSD field-name collision); in
+     * that case the element must be located inside that list instead.
+     */
+    private Object resolveContentValue(Object cur, String localName) {
+        Object content = invokeGetter(cur, "getContent");
+        if (content instanceof Collection<?> items) {
+            for (Object item : items) {
+                if (item instanceof JAXBElement<?> je && localName.equals(je.getName().getLocalPart())) {
+                    return je.getValue();
+                }
+            }
+        }
+        return null;
+    }
+
+    private String resolveStringContent(Object cur, String localName) {
+        Object v = resolveContentValue(cur, localName);
+        return (v instanceof String s) ? s : null;
+    }
+
+    private BigDecimal resolveBigDecimalContent(Object cur, String localName) {
+        Object v = resolveContentValue(cur, localName);
+        if (v instanceof BigDecimal bd) return bd;
+        if (v instanceof Number n) return BigDecimal.valueOf(n.doubleValue());
         return null;
     }
 }
