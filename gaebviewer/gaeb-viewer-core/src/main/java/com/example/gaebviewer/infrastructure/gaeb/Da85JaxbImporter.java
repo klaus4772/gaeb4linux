@@ -2,10 +2,9 @@ package com.example.gaebviewer.infrastructure.gaeb;
 
 import com.example.gaebviewer.application.gaeb.GaebImporterFactory;
 import com.example.gaebviewer.application.gaeb.GaebSchemaVersion;
-import com.example.gaebviewer.domain.gaeb.GaebBoQ;
-import com.example.gaebviewer.domain.gaeb.GaebPosition;
-import com.example.gaebviewer.domain.gaeb.GaebProject;
-import com.example.gaebviewer.schema.da85.TgGAEB;
+import com.example.gaebviewer.domain.GaebBoQ;
+import com.example.gaebviewer.domain.GaebPosition;
+import com.example.gaebviewer.domain.GaebProject;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.Unmarshaller;
@@ -13,6 +12,9 @@ import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.util.StreamReaderDelegate;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -26,6 +28,21 @@ import java.util.LinkedHashMap;
 public class Da85JaxbImporter implements GaebImporterFactory.VersionedGaebImporter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Da85JaxbImporter.class);
+    private static final XMLInputFactory XML_INPUT_FACTORY = XMLInputFactory.newFactory();
+
+    /** Maps real-world DA85/3.2 files to the 3.3 schema used for JAXB code generation. */
+    private static class NamespaceFilter extends StreamReaderDelegate {
+        private static final String OLD_NS = "http://www.gaeb.de/GAEB_DA_XML/DA85/3.2";
+        private static final String NEW_NS = "http://www.gaeb.de/GAEB_DA_XML/DA85/3.3";
+
+        public NamespaceFilter(XMLStreamReader reader) { super(reader); }
+
+        @Override
+        public String getNamespaceURI() {
+            String uri = super.getNamespaceURI();
+            return OLD_NS.equals(uri) ? NEW_NS : uri;
+        }
+    }
 
     private static JAXBContext CONTEXT;
 
@@ -50,10 +67,11 @@ public class Da85JaxbImporter implements GaebImporterFactory.VersionedGaebImport
         try {
             Unmarshaller unmarshaller = getContext().createUnmarshaller();
 
-            Object result = unmarshaller.unmarshal(inputStream);
-            Object root = (result instanceof JAXBElement<?> j) ? j.getValue() : result;
+            XMLStreamReader xmlReader = XML_INPUT_FACTORY.createXMLStreamReader(inputStream);
+            XMLStreamReader filteredReader = new NamespaceFilter(xmlReader);
 
-            TgGAEB gaeb = (TgGAEB) root;
+            Object result = unmarshaller.unmarshal(filteredReader);
+            Object root = (result instanceof JAXBElement<?> j) ? j.getValue() : result;
 
             GaebProject project = new GaebProject();
             project.setGaebVersion("DA85");
@@ -62,7 +80,7 @@ public class Da85JaxbImporter implements GaebImporterFactory.VersionedGaebImport
             boq.setTitle("Leistungsverzeichnis");
             project.addBoQ(boq);
 
-            var positions = extractPositions(gaeb);
+            var positions = extractPositions(root);
             positions.forEach(boq::addPosition);
 
             System.out.println("DA85 extracted positions: " + positions.size());

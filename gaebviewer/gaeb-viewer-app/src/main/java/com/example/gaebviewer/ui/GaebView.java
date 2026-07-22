@@ -1,8 +1,8 @@
 package com.example.gaebviewer.ui.gaeb;
 
 import com.example.gaebviewer.application.gaeb.GaebImportService;
-import com.example.gaebviewer.domain.gaeb.GaebPosition;
-import com.example.gaebviewer.domain.gaeb.GaebProject;
+import com.example.gaebviewer.domain.GaebPosition;
+import com.example.gaebviewer.domain.GaebProject;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.notification.Notification;
@@ -15,6 +15,7 @@ import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.router.Route;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -30,8 +31,15 @@ public class GaebView extends VerticalLayout {
     private final TextField unitDisplay = new TextField("Einheit");
     private final TextField unitPriceDisplay = new TextField("Einheitspreis");
     private final TextField totalPriceDisplay = new TextField("Gesamtpreis");
+    private final TextField lvSumDisplay = new TextField("LV-Summe");
     private final TextArea shortTextDisplay = new TextArea("Short Text");
     private final TextArea longTextDisplay = new TextArea("Long Text");
+
+    /** Die aktuell ausgewählte Position — Träger des temporären Speichers. */
+    private GaebPosition currentPosition;
+
+    /** Alle Positionen der geladenen Datei — Basis für die LV-Summenberechnung. */
+    private List<GaebPosition> allPositions = new ArrayList<>();
 
     public GaebView(GaebImportService gaebImportService) {
 
@@ -70,6 +78,8 @@ public class GaebView extends VerticalLayout {
                         : project.getBoqs().get(0).getPositions();
 
                 showAsHierarchy(positionen);
+                allPositions = new ArrayList<>(positionen);
+                updateLvSum();
 
                 Notification.show("GAEB erfolgreich geladen. (" + positionen.size() + " Positionen)");
                 upload.getElement().executeJs("this.files = []");
@@ -84,15 +94,15 @@ public class GaebView extends VerticalLayout {
         positionGrid.setSizeFull();
 
         positionGrid.addSelectionListener(event -> {
-            GaebPosition selected = event.getFirstSelectedItem().orElse(null);
-            if (selected != null) {
-                numberDisplay.setValue(selected.getNumber() == null ? "" : selected.getNumber());
-                quantityDisplay.setValue(selected.getQuantity() == null ? "" : selected.getQuantity().toString());
-                unitDisplay.setValue(selected.getUnit() == null ? "" : selected.getUnit());
-                unitPriceDisplay.setValue(selected.getUnitPrice() == null ? "" : selected.getUnitPrice().toString());
-                totalPriceDisplay.setValue(selected.getTotalPrice() == null ? "" : selected.getTotalPrice().toString());
-                shortTextDisplay.setValue(selected.getShortText() == null ? "" : selected.getShortText());
-                longTextDisplay.setValue(selected.getLongText() == null ? "" : selected.getLongText());
+            currentPosition = event.getFirstSelectedItem().orElse(null);
+            if (currentPosition != null) {
+                numberDisplay.setValue(currentPosition.getNumber() == null ? "" : currentPosition.getNumber());
+                quantityDisplay.setValue(currentPosition.getQuantity() == null ? "" : currentPosition.getQuantity().toPlainString());
+                unitDisplay.setValue(currentPosition.getUnit() == null ? "" : currentPosition.getUnit());
+                unitPriceDisplay.setValue(currentPosition.getUnitPrice() == null ? "" : currentPosition.getUnitPrice().toPlainString());
+                totalPriceDisplay.setValue(currentPosition.getTotalPrice().toPlainString());
+                shortTextDisplay.setValue(currentPosition.getShortText() == null ? "" : currentPosition.getShortText());
+                longTextDisplay.setValue(currentPosition.getLongText() == null ? "" : currentPosition.getLongText());
             } else {
                 numberDisplay.clear();
                 quantityDisplay.clear();
@@ -104,11 +114,26 @@ public class GaebView extends VerticalLayout {
             }
         });
 
+        unitPriceDisplay.addValueChangeListener(event -> {
+            if (currentPosition == null || !event.isFromClient()) return;
+            String raw = event.getValue().trim().replace(",", ".");
+            try {
+                BigDecimal newPrice = new BigDecimal(raw);
+                currentPosition.setUnitPrice(newPrice);
+                totalPriceDisplay.setValue(currentPosition.getTotalPrice().toPlainString());
+                updateLvSum();
+            } catch (NumberFormatException ignored) {
+                // Ungültige Eingabe: Feld bleibt unverändert, Position unberührt
+            }
+        });
+
         numberDisplay.setReadOnly(true);
         quantityDisplay.setReadOnly(true);
         unitDisplay.setReadOnly(true);
-        unitPriceDisplay.setReadOnly(true);
         totalPriceDisplay.setReadOnly(true);
+        lvSumDisplay.setReadOnly(true);
+        totalPriceDisplay.setWidthFull();
+        lvSumDisplay.setWidthFull();
 
         HorizontalLayout positionInfoRow = new HorizontalLayout(
                 numberDisplay, quantityDisplay, unitDisplay, unitPriceDisplay);
@@ -125,10 +150,14 @@ public class GaebView extends VerticalLayout {
         longTextDisplay.setWidthFull();
         longTextDisplay.setHeight("400px");
 
-        HorizontalLayout shortTextRow = new HorizontalLayout(shortTextDisplay, totalPriceDisplay);
+        VerticalLayout priceColumn = new VerticalLayout(totalPriceDisplay, lvSumDisplay);
+        priceColumn.setPadding(false);
+        priceColumn.setSpacing(true);
+
+        HorizontalLayout shortTextRow = new HorizontalLayout(shortTextDisplay, priceColumn);
         shortTextRow.setWidthFull();
         shortTextRow.setFlexGrow(4, shortTextDisplay);
-        shortTextRow.setFlexGrow(1, totalPriceDisplay);
+        shortTextRow.setFlexGrow(1, priceColumn);
 
         VerticalLayout detailLayout = new VerticalLayout(positionInfoRow, shortTextRow, longTextDisplay);
         detailLayout.setSizeFull();
@@ -173,5 +202,13 @@ public class GaebView extends VerticalLayout {
 
         positionGrid.setItems(roots,
                 p -> childrenByParentNumber.getOrDefault(p.getNumber(), List.of()));
+    }
+
+    /** Summiert die Gesamtpreise aller Positionen und zeigt das Ergebnis im LV-Summen-Feld. */
+    private void updateLvSum() {
+        BigDecimal sum = allPositions.stream()
+                .map(GaebPosition::getTotalPrice)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        lvSumDisplay.setValue(sum.toPlainString());
     }
 }

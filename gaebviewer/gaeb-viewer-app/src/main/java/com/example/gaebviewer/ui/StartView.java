@@ -15,10 +15,10 @@ public class StartView extends VerticalLayout {
         Button gaebButton = new Button("GAEB Viewer",
                 e -> getUI().ifPresent(ui -> ui.navigate("gaeb")));
 
-        Button ausgleichButton = new Button("Ausgleichsberechnung",
+        Button ausgleichButton = new Button("Ausgleichsberechnung - GAEB-Editor",
                 e -> getUI().ifPresent(ui -> ui.navigate("ausgleich")));
 
-        Button spanRemoverButton = new Button("Span Remover",
+        Button spanRemoverButton = new Button("Span Remover - experimental",
                 e -> getUI().ifPresent(ui -> ui.navigate("span-remover")));
 
         add(gaebButton, ausgleichButton, spanRemoverButton);

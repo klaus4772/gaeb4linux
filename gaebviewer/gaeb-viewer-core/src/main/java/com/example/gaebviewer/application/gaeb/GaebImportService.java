@@ -1,6 +1,6 @@
 package com.example.gaebviewer.application.gaeb;
 
-import com.example.gaebviewer.domain.gaeb.GaebProject;
+import com.example.gaebviewer.domain.GaebProject;
 import com.example.gaebviewer.infrastructure.gaeb.GaebNamespaceResolver;
 import org.springframework.stereotype.Service;
 

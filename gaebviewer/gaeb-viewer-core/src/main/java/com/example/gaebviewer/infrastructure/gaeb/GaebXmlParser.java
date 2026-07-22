@@ -1,9 +1,9 @@
 package com.example.gaebviewer.infrastructure.gaeb;
 
 import com.example.gaebviewer.application.gaeb.GaebImporter;
-import com.example.gaebviewer.domain.gaeb.GaebBoQ;
-import com.example.gaebviewer.domain.gaeb.GaebPosition;
-import com.example.gaebviewer.domain.gaeb.GaebProject;
+import com.example.gaebviewer.domain.GaebBoQ;
+import com.example.gaebviewer.domain.GaebPosition;
+import com.example.gaebviewer.domain.GaebProject;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.*;
 import javax.xml.parsers.DocumentBuilder;

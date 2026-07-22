@@ -2,9 +2,9 @@ package com.example.gaebviewer.infrastructure.gaeb;
 
 import com.example.gaebviewer.application.gaeb.GaebImporterFactory;
 import com.example.gaebviewer.application.gaeb.GaebSchemaVersion;
-import com.example.gaebviewer.domain.gaeb.GaebBoQ;
-import com.example.gaebviewer.domain.gaeb.GaebPosition;
-import com.example.gaebviewer.domain.gaeb.GaebProject;
+import com.example.gaebviewer.domain.GaebBoQ;
+import com.example.gaebviewer.domain.GaebPosition;
+import com.example.gaebviewer.domain.GaebProject;
 // ...existing code... (schema class import removed - not used here)
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
