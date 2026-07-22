@@ -1,0 +1,1903 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- GXML Toolbox V3.3 R20210630;  http://www.gaeb-toolbox.de/ 
+ gtcConverter.dll used version 2021.08.25  -->
+<GAEB xmlns="http://www.gaeb.de/GAEB_DA_XML/DA83/3.2">
+ <GAEBInfo>
+  <Version>3.2</Version>
+  <VersDate>2013-10</VersDate>
+  <Date>2022-07-22</Date>
+  <Time>08:05:29</Time>
+  <ProgSystem>/ GXML Toolbox V3.3 R20210630</ProgSystem>
+  <ProgName>iTWO_64 V10.0.894</ProgName>
+ </GAEBInfo>
+ <PrjInfo>
+  <NamePrj>2100044846</NamePrj>
+  <LblPrj>Odelzhausen Wohngebäude mit TG</LblPrj>
+  <Descrip>
+   <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+    <span>Odelzhausen Neubau Wohnanlage</span>
+    <br/>
+    <span>Neubau eines Geschosswohnungsbaues mit TG.</span>
+   </p>
+  </Descrip>
+  <Cur>EUR</Cur>
+  <CurLbl/>
+  <AlterBidPerm>Yes</AlterBidPerm>
+ </PrjInfo>
+ <Award>
+  <DP>83</DP>
+  <AwardInfo>
+   <Cur>EUR</Cur>
+  </AwardInfo>
+  <OWN>
+   <Address>
+    <Name1>KU-Bau</Name1>
+    <Street>Schulstraße 14</Street>
+    <PCode>85235</PCode>
+    <City>Odelzhausen</City>
+    <Country>DE</Country>
+   </Address>
+  </OWN>
+  <AddText>
+   <OutlineAddText>
+    <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+     <span>Gewerkespezifische Technische Vertragsbedingungen (GTV)</span>
+    </p>
+   </OutlineAddText>
+   <DetailAddText>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:14pt;Color:rgb(0,0,0);">Gewerkespezifische Technische Vertragsbedingungen (GTV)</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:14pt;Color:rgb(0,0,0);">Gewerk: 1.44.00 Gerüste</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:16pt;Color:rgb(0,0,0);">1. Allgemein</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Bei der Angebotsbearbeitung sind neben diesen GEWERKESPEZIFISCHEN TECHNISCHEN VERTRAGSBEDINGUNGEN die ALLGEMEINEN AUSSCHREIBUNGS- UND VERTRAGSBEDINGUNGEN (AAVB) und sofern vorhanden die BESONDEREN VERTRAGSBEDINGUNGEN (BVB) bzw. PROJEKTSPEZIFISCHEN RANDBEDINGUNGEN des Auftraggebers (AG) als Angebotsgrundlage zu beachten.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Alternativvorschläge zur beschriebenen Ausführung, die zu wirtschaftlicheren Lösungen führen, sind grundsätzlich möglich und erwünscht, soweit die geforderten Funktionen nicht beeinträchtigt werden. Die Vorschläge sind unter Angabe der Minderkosten klar zu erläutern.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Zu beachten ist neben den allgemein anerkannten Regeln der Technik (a.a.R.d.T) auch die Einhaltung aller öffentlich-rechtlichen Anforderungen. Es wird ausdrücklich ergänzend auf die Ziffer 3.2 AAVB verwiesen.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:16pt;Color:rgb(0,0,0);">2. Ausführungshinweise</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:14pt;Color:rgb(0,0,0);">2.1 Generell gilt: </span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Lieferung/Montage/Vorhaltung/Demontage</span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">: Bei allen Positionen ist die Lieferung, Transport, Montage und Demontage, einschließlich der erforderlichen Nebenleistungen wie Schlagen und Bohren von Löchern für Befestigungsmittel enthalten. Die Vorhaltung aller zur Erbringung der Leistung erforderlichen Maschinen, Geräte und Materialien ist im Einheitspreis enthalten.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Örtliche Verhältnisse:</span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Der Bieter/Auftragnehmer (AN) hat sich vor Abgabe seines Angebotes über die örtlichen Verhältnisse vor Ort zu informieren. </span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Prüfung und Koordination:</span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Der AN ist verpflichtet, die im Leistungsverzeichnis beschriebenen Positionen auf Vollständigkeit, fachgerechte Ausführung und Eignung für den vorgesehenen Verwendungszweck zu überprüfen. Dies gilt auch im Hinblick auf die zu erwartende Beanspruchung. Sinnvolle oder notwendig erscheinende Änderungen oder Zusätze sind mit einer entsprechenden Begründung in einem Zusatzangebot einzureichen.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Der AN hat seine Arbeiten mit den sonstigen Nachunternehmen in Abstimmung mit dem AG so zu koordinieren, dass ein reibungsloser Ablauf der Arbeiten gewährleistet ist.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Arbeitsreihenfolge: </span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Sollten Teilleistungen in zeitlich versetzten Abständen oder in verschiedenen Gebäuden/Gebäudeteilen/Ebenen zur Ausführung kommen, sind diese Aufwendungen mit dem Einheitspreis abgegolten.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Die Arbeitsfolge der einzelnen Leistungen wird durch den AG festgelegt. Mehrkosten entstehen dem AG dadurch nicht.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Leistungsbereiche: </span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Der AG behält sich vor, in sich geschlossene Leistungsbereiche getrennt zu vergeben. Sollte eine Leistung nicht im Angebotsumfang des AN liegen, wird dennoch um Abgabe des zum Teil ausgefüllten LVs gebeten.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Werbung: </span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Sollte der Bauherr/AG an den Gerüsten des AN Werbeanlagen/Planen anbringen, so verzichtet der AN auf jeglichen Vergütungsanspruch aus den Werbeeinnahmen.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Nachweise:</span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Erforderliche Nachweise und Prüfzeugnisse sowie die Aufbau- und Verwendungsanleitung mit ergänzenden Detailangaben sind unaufgefordert vorzulegen. </span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Grundanforderung an Gerüste:</span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Gerüstfeldlänge 2,50 bzw. 3,00 m für Lastklasse 3 bis 4, Gerüstfeldlänge 2,00 m für Lastklasse 5, Klasse der Durchgangshöhe H1 für alle Lastklassen, vertikaler Zugang (LA) mit Leiter (falls nicht gesondert beschrieben), Beläge und ihre Auflager (D) bemessen mit Fallversuch, 3-teiliger Seitenschutz auf der Außenseite.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Die Grundeinsatzzeit</span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> beginnt nach gebrauchsfähiger Übernahme der Gerüste durch den AG.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;text-decoration:underline;font-size:12pt;Color:rgb(0,0,0);">Folgende Leistungen sind in die Einheitspreise einzurechnen, sofern sie im Leistungsverzeichnis nicht gesondert ausgewiesen sind:</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Abstimmung/Planung:</span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Der AN hat sich rechtzeitig vor Ausführung mit dem AG abzustimmen, um den Gerüstaufbau sowie die Verankerungen nach den Belangen aller am Bau B‑eteiligten zu gewährleisten. Grundsätzlich muss die Verankerung so gewählt werden, dass die Verankerungstechnik und das Schließen der Ankerlöcher auf den Schichtenaufbau der Fassaden (z. B. Putzfassade, Klinkerfassade, Metallfassade) abgestimmt ist. Zusätzliche Verankerungen oder Sonderanker im Bereich der WDVS Fassaden sind nach Erfordernis zu berücksichtigen.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Schutzpflicht: </span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Sämtliche Flächen und Einbauteile, wie Sichtbeton, Naturstein usw. die durch die auszuführenden Arbeiten eine Beschädigung oder Verschmutzung erfahren können, sind in dafür geeigneter Weise zu schützen. Eine gesonderte Vergütung hierfür erfolgt nicht.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Werden Gerüste auf wasserführenden Flächen wie Vordächer, Terrassen, Flachdächer usw. aufgestellt, so hat der Auftragnehmer dafür zu sorgen, dass die Abdichtungsflächen nicht durchstoßen oder anderweitig beschädigt werden. </span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gerüste stehen generell auf lastverteilenden Bohlen.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Sonstiges:</span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Eingänge, Hauseingänge und Durchfahrten sind im vollem Querschnitt von Bauteilen der Gerüstanlagen freizuhalten.</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Die Gerüste sind für alle am Bau beschäftigten Handwerker für deren Leistungen kostenfrei zu überlassen. </span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Bei Erfordernis ist das Abstützen der Gerüstanlagen über Lichtschächten in die Einheitspreise einzukalkulieren.</span>
+    </p>
+    <page/>
+   </DetailAddText>
+  </AddText>
+  <AddText>
+   <OutlineAddText>
+    <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+     <span>Gewerkeübersicht</span>
+    </p>
+   </OutlineAddText>
+   <DetailAddText>
+    <p style="margin-right:28pt;text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="margin-right:28pt;text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:14pt;Color:rgb(0,0,0);">Hauptmassen</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:59.90mm 99.90mm;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gesamtfläche Gerüst:</span>
+     <span style="font-family:Arial;font-size:10;mso-tab-count:1;">                         </span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">1.600. m2</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 59.90mm;">
+     <span style="font-family:Helv;font-size:10pt;Color:rgb(0,0,0);">Standzeit der Gerüste: </span>
+     <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+     <span style="font-family:Helv;font-size:10pt;Color:rgb(0,0,0);">i.M. 26 Wochen</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Arial;font-weight:bold;font-size:14pt;Color:rgb(0,0,0);">Projektspezifische Angaben</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Helv;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Folgender Verankerungsgrund ist vorhanden:</span>
+     <span style="font-family:Helv;font-size:10pt;Color:rgb(0,0,0);"> </span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 59.90mm;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+     <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+     <span style="font-family:Helv;font-size:10pt;Color:rgb(0,0,0);">Beton</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 59.90mm;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+     <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+     <span style="font-family:Helv;font-size:10pt;Color:rgb(0,0,0);">Mauerwerk</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 59.90mm;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+     <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+     <span style="font-family:Helv;font-size:10pt;Color:rgb(0,0,0);">Stahl-Tragkonstruktion</span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 59.90mm;">
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+     <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+     <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+     <span style="font-family:Helv;font-size:10pt;Color:rgb(0,0,0);">sonstiges wie .......................</span>
+     <br/>
+     <br/>
+     <span style="font-family:Helv;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Die Gelände-Oberkanten befinden sich auf - 0,76 m </span>
+    </p>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+    <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+     <span style="font-family:Helv;font-size:10pt;Color:rgb(0,0,0);">Der Gerüstabstand zur jeweiligen Rohbaukonstruktion wird noch gemeinsam zwischen AG und AN abgestimmt.</span>
+    </p>
+   </DetailAddText>
+  </AddText>
+  <BoQ ID="AAAAAAABICEAAAAA">
+   <BoQInfo>
+    <Name>1.44.00</Name>
+    <LblBoQ>Gerüste</LblBoQ>
+    <Date>2022-07-22</Date>
+    <OutlCompl>AllTxt</OutlCompl>
+    <BoQBkdn>
+     <Type>BoQLevel</Type>
+     <LblBoQBkdn>Bereich</LblBoQBkdn>
+     <Length>2</Length>
+     <Num>Yes</Num>
+    </BoQBkdn>
+    <BoQBkdn>
+     <Type>BoQLevel</Type>
+     <LblBoQBkdn>Abschnitt</LblBoQBkdn>
+     <Length>2</Length>
+     <Num>Yes</Num>
+    </BoQBkdn>
+    <BoQBkdn>
+     <Type>Item</Type>
+     <Length>4</Length>
+     <Num>Yes</Num>
+    </BoQBkdn>
+   </BoQInfo>
+   <BoQBody>
+    <BoQCtgy ID="AAAAAAABIDDBAAAA" RNoPart="1">
+     <LblTx>
+      <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+       <span>Gerüste</span>
+      </p>
+     </LblTx>
+     <BoQBody>
+      <Remark ID="AAAAAAABICEAHEGA">
+       <Description ID="R20220721162808980000004">
+        <CompleteText>
+         <DetailTxt>
+          <Text>
+           <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Die Ed.Züblin AG, hat als Generalunternehmer den Auftrag, das o.g. Bauvorhaben schlüsselfertig einschließlich Außenanlagen zu erstellen. </span>
+            <br/>
+            <br/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Das Objekt umfasst der Neubau einer Wohnanlage mit 15 Wohneinheiten und Tiefgarage. Es handelt sich um 15 Stück 2-5 Zimmer-Wohnungen, 20 Stellplätzen in der Tiefgarage und 6 oberirdischen Stellplätzen. Das Gebäude umfasst Erdgeschoss, 2 Obergeschosse und 1 Dachgeschoß sowie ein innenliegendes Treppenhaus mit Aufzugsanlage.</span>
+           </p>
+           <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm 59.70mm;">
+            <br/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Die Ausführung erfolgt schlüsselfertig in Stahlbeton-/Mauerwerksbauweise  nach KfW 55 EE- Standard. Der Auftrag umfasst die Entwurfs- und Ausführungsplanung LPH 2-5.</span>
+            <br/>
+            <br/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Das Grundstück befindet sich 85235 Odelzhausen, Am Anger 4. </span>
+            <br/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Die Baustellenzufahrt ist mit dem AG abzustimmen. Eine Zufahrtsmöglichkeit besteht vom öffentlichen Straßennetz aus.</span>
+            <br/>
+            <br/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Baubeginn des Gesamtbauvorhabens:</span>
+            <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+            <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+            <span style="font-family:Arial;font-size:10;mso-tab-count:1;">  </span>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">01.12.2021</span>
+            <br/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Fertigstellung des Gesamtbauvorhabens:</span>
+            <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+            <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">15.12.2023</span>
+            <br/>
+            <br/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Die Verkehrssicherung der öffentlichen Straßen erfolgt bauseits. Auf der </span>
+            <br/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Baustelle werden die Verkehrswege bauseits beleuchtet, Arbeitsorte sind nach Erfordernis vom AN zu beleuchten. Der AN hat vor Ausführungsbeginn eine  Gefährdungsbeurteilung zu erstellen, den Anweisungen und Vorgaben des SiGeKo ist folge zu leisten.</span>
+            <br/>
+           </p>
+           <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+            <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Ablauf Gerüst:</span>
+            <br/>
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Es ist geplant das Gerüst auf dem Dach der Tiefgarage aufzubauen. Die hier hergestellte Abdichtung ist angemessen zu schützen. Entsprechende Positionen sind ausgewiesen.</span>
+           </p>
+           <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Der Erste Einsatz wird witterungsabhängig im Februar oder März 2023 erfolgen.</span>
+           </p>
+           <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+            <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Der Aufbau des Gerüstes ist in 4 Einsätzen mit einem zeitlichen Abstand von 2 bis 4 Wochen geplant. Die Lagerflächen vor Ort sind begrenzt. Die Mehrzahl an Anfahrten bzw. Anlieferungen ist in die unten stehenden Einheitspreise einzukalkulieren.</span>
+           </p>
+          </Text>
+         </DetailTxt>
+         <OutlineText>
+          <OutlTxt>
+           <TextOutlTxt>
+            <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+             <span>P r o j e k t b e sc h r e i b u n g</span>
+            </p>
+           </TextOutlTxt>
+          </OutlTxt>
+         </OutlineText>
+        </CompleteText>
+       </Description>
+      </Remark>
+      <BoQCtgy ID="AAAAAAABIDDBAPCI" RNoPart="1">
+       <LblTx>
+        <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+         <span>Fassadengerüste - vertikal (1.44.10)</span>
+        </p>
+       </LblTx>
+       <BoQBody>
+        <Itemlist>
+         <Item ID="AAAAAAABIDDBBOFA" RNoPart="10">
+          <Qty>1600.000</Qty>
+          <QU>m2</QU>
+          <Description ID="R20161005094701167822895">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Arbeits- und Schutzgerüste als Fassadengerüst.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Auf- und Abbau inkl. An- und Abtransport, sowie aller erforderlichen Nebenarbeiten und Gebrauchsüberlassung von 4 Wochen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Lastklasse:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">3, mind. 200 kg/m2, Gerüstfeldbreite: mind. 0,70 m, Breitenkl. W06</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">4, mind. 300 kg/m2, Gerüstfeldbreite: mind. 1,00 m, Breitenkl. W09</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">5, mind. 450 kg/m2, Gerüstfeldbreite: mind. 1,00 m, Breitenkl. W09  </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">6, mind. 600 kg/m2, Gerüstfeldbreite: mind. 1,00 m, Breitenkl. W09</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Standfläche:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">tragfähiger Untergrund</span>
+               <br/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">gerade, leicht geneigte Fläche</span>
+               <br/>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Gerüstabstand - Bauwerk:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;text-decoration:underline;font-size:10pt;Color:rgb(0,0,0);">&#x3c;</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> 30 cm</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">....... cm</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Verankerungsgrund:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Stahlbeton</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Mauerwerk</span>
+               <br/>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Gerüsthöhe: </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">max. ca. 15 m</span>
+               <br/>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Gerüstverlauf: </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">gerade</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <br/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Verwendung:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Rohbauarbeiten</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">PR-Fassaden</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Fassadenverkleidungen</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Blech</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Naturstein</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">WDVS mit Dämmstärke ...... mm</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Klinkerfassade (2-schaliges MW)</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Dämmstärke ...... mm</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Innenbereiche</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Putzarbeiten</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Fassadengerüst</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDBGNMI" RNoPart="20">
+          <Qty>35200.000</Qty>
+          <QU>m2Wo</QU>
+          <Description ID="R20161005094701172822897">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gebrauchsüberlassung der Fassadengerüste</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Lastklasse:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">3</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">4</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">5</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">6</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">in vollem Umfang oder als Teilflächen über die Grundeinsatzzeit </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">von 4 Wochen hinausgehend, soweit erforderlich.</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gebrauchsüberlassung der Fassadengerüste gem. Pos. 1.1.10</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDCGAAA" RNoPart="30">
+          <Qty>1600.000</Qty>
+          <QU>m2</QU>
+          <Description ID="R20220721155034609000002">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Zulage für Lastklasse</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">4, mind. 300 kg/m2, Gerüstfeldbreite: mind. 1,00 m, Breitenkl. W09</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Zulage zu Pos. 1.1.10  Gerüst für LKL4, W09</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDCHEKI" RNoPart="40">
+          <Qty>35200.000</Qty>
+          <QU>m2Wo</QU>
+          <Description ID="R20220721155251151000003">
+           <CompleteText>
+            <DetailTxt>
+             <Text/>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Zulage zu Pos. 1.1.20 Vorhaltung  für LKL4, W09</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Remark ID="AAAAAAABIDDBJEEI">
+          <Description ID="R20161005094701181822908">
+           <CompleteText>
+            <DetailTxt>
+             <Text/>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Konsolen</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Remark>
+         <Item ID="AAAAAAABIDDBJPIA" RNoPart="70">
+          <Qty>10.000</Qty>
+          <QU>m</QU>
+          <Description ID="R20161005094701182822909">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">versetzbare Konsolen </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">zur Verbreiterung der Gerüste gem. o.g. Pos. </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Breite:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 26.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">30 cm </span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">         </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">LK 3 + 4</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 26.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">70 cm,</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">         </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]  LK 3 oder</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">  </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">  </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">LK 4</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 26.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">100 cm,</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">       </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]  LK 3 oder</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">  </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">LK 4</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">einschließlich Belag.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Auf- und Abbau inkl. An- und Abtransport, sowie aller erforderlichen Nebenarbeiten und Gebrauchsüberlassung von 4 Wochen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Einbauort:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Diverse</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Konsolen zu Pos. 1.1.10</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDBLIBA" RNoPart="80">
+          <Provis>WithoutTotal</Provis>
+          <Qty>1.000</Qty>
+          <QU>m</QU>
+          <Description ID="R20161005094701183822910">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Umsetzen von versetzbaren Konsolen zur Verbreiterung des Gerüstes</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Breite:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">30 cm </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">70 cm</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">100 cm </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">einschließlich Belag.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">inkl. Zwischenlagerung und Transporten auf der Baustelle</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">(ohne An- und Abfahrt)</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Umsetzen Konsolen gem. Pos. .....</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDBMPLI" RNoPart="90">
+          <Qty>260.000</Qty>
+          <QU>mWo</QU>
+          <Description ID="R20161005094701184822911">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gebrauchsüberlassung der Konsolen </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Breite:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">30 cm </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">70 cm</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">100 cm </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">in vollem Umfang oder als Teilflächen über die Grundeinsatzzeit </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">von 4 Wochen hinausgehend, soweit erforderlich.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Menge:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">10</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> m</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Anzahl der Wochen:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">26</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Wo</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Mengenermittlung:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">m x Wochen  =  mWo</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gebrauchsüberlassung der Konsolen</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Remark ID="AAAAAAABIDDBOHII">
+          <Description ID="R20161005094701190822918">
+           <CompleteText>
+            <DetailTxt>
+             <Text/>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Seitenschutz</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Remark>
+         <Item ID="AAAAAAABIDDBPDPI" RNoPart="100">
+          <Qty>20.000</Qty>
+          <QU>m</QU>
+          <Description ID="R20161005094701191822919">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Zusätzlicher Seitenschutz als Absturzsicherung auf der Gerüstinnenseite</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">des Gerüstes gem. o.g. Pos.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">2-teilig</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">3-teilig, inkl. Bordbrett</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Auf- und Abbau inkl. An- und Abtransport, sowie aller erforderlichen Nebenarbeiten und Gebrauchsüberlassung von 4 Wochen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Einbauort:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Diverse.</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Seitenschutz zu Pos. 1.1.10</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDEAALNI" RNoPart="110">
+          <Qty>520.000</Qty>
+          <QU>mWo</QU>
+          <Description ID="R20161005094701192822920">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gebrauchsüberlassung des Seitenschutzes</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">in vollem Umfang oder als Teilflächen über die Grundeinsatzzeit </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">von 4 Wochen hinausgehend, soweit erforderlich.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Menge:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">        </span>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">                  </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">20 m</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Anzahl der Wochen:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">26 Wo</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Mengenermittlung:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">m x Wochen  =  mWo</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gebrauchsüberlassung Seitenschutz</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Remark ID="AAAAAAABIDEACCOI">
+          <Description ID="R20161005094701192822921">
+           <CompleteText>
+            <DetailTxt>
+             <Text/>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gerüstüberbrückungen</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Remark>
+         <Item ID="AAAAAAABIDEACOCA" RNoPart="120">
+          <Qty>20.000</Qty>
+          <QU>m</QU>
+          <Description ID="R20161005094701193822922">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gerüstüberbrückungen mit Gerüstgitterträgern</span>
+               <br/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">des vorbeschriebenen Gerüstes</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Lastklasse:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">3, mind. 200 kg/m2 </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">4, mind. 300 kg/m2</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Spannweite:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">bis ca. 6 m</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Auf- und Abbau inkl. An- und Abtransport, sowie aller erforderlichen Nebenarbeiten und Gebrauchsüberlassung von 4 Wochen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Einbauort:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Eingang, ggf. Tiefgaragenzufahrt</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gerüstüberbrückungen</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDEAEFMI" RNoPart="130">
+          <Qty>520.000</Qty>
+          <QU>mWo</QU>
+          <Description ID="R20161005094701195822923">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gebrauchsüberlassung der Gerüstüberbrückungen</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">in vollem Umfang oder als Teilflächen über die Grundeinsatzzeit</span>
+               <br/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">von 4 Wochen hinausgehend, soweit erforderlich.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Menge:´</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">       </span>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">                  </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">20 m</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Anzahl der Wochen:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">26 Wo</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Mengenermittlung:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">m x Wochen  =  mWo</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gebrauchsüberlassung Gerüstüberbrückungen</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDEAMHAI" RNoPart="180">
+          <Qty>160.000</Qty>
+          <QU>m</QU>
+          <Description ID="R20161005094701208822933">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Absturzsicherung umlaufend an den Absturzkanten. </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Das selbsttragende Dachgeländer ist über Lastverteilungsplatten und Bautenschutzmatten auf das Dach zu stellen. Eine Verankerung am Rohbau ist nicht möglich.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Höhe: </span>
+               <span style="font-family:Arial;text-decoration:underline;font-size:10pt;Color:rgb(0,0,0);">&#x3e;</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> 1,10 m</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Ausführung:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">ohne Fußleisten</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">mit Fußleisten</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Auf- und Abbau inkl. An- und Abtransport, sowie aller erforderlichen Nebenarbeiten und Gebrauchsüberlassung von 4 Wochen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Aufstellort auf:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Abdichtung</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Betondecke (ohne Schutzlage)</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Dachaufbau bestehend aus Umkehrdach (Plattenbelag DG bzw. Vließ auf Dämmung Dach)  </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> ........................................</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Aufbau im Zuge Rückbau Fassadengerüst</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Dachgeländer</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDEANPHI" RNoPart="190">
+          <Provis>WithoutTotal</Provis>
+          <Qty>1.000</Qty>
+          <QU>m</QU>
+          <Description ID="R20191114072730033000002">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Umsetzen von Dachgeländern bei Teilbereichen auf eine horizontale Dachfolie</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">inkl. Zwischenlagerung und Transporten auf der Baustelle</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">(ohne An- und Abfahrt)</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Umsetzen von Dachgeländern</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDEAPADI" RNoPart="200">
+          <Qty>720.000</Qty>
+          <QU>mWo</QU>
+          <Description ID="R20161005094701210822934">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gebrauchsüberlassung Absturzsicherung</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">in vollem Umfang oder als Teilflächen über die Grundeinsatzzeit </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">von 4 Wochen hinausgehend, soweit erforderlich.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Menge:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">        </span>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">                  </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">160 m</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Anzahl der Wochen:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">720 Wo</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Mengenermittlung:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">m x Wochen  =  mWo</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gebrauchsüberlassung Dachgeländer</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Remark ID="AAAAAAABIDDPCJCA">
+          <Description ID="R20161005094701211822935">
+           <CompleteText>
+            <DetailTxt>
+             <Text/>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Besondere Schutzmaßnahmen</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Remark>
+         <Item ID="AAAAAAABIDDPDEGA" RNoPart="230">
+          <Qty>160.000</Qty>
+          <QU>m2</QU>
+          <Description ID="R20161005094701212822936">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Flächiger Schutz der vorhandenen Abdichtung/Bodenbeläge auf Anforderung durch die Bauleitung des AG</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Dachabdichtung im Dachrandbereich schützen durch:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gummigranulatmatte mind. 8 mm</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Seekieferplatte mit Geovlies 300 g</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">inkl. liefern, verlegen, demontieren und entsorgen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Einbauort:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> TG-Decke</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Schutz der Abdichtung/Bodenbeläge</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDPFHFA" RNoPart="240">
+          <Qty>800.000</Qty>
+          <QU>m2</QU>
+          <Description ID="R20161005094701213822938">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Schutzplanen aus engmaschigen Gewebe</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">am vorbeschriebenen Gerüst bespannen</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Ausführung:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">200 g, weiß</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">200 g, gitterverstärkt, transparent</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Plane:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">neu</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">gebraucht</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Auf- und Abbau inkl. An- und Abtransport, sowie aller erforderlichen Nebenarbeiten und Gebrauchsüberlassung von 4 Wochen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Höhe: </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">ca. 12 m</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Verwendung: </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">z.B. Staub- und Windschutz</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">In diese Position ist die zusätzliche Verankerung des Gerüstes für die Aufnahme der zusätzlichen Windlasten aus der Verkleidung miteinzurechnen.</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Schutzplanen</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDPGPNI" RNoPart="250">
+          <Qty>8000.000</Qty>
+          <QU>m2Wo</QU>
+          <Description ID="R20161005094701214822939">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gebrauchsüberlassung der Schutzplanen</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">in vollem Umfang oder als Teilflächen über die Grundeinsatzzeit </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">von 4 Wochen hinausgehend, soweit erforderlich.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Menge:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">        </span>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">                  </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">800 m2</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Anzahl der Wochen:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">10 Wo</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Mengenermittlung:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">m2 x Wochen  =  m2Wo</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gebrauchsüberlassung der Schutzplanen</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Remark ID="AAAAAAABIDDPLGPI">
+          <Description ID="R20161005094701216822942">
+           <CompleteText>
+            <DetailTxt>
+             <Text/>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gerüstanker</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Remark>
+         <Item ID="AAAAAAABIDDPMDNI" RNoPart="280">
+          <Provis>WithoutTotal</Provis>
+          <Qty>20.000</Qty>
+          <QU>Stk</QU>
+          <Description ID="R20161005094701217822943">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Versetzen von Gerüstankern im Bedarfsfall für andere Gewerke, einschließlich aller Befestigungsmaterialien.</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Versetzen Gerüstanker</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDPOIJA" RNoPart="300">
+          <Provis>WithoutTotal</Provis>
+          <Qty>1.000</Qty>
+          <QU>m</QU>
+          <Description ID="R20191113145110856000001">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Zusätzliche horizontale und vertikale Gerüstrohre </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">zur Befestigung der Konsolen im Bereich von Nischen etc.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">einschl. erforderlicher Kupplungen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Auf- und Abbau inkl. An- und Abtransport, sowie aller erforderlichen Nebenarbeiten und Gebrauchsüberlassung von 4 Wochen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Einbauort</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">:  Diverse</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Zusätzliche horizontale und vertikale Gerüstrohre</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDDAAAA" RNoPart="310">
+          <Provis>WithoutTotal</Provis>
+          <Qty>1.000</Qty>
+          <QU>mWo</QU>
+          <Description ID="R20191114071515658000001">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gebrauchsüberlassung der zusätzl. Gerüstrohre</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">in vollem Umfang oder als Teilflächen über die Grundeinsatzzeit </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">von 4 Wochen hinausgehend, soweit erforderlich.</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gebrauchsüberlassung der zusätzl. Gerüstrohre</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDDAPPA" RNoPart="320">
+          <LumpSumItem>Yes</LumpSumItem>
+          <Qty>1.000</Qty>
+          <QU>psch</QU>
+          <Description ID="R20161005094701218822944">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Schließen der Gerüst-Ankerlöcher in der Fassade mit </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">bauseits gelieferter Mineralfaser, Kappen und Beschichtung in Putzfassadenflächen.</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Schließen der Ankerlöcher</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+        </Itemlist>
+       </BoQBody>
+      </BoQCtgy>
+      <BoQCtgy ID="AAAAAAABIDDHAAAA" RNoPart="4">
+       <LblTx>
+        <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+         <span>Sonstige Gerüste (1.44.30)</span>
+        </p>
+       </LblTx>
+       <BoQBody>
+        <Itemlist>
+         <Remark ID="AAAAAAABIDDHBEGI">
+          <Description ID="R20161005094701225822955">
+           <CompleteText>
+            <DetailTxt>
+             <Text/>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gerüsttreppen</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Remark>
+         <Item ID="AAAAAAABIDDHEONI" RNoPart="30">
+          <Qty>2.000</Qty>
+          <QU>Stk</QU>
+          <Description ID="R20161005094701226822956">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Podesttreppenturm mit Treppenläufen, Podestbereichen</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">und allseitigem Seitenschutz.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Lastklasse:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">LK 3</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">LK 4</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Verankerung:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">freistehend</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">über das Fassadengerüst</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Auf- und Abbau inkl. An- und Abtransport, sowie aller erforderlichen Nebenarbeiten und Gebrauchsüberlassung von 4 Wochen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Verwendung:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">z.B. Zugang zu den Gerüstebenen </span>
+               <br/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">des Fassaden- + Raumgerüstes</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Der Turm ist so aufzubauen, dass jede Gerüstlage direkt vom Turm aus zugänglich ist. </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Zugang zum Gerüst:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">seitlich</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Stirnfläche</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Treppenlauf:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">gleichlaufend</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">gegenläufig</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Einbauort:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> 1x Nordwest, 1x Südost</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Podesttreppenturm bis 10 m Höhe</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDHGHJI" RNoPart="40">
+          <Qty>46.000</Qty>
+          <QU>StWo</QU>
+          <Description ID="R20161005094701227822957">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gebrauchsüberlassung Podesttreppenturm</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">in vollem Umfang oder als Teilflächen über die Grundeinsatzzeit </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">von 4 Wochen hinausgehend, soweit erforderlich.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Menge:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">        </span>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">                  </span>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">2</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Stk</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Anzahl der Wochen:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">i.M. 23</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Wo</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Mengenermittlung:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Stück x Wochen  =  StWo</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gebrauchsüberlassung Podesttreppenturm</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Remark ID="AAAAAAABIDDOBDAI">
+          <Description ID="R20161005094701235822968">
+           <CompleteText>
+            <DetailTxt>
+             <Text/>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Treppenhaus-Kopfgerüste</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Remark>
+         <Item ID="AAAAAAABIDDOBOEA" RNoPart="110">
+          <Qty>36.000</Qty>
+          <QU>m2</QU>
+          <Description ID="R20161005094701236822969">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Treppenhauskopfgerüste als Arbeits- und Schutzgerüste</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">mit einer Gerüstlage und allseitigem Seitenschutz,</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Aufbau auf Treppenlauf, Podest und Treppenauge.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Lastklasse:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[ x ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"> </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">3, mind. 200 kg/m2 </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:6.90mm 49.90mm 56.90mm 76.90mm 83.90mm;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">[  ]</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">   </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">4, mind. 300 kg/m2</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Auf- und Abbau inkl. An- und Abtransport, sowie aller erforderlichen Nebenarbeiten und Gebrauchsüberlassung von 4 Wochen.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Gerüst-Höhe:</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">bis 6 m</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Einbauort:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"> Treppenhauskopf</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Treppenhaus-Kopfgerüste</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDODHAA" RNoPart="120">
+          <Provis>WithoutTotal</Provis>
+          <Qty>1.000</Qty>
+          <QU>m2</QU>
+          <Description ID="R20161005094701237822970">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Ab- und Wiederaufbau von Abschnitten der Treppenhauskopfgerüste gem. o.g. Pos. inkl. Zwischenlagerung und Transporten</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">auf der Baustelle (ohne An- und Abtransport).</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Umsetzen Treppenhaus-Kopfgerüste</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+         <Item ID="AAAAAAABIDDOENFI" RNoPart="130">
+          <Qty>72.000</Qty>
+          <QU>m2Wo</QU>
+          <Description ID="R20161005094701238822971">
+           <CompleteText>
+            <DetailTxt>
+             <Text>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">Gebrauchsüberlassung der Treppenhaus-Kopfgerüste</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">in vollem Umfang oder als Teilflächen über die Grundeinsatzzeit </span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;">
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">von 4 Wochen hinausgehend, soweit erforderlich.</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Menge:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">        </span>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;">                  </span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">36 m2</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Anzahl der Wochen:</span>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">2 Wo</span>
+              </p>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;"/>
+              <p style="text-align:left;line-height:13pt;margin-top:0pt;margin-bottom:0pt;tab-stops:19.90mm 39.80mm;">
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);">Mengenermittlung:</span>
+               <span style="font-family:Arial;font-size:10;mso-tab-count:1;"/>
+               <span style="font-family:Arial;font-weight:bold;font-size:10pt;Color:rgb(0,0,0);"/>
+               <span style="font-family:Arial;font-size:10pt;Color:rgb(0,0,0);">m2 x Wochen  =  m2Wo</span>
+              </p>
+             </Text>
+            </DetailTxt>
+            <OutlineText>
+             <OutlTxt>
+              <TextOutlTxt>
+               <p style="text-align:left;margin-top:0pt;margin-bottom:0pt;">
+                <span>Gebrauchsüberlassung der Treppenhaus-Kopfgerüste gem. Pos. 1.4.110</span>
+               </p>
+              </TextOutlTxt>
+             </OutlTxt>
+            </OutlineText>
+           </CompleteText>
+          </Description>
+         </Item>
+        </Itemlist>
+       </BoQBody>
+      </BoQCtgy>
+     </BoQBody>
+    </BoQCtgy>
+   </BoQBody>
+  </BoQ>
+ </Award>
+</GAEB>
