@@ -83,8 +83,9 @@
     </dependencies>
 
     <build>
+        <finalName>gaebviewer</finalName>
         <plugins>
-            <!-- Java 21 -->
+            <!-- Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -93,14 +94,74 @@
                 </configuration>
             </plugin>
 
-            <!-- Spring Boot -->
+            <!-- Spring Boot Fat JAR -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.example.gaebviewer.Application</mainClass>
-                    <finalName>gaebviewer</finalName>
+                    <excludeDevtools>true</excludeDevtools>
                 </configuration>
+            </plugin>
+
+            <!-- Bundle mit Startskripten erzeugen -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>create-bundle-scripts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <property name="bundle.dir" value="${project.build.directory}/bundle"/>
+                                <mkdir dir="${bundle.dir}"/>
+                                <copy file="${project.build.directory}/${project.build.finalName}.jar"
+                                      tofile="${bundle.dir}/${project.build.finalName}.jar"
+                                      overwrite="true"/>
+                                <echo file="${bundle.dir}/start.bat"><![CDATA[@echo off
+setlocal
+cd /d "%~dp0"
+echo Starte ${project.build.finalName}.jar ...
+echo Browser wird in 8 Sekunden geoeffnet auf http://localhost:8080 ...
+rem Browser im Hintergrund nach 8 Sekunden oeffnen (waehrend Tomcat hochfaehrt)
+start "" cmd /c "timeout /t 8 /nobreak > nul && start http://localhost:8080"
+java -jar ${project.build.finalName}.jar
+set EXIT_CODE=%ERRORLEVEL%
+echo.
+echo Anwendung beendet mit Exit-Code %EXIT_CODE%.
+pause
+exit /b %EXIT_CODE%
+]]></echo>
+                                <echo file="${bundle.dir}/start.sh"><![CDATA[#!/usr/bin/env bash
+set -u
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+echo "Starte ${project.build.finalName}.jar ..."
+echo "Browser wird in 8 Sekunden geoeffnet auf http://localhost:8080 ..."
+
+# Browser im Hintergrund nach 8 Sekunden oeffnen (waehrend Tomcat hochfaehrt)
+# xdg-open fuer Linux, open fuer macOS
+(sleep 8 && (xdg-open "http://localhost:8080" 2>/dev/null || open "http://localhost:8080" 2>/dev/null)) &
+
+java -jar ${project.build.finalName}.jar
+EXIT_CODE=$?
+
+echo
+read -r -p "Anwendung beendet mit Exit-Code ${EXIT_CODE}. Mit Enter schliessen ..." _
+exit ${EXIT_CODE}
+]]></echo>
+                                <chmod file="${bundle.dir}/start.sh" perm="755"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- Vaadin -->
@@ -152,5 +213,9 @@
     </profiles>
 
 </project>
+
+
+
+
 
 

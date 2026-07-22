@@ -11,34 +11,21 @@
 
     <baseDirectory>gaebviewer</baseDirectory>
 
-    <!-- Füge das Fat JAR ein -->
+    <!-- Füge das erzeugte Bundle ein -->
     <files>
         <file>
-            <source>${project.build.directory}/${project.build.finalName}.jar</source>
+            <source>${project.build.directory}/bundle/${project.build.finalName}.jar</source>
             <outputDirectory>.</outputDirectory>
-            <destName>gaebviewer.jar</destName>
+            <destName>${project.build.finalName}.jar</destName>
         </file>
         <file>
-            <source>start-gaebviewer.sh</source>
+            <source>${project.build.directory}/bundle/start.bat</source>
+            <outputDirectory>.</outputDirectory>
+        </file>
+        <file>
+            <source>${project.build.directory}/bundle/start.sh</source>
             <outputDirectory>.</outputDirectory>
             <fileMode>0755</fileMode>
-        </file>
-        <file>
-            <source>start-gaebviewer.bat</source>
-            <outputDirectory>.</outputDirectory>
-            <fileMode>0755</fileMode>
-        </file>
-        <file>
-            <source>README.md</source>
-            <outputDirectory>.</outputDirectory>
-        </file>
-        <file>
-            <source>INSTALL_LINUX.md</source>
-            <outputDirectory>.</outputDirectory>
-        </file>
-        <file>
-            <source>gaebviewer.service</source>
-            <outputDirectory>.</outputDirectory>
         </file>
     </files>
 

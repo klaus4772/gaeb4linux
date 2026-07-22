@@ -1,3 +1,4 @@
+
 #!/bin/bash
 #
 # GAEB Viewer Application Startup Script
@@ -85,7 +86,14 @@ else
   JVM_ARGS="-Dserver.port=$PORT"
   [ -n "$PROFILE" ] && JVM_ARGS="$JVM_ARGS -Dspring.profiles.active=$PROFILE"
 
-  mvn -pl gaebviewer/gaeb-viewer-app -am spring-boot:run \
+  # Abhängige Module (core, editor, schemas) zuerst bauen und ins lokale
+  # Repository installieren, damit spring-boot:run sie auflösen kann.
+  echo -e "${YELLOW}Baue abhängige Module...${NC}"
+  mvn -pl gaebviewer/gaeb-viewer-app -am -DskipTests install -q
+
+  # spring-boot:run nur auf dem App-Modul ausführen (nicht mit -am, sonst
+  # versucht Maven das Goal auch auf dem Root-POM ohne Main-Klasse).
+  mvn -pl gaebviewer/gaeb-viewer-app spring-boot:run \
     -Dspring-boot.run.jvmArguments="$JVM_ARGS"
 fi
 
