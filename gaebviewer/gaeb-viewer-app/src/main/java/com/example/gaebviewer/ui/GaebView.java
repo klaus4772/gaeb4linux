@@ -1,30 +1,47 @@
 package com.example.gaebviewer.ui.gaeb;
 
+import com.example.gaebviewer.application.gaeb.GaebExportService;
+import com.example.gaebviewer.application.gaeb.GaebFormatConverter;
 import com.example.gaebviewer.application.gaeb.GaebImportService;
+import com.example.gaebviewer.application.gaeb.GaebSchemaVersion;
 import com.example.gaebviewer.domain.GaebPosition;
 import com.example.gaebviewer.domain.GaebProject;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.select.Select;
 import com.vaadin.flow.component.textfield.TextArea;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.treegrid.TreeGrid;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.StreamResource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Route("gaeb")
 public class GaebView extends VerticalLayout {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(GaebView.class);
+
     private final GaebImportService gaebImportService;
+    private final GaebExportService gaebExportService;
+    private final GaebFormatConverter gaebFormatConverter;
     private final TreeGrid<GaebPosition> positionGrid = new TreeGrid<>();
     private final TextField numberDisplay = new TextField("Positionsnummer");
     private final TextField quantityDisplay = new TextField("Menge");
@@ -41,9 +58,19 @@ public class GaebView extends VerticalLayout {
     /** Alle Positionen der geladenen Datei — Basis für die LV-Summenberechnung. */
     private List<GaebPosition> allPositions = new ArrayList<>();
 
-    public GaebView(GaebImportService gaebImportService) {
+    /** Originale XML-Bytes der zuletzt geladenen Datei — Basis für den Export. */
+    private byte[] currentXmlBytes;
+
+    /** Dateiname der zuletzt geladenen Datei. */
+    private String currentFileName;
+
+    public GaebView(GaebImportService gaebImportService,
+                    GaebExportService gaebExportService,
+                    GaebFormatConverter gaebFormatConverter) {
 
         this.gaebImportService = gaebImportService;
+        this.gaebExportService = gaebExportService;
+        this.gaebFormatConverter = gaebFormatConverter;
 
         setSizeFull();
         setPadding(true);
@@ -69,9 +96,47 @@ public class GaebView extends VerticalLayout {
 
         upload.setMaxFiles(1);
 
+        // Download-Button — wird erst nach erfolgreichem Datei-Import aktiviert
+        Button saveButton = new Button("Speichern", VaadinIcon.DOWNLOAD.create());
+        saveButton.setEnabled(false);
+
+        // Zielformat-Auswahl
+        List<GaebSchemaVersion> supportedFormats = Arrays.stream(GaebSchemaVersion.values())
+                .filter(v -> v != GaebSchemaVersion.UNKNOWN)
+                .collect(Collectors.toList());
+
+        Select<GaebSchemaVersion> formatSelect = new Select<>();
+        formatSelect.setLabel("Zielformat");
+        formatSelect.setItems(supportedFormats);
+        formatSelect.setItemLabelGenerator(v -> "DA" + v.getDaNumber() + " (" + v.getFileExtension() + ")");
+        formatSelect.setEnabled(false);
+
+        Span sourceFormatLabel = new Span();
+        sourceFormatLabel.getStyle()
+                .set("font-size", "var(--lumo-font-size-s)")
+                .set("color", "var(--lumo-secondary-text-color)")
+                .set("align-self", "center")
+                .set("white-space", "nowrap");
+
+        Anchor downloadAnchor = new Anchor();
+        downloadAnchor.getElement().setAttribute("download", true);
+        downloadAnchor.add(saveButton);
+
+        // Format-Änderung → StreamResource sofort aktualisieren (einmalig registrieren!)
+        formatSelect.addValueChangeListener(e -> updateDownloadResource(downloadAnchor, formatSelect));
+
+        HorizontalLayout toolbar = new HorizontalLayout(upload, sourceFormatLabel, formatSelect, downloadAnchor);
+        toolbar.setWidthFull();
+        toolbar.setAlignItems(Alignment.END);
+        toolbar.setFlexGrow(1, upload);
+
         upload.addSucceededListener(event -> {
             try {
-                GaebProject project = gaebImportService.importGaeb(buffer.getInputStream());
+                // Bytes zuerst puffern, damit sie für den Export wieder verfügbar sind
+                byte[] xmlBytes = buffer.getInputStream().readAllBytes();
+                String fileName = event.getFileName();
+
+                GaebProject project = gaebImportService.importGaeb(new ByteArrayInputStream(xmlBytes));
 
                 List<GaebPosition> positionen = project.getBoqs().isEmpty()
                         ? List.of()
@@ -79,7 +144,23 @@ public class GaebView extends VerticalLayout {
 
                 showAsHierarchy(positionen);
                 allPositions = new ArrayList<>(positionen);
+                currentXmlBytes = xmlBytes;
+                currentFileName = fileName;
                 updateLvSum();
+
+                // Quellformat erkennen und anzeigen
+                GaebSchemaVersion detectedVersion = GaebSchemaVersion.fromString(project.getGaebVersion());
+                sourceFormatLabel.setText("Quellformat: " + (detectedVersion == GaebSchemaVersion.UNKNOWN
+                        ? "unbekannt"
+                        : "DA" + detectedVersion.getDaNumber()));
+                formatSelect.setValue(detectedVersion == GaebSchemaVersion.UNKNOWN
+                        ? GaebSchemaVersion.DA86   // sinnvoller Fallback
+                        : detectedVersion);
+                formatSelect.setEnabled(true);
+
+                // StreamResource liest beim Download den aktuellen Stand (Preise + Zielformat)
+                updateDownloadResource(downloadAnchor, formatSelect);
+                saveButton.setEnabled(true);
 
                 Notification.show("GAEB erfolgreich geladen. (" + positionen.size() + " Positionen)");
                 upload.getElement().executeJs("this.files = []");
@@ -169,8 +250,39 @@ public class GaebView extends VerticalLayout {
         mainLayout.setFlexGrow(1, positionGrid);
         mainLayout.setFlexGrow(2, detailLayout);
 
-        add(upload, mainLayout);
+        add(toolbar, mainLayout);
         setFlexGrow(1, mainLayout);
+    }
+
+    /**
+     * Builds a fresh {@link StreamResource} for the current XML bytes, applying price
+     * edits and converting to the selected target format, then assigns it to the anchor.
+     */
+    private void updateDownloadResource(Anchor downloadAnchor, Select<GaebSchemaVersion> formatSelect) {
+        GaebSchemaVersion targetVersion = formatSelect.getValue();
+        if (targetVersion == null || currentXmlBytes == null) return;
+
+        String baseName = stripExtension(currentFileName);
+        String downloadName = baseName + targetVersion.getFileExtension();
+
+        StreamResource resource = new StreamResource(downloadName, () -> {
+            try {
+                byte[] withPrices = gaebExportService.exportWithPrices(currentXmlBytes, allPositions);
+                byte[] converted = gaebFormatConverter.convert(withPrices, targetVersion);
+                return new ByteArrayInputStream(converted);
+            } catch (Exception ex) {
+                LOGGER.error("Export fehlgeschlagen", ex);
+                return new ByteArrayInputStream(currentXmlBytes);
+            }
+        });
+        downloadAnchor.setHref(resource);
+    }
+
+    /** Removes the last file extension (e.g. {@code "project.x86"} → {@code "project"}). */
+    private String stripExtension(String fileName) {
+        if (fileName == null) return "export";
+        int dot = fileName.lastIndexOf('.');
+        return dot > 0 ? fileName.substring(0, dot) : fileName;
     }
 
     /**
