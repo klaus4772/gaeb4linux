@@ -1,8 +1,11 @@
 package com.example.gaebviewer.ui.gaeb;
 
+import com.example.gaebviewer.application.gaeb.GaebExportFormat;
 import com.example.gaebviewer.application.gaeb.GaebExportService;
 import com.example.gaebviewer.application.gaeb.GaebFormatConverter;
 import com.example.gaebviewer.application.gaeb.GaebImportService;
+import com.example.gaebviewer.application.gaeb.GaebPdfExportService;
+import com.example.gaebviewer.application.gaeb.PriceNumberParser;
 import com.example.gaebviewer.application.gaeb.GaebSchemaVersion;
 import com.example.gaebviewer.domain.GaebPosition;
 import com.example.gaebviewer.domain.GaebProject;
@@ -28,11 +31,9 @@ import org.slf4j.LoggerFactory;
 import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @Route("gaeb")
 public class GaebView extends VerticalLayout {
@@ -42,6 +43,7 @@ public class GaebView extends VerticalLayout {
     private final GaebImportService gaebImportService;
     private final GaebExportService gaebExportService;
     private final GaebFormatConverter gaebFormatConverter;
+    private final GaebPdfExportService gaebPdfExportService;
     private final TreeGrid<GaebPosition> positionGrid = new TreeGrid<>();
     private final TextField numberDisplay = new TextField("Positionsnummer");
     private final TextField quantityDisplay = new TextField("Menge");
@@ -66,11 +68,13 @@ public class GaebView extends VerticalLayout {
 
     public GaebView(GaebImportService gaebImportService,
                     GaebExportService gaebExportService,
-                    GaebFormatConverter gaebFormatConverter) {
+                    GaebFormatConverter gaebFormatConverter,
+                    GaebPdfExportService gaebPdfExportService) {
 
         this.gaebImportService = gaebImportService;
         this.gaebExportService = gaebExportService;
         this.gaebFormatConverter = gaebFormatConverter;
+        this.gaebPdfExportService = gaebPdfExportService;
 
         setSizeFull();
         setPadding(true);
@@ -100,15 +104,11 @@ public class GaebView extends VerticalLayout {
         Button saveButton = new Button("Speichern", VaadinIcon.DOWNLOAD.create());
         saveButton.setEnabled(false);
 
-        // Zielformat-Auswahl
-        List<GaebSchemaVersion> supportedFormats = Arrays.stream(GaebSchemaVersion.values())
-                .filter(v -> v != GaebSchemaVersion.UNKNOWN)
-                .collect(Collectors.toList());
-
-        Select<GaebSchemaVersion> formatSelect = new Select<>();
+        // Zielformat-Auswahl (alle GAEB-Formate + PDF)
+        Select<GaebExportFormat> formatSelect = new Select<>();
         formatSelect.setLabel("Zielformat");
-        formatSelect.setItems(supportedFormats);
-        formatSelect.setItemLabelGenerator(v -> "DA" + v.getDaNumber() + " (" + v.getFileExtension() + ")");
+        formatSelect.setItems(GaebExportFormat.values());
+        formatSelect.setItemLabelGenerator(GaebExportFormat::getLabel);
         formatSelect.setEnabled(false);
 
         Span sourceFormatLabel = new Span();
@@ -124,7 +124,6 @@ public class GaebView extends VerticalLayout {
 
         // Format-Änderung → StreamResource sofort aktualisieren (einmalig registrieren!)
         formatSelect.addValueChangeListener(e -> updateDownloadResource(downloadAnchor, formatSelect));
-
         HorizontalLayout toolbar = new HorizontalLayout(upload, sourceFormatLabel, formatSelect, downloadAnchor);
         toolbar.setWidthFull();
         toolbar.setAlignItems(Alignment.END);
@@ -153,9 +152,10 @@ public class GaebView extends VerticalLayout {
                 sourceFormatLabel.setText("Quellformat: " + (detectedVersion == GaebSchemaVersion.UNKNOWN
                         ? "unbekannt"
                         : "DA" + detectedVersion.getDaNumber()));
-                formatSelect.setValue(detectedVersion == GaebSchemaVersion.UNKNOWN
-                        ? GaebSchemaVersion.DA86   // sinnvoller Fallback
-                        : detectedVersion);
+                GaebExportFormat defaultFormat = detectedVersion == GaebSchemaVersion.UNKNOWN
+                        ? GaebExportFormat.DA86
+                        : GaebExportFormat.fromSchemaVersion(detectedVersion);
+                formatSelect.setValue(defaultFormat);
                 formatSelect.setEnabled(true);
 
                 // StreamResource liest beim Download den aktuellen Stand (Preise + Zielformat)
@@ -197,14 +197,11 @@ public class GaebView extends VerticalLayout {
 
         unitPriceDisplay.addValueChangeListener(event -> {
             if (currentPosition == null || !event.isFromClient()) return;
-            String raw = event.getValue().trim().replace(",", ".");
-            try {
-                BigDecimal newPrice = new BigDecimal(raw);
-                currentPosition.setUnitPrice(newPrice);
+            var newPrice = PriceNumberParser.parse(event.getValue());
+            if (newPrice.isPresent()) {
+                currentPosition.setUnitPrice(newPrice.get());
                 totalPriceDisplay.setValue(currentPosition.getTotalPrice().toPlainString());
                 updateLvSum();
-            } catch (NumberFormatException ignored) {
-                // Ungültige Eingabe: Feld bleibt unverändert, Position unberührt
             }
         });
 
@@ -258,23 +255,38 @@ public class GaebView extends VerticalLayout {
      * Builds a fresh {@link StreamResource} for the current XML bytes, applying price
      * edits and converting to the selected target format, then assigns it to the anchor.
      */
-    private void updateDownloadResource(Anchor downloadAnchor, Select<GaebSchemaVersion> formatSelect) {
-        GaebSchemaVersion targetVersion = formatSelect.getValue();
-        if (targetVersion == null || currentXmlBytes == null) return;
+    private void updateDownloadResource(Anchor downloadAnchor, Select<GaebExportFormat> formatSelect) {
+        GaebExportFormat format = formatSelect.getValue();
+        if (format == null || currentXmlBytes == null) return;
 
         String baseName = stripExtension(currentFileName);
-        String downloadName = baseName + targetVersion.getFileExtension();
+        String downloadName = baseName + format.getFileExtension();
 
-        StreamResource resource = new StreamResource(downloadName, () -> {
-            try {
-                byte[] withPrices = gaebExportService.exportWithPrices(currentXmlBytes, allPositions);
-                byte[] converted = gaebFormatConverter.convert(withPrices, targetVersion);
-                return new ByteArrayInputStream(converted);
-            } catch (Exception ex) {
-                LOGGER.error("Export fehlgeschlagen", ex);
-                return new ByteArrayInputStream(currentXmlBytes);
-            }
-        });
+        StreamResource resource;
+
+        if (format == GaebExportFormat.PDF) {
+            resource = new StreamResource(downloadName, () -> {
+                try {
+                    byte[] pdf = gaebPdfExportService.export(allPositions, stripExtension(currentFileName));
+                    return new ByteArrayInputStream(pdf);
+                } catch (Exception ex) {
+                    LOGGER.error("PDF-Export fehlgeschlagen", ex);
+                    return new ByteArrayInputStream(new byte[0]);
+                }
+            });
+        } else {
+            resource = new StreamResource(downloadName, () -> {
+                try {
+                    byte[] withPrices = gaebExportService.exportWithPrices(currentXmlBytes, allPositions);
+                    byte[] converted  = gaebFormatConverter.convert(withPrices, format.getGaebVersion());
+                    return new ByteArrayInputStream(converted);
+                } catch (Exception ex) {
+                    LOGGER.error("GAEB-Export fehlgeschlagen", ex);
+                    return new ByteArrayInputStream(currentXmlBytes);
+                }
+            });
+        }
+
         downloadAnchor.setHref(resource);
     }
 

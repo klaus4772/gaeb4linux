@@ -1,6 +1,7 @@
 package com.example.gaebviewer.infrastructure.gaeb;
 
 import com.example.gaebviewer.application.gaeb.GaebImporter;
+import com.example.gaebviewer.application.gaeb.PriceNumberParser;
 import com.example.gaebviewer.domain.GaebBoQ;
 import com.example.gaebviewer.domain.GaebPosition;
 import com.example.gaebviewer.domain.GaebProject;
@@ -149,10 +150,6 @@ public class GaebXmlParser implements GaebImporter {
         if (value == null || value.isBlank()) {
             return BigDecimal.ZERO;
         }
-        try {
-            return new BigDecimal(value.replace(",", "."));
-        } catch (NumberFormatException e) {
-            return BigDecimal.ZERO;
-        }
+        return PriceNumberParser.parse(value).orElse(BigDecimal.ZERO);
     }
 }
