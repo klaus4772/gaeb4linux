@@ -1,6 +1,8 @@
 package com.example.gaebviewer.domain;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GaebPosition {
 
@@ -12,6 +14,7 @@ public class GaebPosition {
     private String unit;
 
     private BigDecimal unitPrice;
+    private final List<GaebTextComplement> bidderTextComplements = new ArrayList<>();
 
     public String getNumber() {
         return number;
@@ -35,6 +38,10 @@ public class GaebPosition {
 
     public BigDecimal getUnitPrice() {
         return unitPrice;
+    }
+
+    public List<GaebTextComplement> getBidderTextComplements() {
+        return bidderTextComplements;
     }
 
     public void setNumber(String number) {
@@ -61,10 +68,25 @@ public class GaebPosition {
         this.unitPrice = unitPrice;
     }
 
+    public void setBidderTextComplements(List<GaebTextComplement> bidderTextComplements) {
+        this.bidderTextComplements.clear();
+        if (bidderTextComplements != null) {
+            this.bidderTextComplements.addAll(bidderTextComplements);
+        }
+    }
+
     public BigDecimal getTotalPrice() {
         if (quantity == null || unitPrice == null) {
             return BigDecimal.ZERO;
         }
         return quantity.multiply(unitPrice);
+    }
+
+    public boolean hasBidderTextComplements() {
+        return !bidderTextComplements.isEmpty();
+    }
+
+    public boolean hasMissingRequiredBidderTextComplements() {
+        return bidderTextComplements.stream().anyMatch(GaebTextComplement::isMissingRequiredValue);
     }
 }

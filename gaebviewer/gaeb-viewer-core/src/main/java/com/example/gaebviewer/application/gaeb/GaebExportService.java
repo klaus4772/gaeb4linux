@@ -1,6 +1,7 @@
 package com.example.gaebviewer.application.gaeb;
 
 import com.example.gaebviewer.domain.GaebPosition;
+import com.example.gaebviewer.domain.GaebTextComplement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -52,7 +54,7 @@ public class GaebExportService {
     public byte[] exportWithPrices(byte[] originalXml, List<GaebPosition> positions) {
         // Index by position number for O(1) lookup during DOM traversal
         Map<String, GaebPosition> byNumber = positions.stream()
-                .filter(p -> p.getNumber() != null && p.getUnitPrice() != null)
+                .filter(p -> p.getNumber() != null)
                 .collect(Collectors.toMap(
                         GaebPosition::getNumber,
                         p -> p,
@@ -93,19 +95,70 @@ public class GaebExportService {
             String positionNumber = String.join(".", currentPath);
             GaebPosition pos = byNumber.get(positionNumber);
             if (pos != null) {
-                setDirectChildText(element, "UP", pos.getUnitPrice().toPlainString());
-                BigDecimal total = pos.getTotalPrice();
-                if (total.compareTo(BigDecimal.ZERO) != 0) {
-                    setDirectChildText(element, "TP", total.toPlainString());
+                if (pos.getUnitPrice() != null) {
+                    setDirectChildText(element, "UP", pos.getUnitPrice().toPlainString());
+                    BigDecimal total = pos.getTotalPrice();
+                    if (total.compareTo(BigDecimal.ZERO) != 0) {
+                        setDirectChildText(element, "TP", total.toPlainString());
+                    }
+                    LOGGER.debug("Updated prices for position {}: UP={} TP={}",
+                            positionNumber, pos.getUnitPrice(), total);
                 }
-                LOGGER.debug("Updated prices for position {}: UP={} TP={}",
-                        positionNumber, pos.getUnitPrice(), total);
+                updateBidderTextComplements(element, pos);
             }
         }
 
         NodeList children = element.getChildNodes();
         for (int i = 0; i < children.getLength(); i++) {
             updatePricesInDom(children.item(i), currentPath, byNumber);
+        }
+    }
+
+    private void updateBidderTextComplements(Element positionElement, GaebPosition position) {
+        if (!position.hasBidderTextComplements()) {
+            return;
+        }
+
+        Element description = firstDirectChildElement(positionElement, "Description");
+        if (description == null) {
+            return;
+        }
+        Element completeText = firstDirectChildElement(description, "CompleteText");
+        if (completeText == null) {
+            return;
+        }
+        Element detailTxt = firstDirectChildElement(completeText, "DetailTxt");
+        if (detailTxt == null) {
+            return;
+        }
+
+        Map<String, GaebTextComplement> complementsByMarkLabel = position.getBidderTextComplements().stream()
+                .collect(Collectors.toMap(
+                        GaebTextComplement::getMarkLabel,
+                        complement -> complement,
+                        (left, right) -> left,
+                        LinkedHashMap::new
+                ));
+
+        NodeList children = detailTxt.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() != Node.ELEMENT_NODE) {
+                continue;
+            }
+
+            Element childElement = (Element) child;
+            if (!"TextComplement".equals(childElement.getLocalName())) {
+                continue;
+            }
+            if (!"Bidder".equalsIgnoreCase(childElement.getAttribute("Kind"))) {
+                continue;
+            }
+
+            GaebTextComplement complement = complementsByMarkLabel.get(childElement.getAttribute("MarkLbl"));
+            if (complement != null) {
+                setDirectChildText(childElement, "ComplBody", complement.getBody());
+            }
         }
     }
 
@@ -124,6 +177,20 @@ public class GaebExportService {
                 return;
             }
         }
+    }
+
+    private Element firstDirectChildElement(Element parent, String localName) {
+        NodeList children = parent.getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            Node child = children.item(i);
+            if (child.getNodeType() != Node.ELEMENT_NODE) continue;
+            Element element = (Element) child;
+            String name = element.getLocalName() != null ? element.getLocalName() : element.getNodeName();
+            if (localName.equals(name)) {
+                return element;
+            }
+        }
+        return null;
     }
 
     // -----------------------------------------------------------------------

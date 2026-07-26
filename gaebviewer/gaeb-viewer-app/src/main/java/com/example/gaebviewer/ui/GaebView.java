@@ -9,6 +9,7 @@ import com.example.gaebviewer.application.gaeb.PriceNumberParser;
 import com.example.gaebviewer.application.gaeb.GaebSchemaVersion;
 import com.example.gaebviewer.domain.GaebPosition;
 import com.example.gaebviewer.domain.GaebProject;
+import com.example.gaebviewer.domain.GaebTextComplement;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.H2;
@@ -30,20 +31,27 @@ import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 @Route("gaeb")
 public class GaebView extends VerticalLayout {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GaebView.class);
+    private static final Locale PRICE_LOCALE = Locale.GERMANY;
 
     private final GaebImportService gaebImportService;
     private final GaebExportService gaebExportService;
     private final GaebFormatConverter gaebFormatConverter;
     private final GaebPdfExportService gaebPdfExportService;
+    private final DecimalFormat priceFormat = createPriceFormat();
     private final TreeGrid<GaebPosition> positionGrid = new TreeGrid<>();
     private final TextField numberDisplay = new TextField("Positionsnummer");
     private final TextField quantityDisplay = new TextField("Menge");
@@ -51,8 +59,15 @@ public class GaebView extends VerticalLayout {
     private final TextField unitPriceDisplay = new TextField("Einheitspreis");
     private final TextField totalPriceDisplay = new TextField("Gesamtpreis");
     private final TextField lvSumDisplay = new TextField("LV-Summe");
+    private final Span unitPriceCurrency = new Span("€");
+    private final Span totalPriceCurrency = new Span("€");
+    private final Span lvSumCurrency = new Span("€");
+    private final VerticalLayout textComplementLayout = new VerticalLayout();
     private final TextArea shortTextDisplay = new TextArea("Short Text");
     private final TextArea longTextDisplay = new TextArea("Long Text");
+    private Button saveButton;
+    private Select<GaebExportFormat> formatSelect;
+    private Anchor downloadAnchor;
 
     /** Die aktuell ausgewählte Position — Träger des temporären Speichers. */
     private GaebPosition currentPosition;
@@ -65,6 +80,7 @@ public class GaebView extends VerticalLayout {
 
     /** Dateiname der zuletzt geladenen Datei. */
     private String currentFileName;
+    private String currentCurrencySymbol = "€";
 
     public GaebView(GaebImportService gaebImportService,
                     GaebExportService gaebExportService,
@@ -81,6 +97,9 @@ public class GaebView extends VerticalLayout {
         setSpacing(true);
 
         add(new H2("GAEB XML Viewer"));
+        configureCurrencySuffix(unitPriceDisplay, unitPriceCurrency);
+        configureCurrencySuffix(totalPriceDisplay, totalPriceCurrency);
+        configureCurrencySuffix(lvSumDisplay, lvSumCurrency);
 
         MemoryBuffer buffer = new MemoryBuffer();
         Upload upload = new Upload(buffer);
@@ -101,11 +120,11 @@ public class GaebView extends VerticalLayout {
         upload.setMaxFiles(1);
 
         // Download-Button — wird erst nach erfolgreichem Datei-Import aktiviert
-        Button saveButton = new Button("Speichern", VaadinIcon.DOWNLOAD.create());
+        saveButton = new Button("Speichern", VaadinIcon.DOWNLOAD.create());
         saveButton.setEnabled(false);
 
         // Zielformat-Auswahl (alle GAEB-Formate + PDF)
-        Select<GaebExportFormat> formatSelect = new Select<>();
+        formatSelect = new Select<>();
         formatSelect.setLabel("Zielformat");
         formatSelect.setItems(GaebExportFormat.values());
         formatSelect.setItemLabelGenerator(GaebExportFormat::getLabel);
@@ -118,12 +137,12 @@ public class GaebView extends VerticalLayout {
                 .set("align-self", "center")
                 .set("white-space", "nowrap");
 
-        Anchor downloadAnchor = new Anchor();
+        downloadAnchor = new Anchor();
         downloadAnchor.getElement().setAttribute("download", true);
         downloadAnchor.add(saveButton);
 
         // Format-Änderung → StreamResource sofort aktualisieren (einmalig registrieren!)
-        formatSelect.addValueChangeListener(e -> updateDownloadResource(downloadAnchor, formatSelect));
+        formatSelect.addValueChangeListener(e -> updateExportAvailability());
         HorizontalLayout toolbar = new HorizontalLayout(upload, sourceFormatLabel, formatSelect, downloadAnchor);
         toolbar.setWidthFull();
         toolbar.setAlignItems(Alignment.END);
@@ -145,7 +164,10 @@ public class GaebView extends VerticalLayout {
                 allPositions = new ArrayList<>(positionen);
                 currentXmlBytes = xmlBytes;
                 currentFileName = fileName;
+                currentPosition = null;
+                updateCurrencySymbol(project.getCurrencyCode());
                 updateLvSum();
+                clearPositionDetails();
 
                 // Quellformat erkennen und anzeigen
                 GaebSchemaVersion detectedVersion = GaebSchemaVersion.fromString(project.getGaebVersion());
@@ -159,8 +181,10 @@ public class GaebView extends VerticalLayout {
                 formatSelect.setEnabled(true);
 
                 // StreamResource liest beim Download den aktuellen Stand (Preise + Zielformat)
-                updateDownloadResource(downloadAnchor, formatSelect);
-                saveButton.setEnabled(true);
+                updateExportAvailability();
+                if (!areRequiredTextComplementsFilled()) {
+                    Notification.show("Pflicht-Textergänzungen müssen vor dem Speichern ausgefüllt werden.");
+                }
 
                 Notification.show("GAEB erfolgreich geladen. (" + positionen.size() + " Positionen)");
                 upload.getElement().executeJs("this.files = []");
@@ -177,21 +201,9 @@ public class GaebView extends VerticalLayout {
         positionGrid.addSelectionListener(event -> {
             currentPosition = event.getFirstSelectedItem().orElse(null);
             if (currentPosition != null) {
-                numberDisplay.setValue(currentPosition.getNumber() == null ? "" : currentPosition.getNumber());
-                quantityDisplay.setValue(currentPosition.getQuantity() == null ? "" : currentPosition.getQuantity().toPlainString());
-                unitDisplay.setValue(currentPosition.getUnit() == null ? "" : currentPosition.getUnit());
-                unitPriceDisplay.setValue(currentPosition.getUnitPrice() == null ? "" : currentPosition.getUnitPrice().toPlainString());
-                totalPriceDisplay.setValue(currentPosition.getTotalPrice().toPlainString());
-                shortTextDisplay.setValue(currentPosition.getShortText() == null ? "" : currentPosition.getShortText());
-                longTextDisplay.setValue(currentPosition.getLongText() == null ? "" : currentPosition.getLongText());
+                showPositionDetails(currentPosition);
             } else {
-                numberDisplay.clear();
-                quantityDisplay.clear();
-                unitDisplay.clear();
-                unitPriceDisplay.clear();
-                totalPriceDisplay.clear();
-                shortTextDisplay.clear();
-                longTextDisplay.clear();
+                clearPositionDetails();
             }
         });
 
@@ -200,8 +212,10 @@ public class GaebView extends VerticalLayout {
             var newPrice = PriceNumberParser.parse(event.getValue());
             if (newPrice.isPresent()) {
                 currentPosition.setUnitPrice(newPrice.get());
-                totalPriceDisplay.setValue(currentPosition.getTotalPrice().toPlainString());
+                unitPriceDisplay.setValue(formatPrice(currentPosition.getUnitPrice()));
+                totalPriceDisplay.setValue(formatPrice(currentPosition.getTotalPrice()));
                 updateLvSum();
+                updateExportAvailability();
             }
         });
 
@@ -227,6 +241,10 @@ public class GaebView extends VerticalLayout {
         longTextDisplay.setReadOnly(true);
         longTextDisplay.setWidthFull();
         longTextDisplay.setHeight("400px");
+        textComplementLayout.setPadding(false);
+        textComplementLayout.setSpacing(true);
+        textComplementLayout.setWidthFull();
+        textComplementLayout.setVisible(false);
 
         VerticalLayout priceColumn = new VerticalLayout(totalPriceDisplay, lvSumDisplay);
         priceColumn.setPadding(false);
@@ -237,7 +255,7 @@ public class GaebView extends VerticalLayout {
         shortTextRow.setFlexGrow(4, shortTextDisplay);
         shortTextRow.setFlexGrow(1, priceColumn);
 
-        VerticalLayout detailLayout = new VerticalLayout(positionInfoRow, shortTextRow, longTextDisplay);
+        VerticalLayout detailLayout = new VerticalLayout(positionInfoRow, shortTextRow, textComplementLayout, longTextDisplay);
         detailLayout.setSizeFull();
         detailLayout.setPadding(false);
         detailLayout.setSpacing(true);
@@ -255,7 +273,10 @@ public class GaebView extends VerticalLayout {
      * Builds a fresh {@link StreamResource} for the current XML bytes, applying price
      * edits and converting to the selected target format, then assigns it to the anchor.
      */
-    private void updateDownloadResource(Anchor downloadAnchor, Select<GaebExportFormat> formatSelect) {
+    private void updateDownloadResource() {
+        if (downloadAnchor == null || formatSelect == null) {
+            return;
+        }
         GaebExportFormat format = formatSelect.getValue();
         if (format == null || currentXmlBytes == null) return;
 
@@ -288,6 +309,19 @@ public class GaebView extends VerticalLayout {
         }
 
         downloadAnchor.setHref(resource);
+    }
+
+    private void updateExportAvailability() {
+        boolean exportAvailable = currentXmlBytes != null
+                && formatSelect != null
+                && formatSelect.getValue() != null
+                && areRequiredTextComplementsFilled();
+        saveButton.setEnabled(exportAvailable);
+        if (exportAvailable) {
+            updateDownloadResource();
+        } else if (downloadAnchor != null) {
+            downloadAnchor.getElement().removeAttribute("href");
+        }
     }
 
     /** Removes the last file extension (e.g. {@code "project.x86"} → {@code "project"}). */
@@ -333,6 +367,118 @@ public class GaebView extends VerticalLayout {
         BigDecimal sum = allPositions.stream()
                 .map(GaebPosition::getTotalPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-        lvSumDisplay.setValue(sum.toPlainString());
+        lvSumDisplay.setValue(formatPrice(sum));
+    }
+
+    private static DecimalFormat createPriceFormat() {
+        DecimalFormat format = new DecimalFormat("0.00", DecimalFormatSymbols.getInstance(PRICE_LOCALE));
+        format.setRoundingMode(RoundingMode.HALF_UP);
+        return format;
+    }
+
+    private void configureCurrencySuffix(TextField field, Span suffix) {
+        field.setSuffixComponent(suffix);
+    }
+
+    private void updateCurrencySymbol(String currencyCode) {
+        currentCurrencySymbol = resolveCurrencySymbol(currencyCode);
+        unitPriceCurrency.setText(currentCurrencySymbol);
+        totalPriceCurrency.setText(currentCurrencySymbol);
+        lvSumCurrency.setText(currentCurrencySymbol);
+    }
+
+    private String resolveCurrencySymbol(String currencyCode) {
+        String normalizedCurrency = currencyCode == null || currencyCode.isBlank()
+                ? "EUR"
+                : currencyCode.trim().toUpperCase(Locale.ROOT);
+        try {
+            return Currency.getInstance(normalizedCurrency).getSymbol(PRICE_LOCALE);
+        } catch (IllegalArgumentException exception) {
+            return normalizedCurrency;
+        }
+    }
+
+    private String formatPrice(BigDecimal value) {
+        if (value == null) {
+            return "";
+        }
+        return priceFormat.format(value);
+    }
+
+    private void showPositionDetails(GaebPosition position) {
+        numberDisplay.setValue(position.getNumber() == null ? "" : position.getNumber());
+        quantityDisplay.setValue(position.getQuantity() == null ? "" : position.getQuantity().toPlainString());
+        unitDisplay.setValue(position.getUnit() == null ? "" : position.getUnit());
+        unitPriceDisplay.setValue(formatPrice(position.getUnitPrice()));
+        totalPriceDisplay.setValue(formatPrice(position.getTotalPrice()));
+        shortTextDisplay.setValue(position.getShortText() == null ? "" : position.getShortText());
+        longTextDisplay.setValue(position.getLongText() == null ? "" : position.getLongText());
+        renderTextComplements(position);
+    }
+
+    private void clearPositionDetails() {
+        numberDisplay.clear();
+        quantityDisplay.clear();
+        unitDisplay.clear();
+        unitPriceDisplay.clear();
+        totalPriceDisplay.clear();
+        shortTextDisplay.clear();
+        longTextDisplay.clear();
+        renderTextComplements(null);
+    }
+
+    private void renderTextComplements(GaebPosition position) {
+        textComplementLayout.removeAll();
+
+        if (position == null || !position.hasBidderTextComplements()) {
+            textComplementLayout.setVisible(false);
+            return;
+        }
+
+        Span heading = new Span("Bieter-Textergänzungen");
+        heading.getStyle().set("font-weight", "600");
+        textComplementLayout.add(heading);
+
+        for (GaebTextComplement textComplement : position.getBidderTextComplements()) {
+            textComplementLayout.add(createTextComplementField(textComplement));
+        }
+
+        textComplementLayout.setVisible(true);
+    }
+
+    private TextArea createTextComplementField(GaebTextComplement textComplement) {
+        String caption = textComplement.getCaption() == null || textComplement.getCaption().isBlank()
+                ? "Textergänzung " + textComplement.getMarkLabel()
+                : textComplement.getCaption();
+
+        TextArea field = new TextArea(caption + (textComplement.isRequired() ? " (Pflicht)" : " (optional)"));
+        field.setWidthFull();
+        field.setValue(textComplement.getBody() == null ? "" : textComplement.getBody());
+        if (textComplement.getPlaceholder() != null && !textComplement.getPlaceholder().isBlank()) {
+            field.setPlaceholder(textComplement.getPlaceholder());
+        }
+        if (textComplement.getTail() != null && !textComplement.getTail().isBlank()) {
+            field.setHelperText(textComplement.getTail());
+        }
+        applyTextComplementValidation(field, textComplement);
+        field.addValueChangeListener(event -> {
+            if (!event.isFromClient()) {
+                return;
+            }
+            textComplement.setBody(event.getValue());
+            applyTextComplementValidation(field, textComplement);
+            updateExportAvailability();
+        });
+        return field;
+    }
+
+    private void applyTextComplementValidation(TextArea field, GaebTextComplement textComplement) {
+        boolean invalid = textComplement.isMissingRequiredValue();
+        field.setInvalid(invalid);
+        field.setErrorMessage(invalid ? "Diese Textergänzung ist laut GAEB-Datei erforderlich." : null);
+    }
+
+    private boolean areRequiredTextComplementsFilled() {
+        return allPositions.stream().noneMatch(GaebPosition::hasMissingRequiredBidderTextComplements);
     }
 }
