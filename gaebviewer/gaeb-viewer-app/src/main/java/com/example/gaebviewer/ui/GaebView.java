@@ -1,4 +1,4 @@
-package com.example.gaebviewer.ui.gaeb;
+package com.example.gaebviewer.ui;
 
 import com.example.gaebviewer.application.gaeb.GaebExportFormat;
 import com.example.gaebviewer.application.gaeb.GaebExportService;
