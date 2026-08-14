@@ -10,7 +10,6 @@ Das gaebviewer-Projekt wurde in eine modulare Struktur aufgeteilt, um bessere Tr
      - GAEB-Datei-Importe (DA80-DA87)
      - XML-Parsing und Namensraum-Behandlung
      - Domänenmodelle für GAEB-Strukturen (GaebProject, GaebBoQ, GaebPosition)
-     - Span-Remover-Utility für GAEB-Datei-Bereinigung
      - Basis-Domänenmodelle (Tender, Position, ItemText, PriceBreakdown)
    - **Abhängigkeiten**: GAEB-Schema-Module, Jakarta XML Bind, Spring Boot
    - **Verzeichnisse**:
@@ -23,7 +22,7 @@ Das gaebviewer-Projekt wurde in eine modulare Struktur aufgeteilt, um bessere Tr
 ### 2. **gaeb-editor-basic**
    - **Zweck**: Basis-Funktionalität für Preis-Eingabe und Bearbeitung
    - **Verantwortlichkeiten**:
-     - VOBB-Geschäftslogik (Ausgleich, Zuschlag-Kalkulation)
+     - VOBB-Geschäftslogik (Zuschlag-Kalkulation)
      - CSV-Import für Preise
      - Excel-Export für Ergebnisse
      - Positionsabrechnung und Preisberechnungen
@@ -141,5 +140,4 @@ mv gaebviewer/archived-src-java gaebviewer/src/main/java
 
 Empfehlung: Sobald du bestätigt hast, dass alle Klassen korrekt in den neuen Modulen liegen und die IDE das Projekt sauber lädt, kannst du
 `gaebviewer/archived-src-java` löschen oder ins Repository-Backup verschieben.
-
 

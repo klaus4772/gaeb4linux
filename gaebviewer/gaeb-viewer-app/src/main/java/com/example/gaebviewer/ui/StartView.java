@@ -1,26 +1,34 @@
 package com.example.gaebviewer.ui;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 
 @Route("")
 public class StartView extends VerticalLayout {
 
     public StartView() {
+        setSizeFull();
+        setPadding(true);
+        setSpacing(true);
+        setAlignItems(Alignment.CENTER);
+        addClassNames(LumoUtility.Padding.LARGE, LumoUtility.Gap.MEDIUM);
 
-        add(new H1("GAEB4Linux"));
+        H1 title = new H1("GAEB4Linux");
+        title.addClassNames(LumoUtility.FontSize.XXLARGE, LumoUtility.Margin.Bottom.NONE);
 
         Button gaebButton = new Button("GAEB Viewer",
                 e -> getUI().ifPresent(ui -> ui.navigate("gaeb")));
+        gaebButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        gaebButton.addClassNames(LumoUtility.Width.FULL);
 
-        Button ausgleichButton = new Button("Ausgleichsberechnung - GAEB-Editor",
-                e -> getUI().ifPresent(ui -> ui.navigate("ausgleich")));
+        Button editorButton = new Button("GAEB Editor",
+                e -> getUI().ifPresent(ui -> ui.navigate("editor")));
+        editorButton.addClassNames(LumoUtility.Width.FULL);
 
-        Button spanRemoverButton = new Button("Span Remover - experimental",
-                e -> getUI().ifPresent(ui -> ui.navigate("span-remover")));
-
-        add(gaebButton, ausgleichButton, spanRemoverButton);
+        add(title, gaebButton, editorButton);
     }
 }

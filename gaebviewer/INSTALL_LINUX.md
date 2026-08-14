@@ -74,7 +74,6 @@ chmod +x start-gaebviewer.sh
 
 Die Anwendung ist nun erreichbar unter:
 - **GAEB Viewer**: http://SERVER-IP:8080/gaeb
-- **Span Remover**: http://SERVER-IP:8080/span-remover
 
 Zum Beenden: `STRG+C` drücken
 

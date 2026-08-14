@@ -38,24 +38,55 @@ Eine benutzerfreundliche Web-Anwendung zur Anzeige und Verarbeitung von GAEB-Dat
    ```
    - Öffne deinen Browser und gehe zu http://localhost:8080
 
+## 🗄️ Datenbank (für den GAEB-Editor)
+
+Der GAEB-Editor (Modul `gaeb-editor-basic`) speichert importierte LVs temporär in einer
+PostgreSQL-Datenbank, damit Positionen in großem Umfang bearbeitet werden können
+(Texte, Mengen, Einheiten, Löschen, Ordnungszahlen ändern, Kopieren), ohne die Original-Datei
+zu verändern. **Die Anwendung startet nicht ohne erreichbare Datenbank.**
+
+Für die lokale Entwicklung reicht:
+```bash
+cd gaebviewer
+docker compose up -d
+```
+Das startet Postgres mit den Zugangsdaten, die in `gaeb-viewer-app/src/main/resources/application.properties`
+als Standardwerte hinterlegt sind (`gaebeditor` / `gaebeditor` auf `localhost:5432`).
+
+Für den Produktivbetrieb (z.B. via `gaebviewer.service`) können die Zugangsdaten über
+Umgebungsvariablen überschrieben werden: `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`,
+`SPRING_DATASOURCE_PASSWORD` (z.B. in `/etc/gaebviewer/gaebviewer.env`, das der systemd-Service
+optional einliest). Das Datenbankschema wird beim Start automatisch per Flyway angelegt.
+
+### Ausprobieren ganz ohne Docker/Postgres-Installation
+
+Mit dem Profil `embedded-db` startet die Anwendung ihre eigene, echte PostgreSQL-Instanz selbst
+(Binary wird beim ersten Start automatisch heruntergeladen, danach zwischengespeichert - kein
+Docker, keine Installation nötig):
+
+```bash
+mvn -pl gaebviewer/gaeb-viewer-app -am package -DskipTests
+java -jar gaebviewer/gaeb-viewer-app/target/gaebviewer.jar --spring.profiles.active=embedded-db
+```
+
+Danach http://localhost:8080/editor öffnen. Die Datenbank ist rein temporär (Daten sind weg,
+sobald der Prozess endet) - passend zum Charakter der Editor-Zwischenspeicherung. **Die
+Anwendung dazu normal beenden (Strg+C bzw. normales Stoppen)**, nicht hart abschießen (`kill -9`
+bzw. Task-Manager „Prozess beenden“) - sonst bleibt der eingebettete Postgres-Hilfsprozess im
+Hintergrund laufen, weil sein Shutdown-Hook nicht mehr ausgeführt wird.
+
 ## 📋 Verfügbare Funktionen
 
 | Funktion | URL |
 |----------|-----|
 | **Startseite** | http://localhost:8080 |
 | **GAEB Viewer** | http://localhost:8080/gaeb |
-| **Span Remover** | http://localhost:8080/span-remover |
 
 ### GAEB Viewer
 - Upload von GAEB-Dateien (DA80, DA81, DA82, DA83, DA84, DA85, DA86, DA87)
 - Anzeige von Positionen und Texten
 - Export zu Excel (VOBB)
 - CSV-Import für Kostengruppen
-
-### Span Remover
-- Entfernt `<span>` Tags aus GAEB XML-Dateien
-- Behält den Textinhalt
-- Download der bereinigte Datei
 
 ## 🔧 Java-Installation (falls nötig)
 
@@ -170,7 +201,6 @@ Weitere Infos: Siehe `INSTALL_LINUX.md`
 
 - [Build-Anleitung](BUILD_INSTRUCTIONS.md) - Für Entwickler
 - [Linux-Installation](INSTALL_LINUX.md) - Für Server-Deployment
-- [GAEB Span Remover](GAEB_SPAN_REMOVER_README.md) - Tool-spezifische Infos
 
 ## 🐛 Bug-Reports & Feature Requests
 
@@ -194,4 +224,3 @@ Contributions sind willkommen! Bitte erstelle einen Pull Request.
 - Vaadin: 24.1.3
 
 **Zuletzt aktualisiert:** 2026-07-10
-
