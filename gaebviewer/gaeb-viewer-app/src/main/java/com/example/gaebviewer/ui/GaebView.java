@@ -26,6 +26,7 @@ import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.StreamResource;
+import com.vaadin.flow.theme.lumo.LumoUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -95,8 +96,11 @@ public class GaebView extends VerticalLayout {
         setSizeFull();
         setPadding(true);
         setSpacing(true);
+        addClassNames(LumoUtility.Padding.LARGE, LumoUtility.Gap.MEDIUM);
 
-        add(new H2("GAEB XML Viewer"));
+        H2 title = new H2("GAEB XML Viewer");
+        title.addClassNames(LumoUtility.FontSize.XLARGE, LumoUtility.Margin.Bottom.NONE);
+        add(title);
         configureCurrencySuffix(unitPriceDisplay, unitPriceCurrency);
         configureCurrencySuffix(totalPriceDisplay, totalPriceCurrency);
         configureCurrencySuffix(lvSumDisplay, lvSumCurrency);
