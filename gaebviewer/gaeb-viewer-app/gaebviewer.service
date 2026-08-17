@@ -1,0 +1,18 @@
+[Unit]
+Description=GAEB Viewer
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/gaebviewer
+# Optional file with DB overrides, e.g. SPRING_DATASOURCE_URL/_USERNAME/_PASSWORD
+EnvironmentFile=-/etc/gaebviewer/gaebviewer.env
+ExecStart=/usr/bin/java -Xms256m -Xmx1024m -jar /opt/gaebviewer/gaebviewer.jar --server.port=8080
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+User=gaebviewer
+Group=gaebviewer
+
+[Install]
+WantedBy=multi-user.target

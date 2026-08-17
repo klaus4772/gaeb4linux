@@ -1,0 +1,16 @@
+services:
+  gaebeditor-db:
+    image: postgres:16-alpine
+    container_name: gaebeditor-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: gaebeditor
+      POSTGRES_USER: gaebeditor
+      POSTGRES_PASSWORD: gaebeditor
+    ports:
+      - "5432:5432"
+    volumes:
+      - gaebeditor-db-data:/var/lib/postgresql/data
+
+volumes:
+  gaebeditor-db-data:
