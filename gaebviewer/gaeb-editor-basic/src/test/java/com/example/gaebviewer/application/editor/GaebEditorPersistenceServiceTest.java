@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(classes = EditorTestApplication.class)
@@ -36,6 +37,7 @@ class GaebEditorPersistenceServiceTest {
         GaebDocumentEntity document = service.importDocument(original, "test.d81", project);
 
         assertThat(document.getId()).isNotNull();
+        assertThat(document.getProjectNumber()).isEqualTo("P00001");
         assertThat(document.getOriginalContent()).isEqualTo(original);
         assertThat(service.exportOriginalBytes(document.getId())).isEqualTo(original);
 
@@ -143,6 +145,82 @@ class GaebEditorPersistenceServiceTest {
     void operatingOnAnUnknownPositionFails() {
         assertThrows(jakarta.persistence.EntityNotFoundException.class,
                 () -> service.deletePosition(UUID.randomUUID()));
+    }
+
+    @Test
+    void nonEditableLvAllowsOnlyUnitPriceAndTextComplements() {
+        byte[] original = "<GAEB/>".getBytes(StandardCharsets.UTF_8);
+        GaebDocumentEntity document = service.importDocument(original, "test.d81", sampleProject(), false);
+        UUID positionId = service.loadPositions(document.getId()).get(0).getId();
+
+        service.updateUnitPrice(positionId, new BigDecimal("7.50"));
+        service.upsertTextComplement(positionId, "Neue Ergänzung");
+
+        assertThatThrownBy(() -> service.updatePosition(positionId, "2.0", "x", "y",
+                new BigDecimal("1"), "m", new BigDecimal("2")))
+                .isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(() -> service.deletePosition(positionId))
+                .isInstanceOf(IllegalStateException.class);
+        assertThatThrownBy(() -> service.createPosition(document.getId(), "9.9",
+                BigDecimal.ONE, "St", "neu", "neu", BigDecimal.TEN))
+                .isInstanceOf(IllegalStateException.class);
+    }
+
+    @Test
+    void creatingNewLvCreatesEditableProjectWithoutPositions() {
+        GaebDocumentEntity document = service.createNewEmptyDocument("Neu");
+        assertThat(document.getProjectNumber()).isEqualTo("P00001");
+        assertThat(document.isEditable()).isTrue();
+        assertThat(service.loadPositions(document.getId())).isEmpty();
+    }
+
+    @Test
+    void creatingOrUpdatingPositionWithEmptyOzIsRejected() {
+        GaebDocumentEntity document = service.importDocument(
+                "<GAEB/>".getBytes(StandardCharsets.UTF_8), "test.d81", sampleProject(), true);
+        UUID positionId = service.loadPositions(document.getId()).get(0).getId();
+
+        assertThatThrownBy(() -> service.createPosition(document.getId(), "   ",
+                BigDecimal.ONE, "St", "neu", "neu", BigDecimal.TEN))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> service.updatePosition(positionId, "",
+                "Kurz", "Lang", BigDecimal.ONE, "St", BigDecimal.TEN))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void editableModeCanBeSwitchedAfterImport() {
+        GaebDocumentEntity document = service.importDocument(
+                "<GAEB/>".getBytes(StandardCharsets.UTF_8), "test.d81", sampleProject(), false);
+        UUID positionId = service.loadPositions(document.getId()).get(0).getId();
+
+        assertThatThrownBy(() -> service.updatePosition(positionId, "2.0", "x", "y",
+                new BigDecimal("1"), "m", new BigDecimal("2")))
+                .isInstanceOf(IllegalStateException.class);
+
+        service.updateEditableMode(document.getId(), true);
+        service.updatePosition(positionId, "2.0", "x", "y",
+                new BigDecimal("1"), "m", new BigDecimal("2"));
+
+        GaebDocumentEntity reloaded = service.loadDocument(document.getId()).orElseThrow();
+        assertThat(reloaded.isEditable()).isTrue();
+    }
+
+    @Test
+    void originalAndWorkingVersionAreStoredSeparately() {
+        byte[] original = "<GAEB>ORIGINAL</GAEB>".getBytes(StandardCharsets.UTF_8);
+        GaebDocumentEntity document = service.importDocument(original, "test.d81", sampleProject(), true);
+        UUID positionId = service.loadPositions(document.getId()).get(0).getId();
+
+        byte[] workingBefore = service.exportWorkingBytes(document.getId());
+        assertThat(workingBefore).isEqualTo(original);
+
+        service.updateUnitPrice(positionId, new BigDecimal("99.99"));
+
+        byte[] originalAfter = service.exportOriginalBytes(document.getId());
+        byte[] workingAfter = service.exportWorkingBytes(document.getId());
+        assertThat(originalAfter).isEqualTo(original);
+        assertThat(workingAfter).isNotEqualTo(original);
     }
 
     private GaebProject sampleProject() {

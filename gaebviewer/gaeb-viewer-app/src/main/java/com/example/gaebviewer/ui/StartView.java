@@ -29,6 +29,14 @@ public class StartView extends VerticalLayout {
                 e -> getUI().ifPresent(ui -> ui.navigate("editor")));
         editorButton.addClassNames(LumoUtility.Width.FULL);
 
-        add(title, gaebButton, editorButton);
+        Button projectsButton = new Button("Projektübersicht",
+                e -> getUI().ifPresent(ui -> ui.navigate("projects")));
+        projectsButton.addClassNames(LumoUtility.Width.FULL);
+
+        Button settingsButton = new Button("Einstellungen",
+                e -> getUI().ifPresent(ui -> ui.navigate("settings")));
+        settingsButton.addClassNames(LumoUtility.Width.FULL);
+
+        add(title, gaebButton, editorButton, projectsButton, settingsButton);
     }
 }
