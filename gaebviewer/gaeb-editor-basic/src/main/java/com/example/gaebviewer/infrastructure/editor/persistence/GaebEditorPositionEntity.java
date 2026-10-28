@@ -156,7 +156,7 @@ public class GaebEditorPositionEntity {
         return originalPositionNumber;
     }
 
-    void setOriginalPositionNumber(String originalPositionNumber) {
+    public void setOriginalPositionNumber(String originalPositionNumber) {
         this.originalPositionNumber = originalPositionNumber;
     }
 

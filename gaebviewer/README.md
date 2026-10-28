@@ -38,42 +38,45 @@ Eine benutzerfreundliche Web-Anwendung zur Anzeige und Verarbeitung von GAEB-Dat
    ```
    - Öffne deinen Browser und gehe zu http://localhost:8080
 
-## 🗄️ Datenbank (für den GAEB-Editor)
+## 🗄️ Datenbank
 
-Der GAEB-Editor (Modul `gaeb-editor-basic`) speichert importierte LVs temporär in einer
-PostgreSQL-Datenbank, damit Positionen in großem Umfang bearbeitet werden können
-(Texte, Mengen, Einheiten, Löschen, Ordnungszahlen ändern, Kopieren), ohne die Original-Datei
-zu verändern. **Die Anwendung startet nicht ohne erreichbare Datenbank.**
+Der GAEB-Editor speichert importierte Dateien und Änderungen standardmäßig dauerhaft in einer
+lokalen SQLite-Datenbank. Eine separate Datenbankinstallation ist dafür nicht erforderlich.
 
-Für die lokale Entwicklung reicht:
-```bash
-cd gaebviewer
-docker compose up -d
-```
-Das startet Postgres mit den Zugangsdaten, die in `gaeb-viewer-app/src/main/resources/application.properties`
-als Standardwerte hinterlegt sind (`gaebeditor` / `gaebeditor` auf `localhost:5432`).
+### Lokaler Betrieb mit SQLite (Standard)
 
-Für den Produktivbetrieb (z.B. via `gaebviewer.service`) können die Zugangsdaten über
-Umgebungsvariablen überschrieben werden: `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`,
-`SPRING_DATASOURCE_PASSWORD` (z.B. in `/etc/gaebviewer/gaebviewer.env`, das der systemd-Service
-optional einliest). Das Datenbankschema wird beim Start automatisch per Flyway angelegt.
-
-### Ausprobieren ganz ohne Docker/Postgres-Installation
-
-Mit dem Profil `embedded-db` startet die Anwendung ihre eigene, echte PostgreSQL-Instanz selbst
-(Binary wird beim ersten Start automatisch heruntergeladen, danach zwischengespeichert - kein
-Docker, keine Installation nötig):
+Die Konfiguration liegt in `gaebviewer/gaeb-viewer-app/src/main/resources/application-sqlite.properties`.
+Die persistente Datenbankdatei `gaebviewer.db` wird im aktuellen Arbeitsverzeichnis angelegt.
+Der Speicherort kann über `GAEB_SQLITE_URL` gesetzt werden:
 
 ```bash
 mvn -pl gaebviewer/gaeb-viewer-app -am package -DskipTests
-java -jar gaebviewer/gaeb-viewer-app/target/gaebviewer.jar --spring.profiles.active=embedded-db
+java -jar gaebviewer/gaeb-viewer-app/target/gaebviewer.jar
 ```
 
-Danach http://localhost:8080/editor öffnen. Die Datenbank ist rein temporär (Daten sind weg,
-sobald der Prozess endet) - passend zum Charakter der Editor-Zwischenspeicherung. **Die
-Anwendung dazu normal beenden (Strg+C bzw. normales Stoppen)**, nicht hart abschießen (`kill -9`
-bzw. Task-Manager „Prozess beenden“) - sonst bleibt der eingebettete Postgres-Hilfsprozess im
-Hintergrund laufen, weil sein Shutdown-Hook nicht mehr ausgeführt wird.
+Beispiel für einen absoluten Pfad:
+
+```bash
+GAEB_SQLITE_URL=jdbc:sqlite:/var/lib/gaebviewer/gaebviewer.db java -jar gaebviewer.jar
+```
+
+Das Zielverzeichnis muss bereits existieren und für den Prozess beschreibbar sein.
+
+### Externes PostgreSQL
+
+Für den Betrieb mit einer separat verwalteten PostgreSQL-Datenbank das Profil `external-db`
+aktivieren. Profil- und Verbindungsparameter liegen in
+`gaebviewer/gaeb-viewer-app/src/main/resources/application-external-db.properties`;
+Verbindungswerte sollten über `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME` und
+`SPRING_DATASOURCE_PASSWORD` bereitgestellt werden:
+
+```bash
+SPRING_PROFILES_ACTIVE=external-db \
+SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/gaebeditor \
+SPRING_DATASOURCE_USERNAME=gaebeditor \
+SPRING_DATASOURCE_PASSWORD=... \
+java -jar gaebviewer.jar
+```
 
 ## 📋 Verfügbare Funktionen
 

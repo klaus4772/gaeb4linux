@@ -49,6 +49,19 @@ class GaebEditorPersistenceServiceTest {
     }
 
     @Test
+    void importPersistsGaebVersionLabelsLongerThanTwentyCharacters() {
+        GaebProject project = sampleProject();
+        String version = "GAEB XML exchange format version 3.3";
+        project.setGaebVersion(version);
+
+        GaebDocumentEntity document = service.importDocument(
+                "<GAEB/>".getBytes(StandardCharsets.UTF_8), "test.d81", project);
+
+        assertThat(service.loadDocument(document.getId()).orElseThrow().getGaebVersion())
+                .isEqualTo(version);
+    }
+
+    @Test
     void editingTextQuantityUnitAndPriceUpdatesOnlyTheStructuredCopy() {
         byte[] original = "<GAEB/>".getBytes(StandardCharsets.UTF_8);
         GaebDocumentEntity document = service.importDocument(original, "test.d81", sampleProject());
@@ -99,6 +112,42 @@ class GaebEditorPersistenceServiceTest {
     }
 
     @Test
+    void deletingATitleAlsoSoftDeletesAllPositionsInItsHierarchy() {
+        GaebProject project = new GaebProject();
+        project.setGaebVersion("DA81");
+        GaebBoQ boq = new GaebBoQ();
+        boq.setTitle("Leistungsverzeichnis");
+
+        GaebPosition title = new GaebPosition();
+        title.setNumber("1");
+        GaebPosition child = new GaebPosition();
+        child.setNumber("1.1");
+        GaebPosition grandchild = new GaebPosition();
+        grandchild.setNumber("1.1.1");
+        GaebPosition sibling = new GaebPosition();
+        sibling.setNumber("1.2");
+        GaebPosition outside = new GaebPosition();
+        outside.setNumber("2.1");
+        boq.addPosition(title);
+        boq.addPosition(child);
+        boq.addPosition(grandchild);
+        boq.addPosition(sibling);
+        boq.addPosition(outside);
+        project.addBoQ(boq);
+
+        GaebDocumentEntity document = service.importDocument(
+                "<GAEB/>".getBytes(StandardCharsets.UTF_8), "test.d81", project);
+        GaebEditorPositionEntity storedTitle = service.loadPositions(document.getId()).get(0);
+
+        assertThat(service.countPositionDescendants(storedTitle.getId())).isEqualTo(3);
+        service.deletePosition(storedTitle.getId());
+
+        assertThat(service.loadPositions(document.getId()))
+                .extracting(GaebEditorPositionEntity::getPositionNumber)
+                .containsExactly("2.1");
+    }
+
+    @Test
     void renumberPositionChangesNumberButKeepsOriginalPositionNumber() {
         GaebDocumentEntity document = service.importDocument(
                 "<GAEB/>".getBytes(StandardCharsets.UTF_8), "test.d81", sampleProject());
@@ -112,18 +161,69 @@ class GaebEditorPersistenceServiceTest {
     }
 
     @Test
+    void positionsCanMoveWithinTheirSiblingOrderWithoutChangingTheirNumbers() {
+        GaebDocumentEntity document = service.importDocument(
+                "<GAEB/>".getBytes(StandardCharsets.UTF_8), "test.d81", sampleProject());
+        List<GaebEditorPositionEntity> originalOrder = service.loadPositions(document.getId());
+        UUID firstId = originalOrder.get(0).getId();
+        UUID secondId = originalOrder.get(1).getId();
+
+        assertThat(service.movePositionDown(firstId)).isTrue();
+        assertThat(service.loadPositions(document.getId()))
+                .extracting(GaebEditorPositionEntity::getId)
+                .containsExactly(secondId, firstId);
+        assertThat(service.loadPositions(document.getId()))
+                .extracting(GaebEditorPositionEntity::getPositionNumber)
+                .containsExactly("1.2", "1.1");
+
+        assertThat(service.movePositionUp(firstId)).isTrue();
+        assertThat(service.loadPositions(document.getId()))
+                .extracting(GaebEditorPositionEntity::getId)
+                .containsExactly(firstId, secondId);
+        assertThat(service.movePositionUp(firstId)).isFalse();
+    }
+
+    @Test
     void copyPositionClonesFieldsAndTextComplementsAsANewPosition() {
         GaebDocumentEntity document = service.importDocument(
                 "<GAEB/>".getBytes(StandardCharsets.UTF_8), "test.d81", sampleProject());
         UUID sourceId = service.loadPositions(document.getId()).get(0).getId();
+        UUID followingPositionId = service.loadPositions(document.getId()).get(1).getId();
 
         GaebEditorPositionEntity copy = service.copyPosition(sourceId, "1.1a");
 
         assertThat(copy.getId()).isNotEqualTo(sourceId);
         assertThat(copy.getCopiedFromPositionId()).isEqualTo(sourceId);
         assertThat(copy.getPositionNumber()).isEqualTo("1.1a");
+        assertThat(copy.getOriginalPositionNumber()).isNull();
         assertThat(copy.getShortText()).isEqualTo("Kurztext 1");
         assertThat(service.loadPositions(document.getId())).hasSize(3);
+        assertThat(service.loadPositions(document.getId()))
+                .extracting(GaebEditorPositionEntity::getId)
+                .containsExactly(sourceId, copy.getId(), followingPositionId);
+    }
+
+    @Test
+    void insertsEmptyPositionWithRequestedNumberImmediatelyAfterSelectedPosition() {
+        GaebDocumentEntity document = service.importDocument(
+                "<GAEB/>".getBytes(StandardCharsets.UTF_8), "test.d81", sampleProject());
+        List<GaebEditorPositionEntity> originalOrder = service.loadPositions(document.getId());
+        GaebEditorPositionEntity selected = originalOrder.get(0);
+        UUID followingPositionId = originalOrder.get(1).getId();
+
+        GaebEditorPositionEntity inserted = service.insertEmptyPositionAfter(selected.getId(), "1.1a");
+
+        assertThat(inserted.getPositionNumber()).isEqualTo("1.1a");
+        assertThat(inserted.getOriginalPositionNumber()).isNull();
+        assertThat(inserted.getShortText()).isNull();
+        assertThat(inserted.getLongText()).isNull();
+        assertThat(inserted.getQuantity()).isNull();
+        assertThat(inserted.getUnit()).isNull();
+        assertThat(inserted.getUnitPrice()).isNull();
+        assertThat(inserted.getBoqIndex()).isEqualTo(selected.getBoqIndex());
+        assertThat(service.loadPositions(document.getId()))
+                .extracting(GaebEditorPositionEntity::getId)
+                .containsExactly(selected.getId(), inserted.getId(), followingPositionId);
     }
 
     @Test

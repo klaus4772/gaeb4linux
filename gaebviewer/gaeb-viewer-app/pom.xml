@@ -48,13 +48,16 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Embedded, throwaway PostgreSQL (downloads a real postgres binary, no Docker/
-             local install needed). Only started when the "embedded-db" profile is active;
-             see EmbeddedDatabaseConfig. Intended for trying the app out, not production. -->
         <dependency>
-            <groupId>io.zonky.test</groupId>
-            <artifactId>embedded-postgres</artifactId>
-            <version>2.0.7</version>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-community-dialects</artifactId>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- Vaadin -->
@@ -222,7 +225,6 @@ exit ${EXIT_CODE}
     </profiles>
 
 </project>
-
 
 
 
