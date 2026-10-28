@@ -122,13 +122,13 @@ public class GaebDocumentEntity {
     @Column(name = "hierarchy_level_count", nullable = false)
     private int hierarchyLevelCount;
 
-    @Column(name = "original_content", columnDefinition = "bytea", nullable = false)
+    @Column(name = "original_content", length = 100_000_000, nullable = false)
     private byte[] originalContent;
 
     @Column(name = "original_checksum_sha256", length = 64, nullable = false)
     private String originalChecksumSha256;
 
-    @Column(name = "working_content", columnDefinition = "bytea", nullable = false)
+    @Column(name = "working_content", length = 100_000_000, nullable = false)
     private byte[] workingContent;
 
     @Column(name = "working_checksum_sha256", length = 64, nullable = false)

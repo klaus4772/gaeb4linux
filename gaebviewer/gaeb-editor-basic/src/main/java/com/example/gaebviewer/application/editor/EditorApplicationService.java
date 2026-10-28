@@ -122,6 +122,23 @@ public class EditorApplicationService {
         persistenceService.deletePosition(positionId);
     }
 
+    @Transactional(readOnly = true)
+    public int countPositionDescendants(UUID documentId, UUID positionId) {
+        requirePositionForProject(positionId, documentId);
+        return persistenceService.countPositionDescendants(positionId);
+    }
+
+    public boolean movePosition(UUID documentId, UUID positionId, int direction) {
+        requirePositionForProject(positionId, documentId);
+        return persistenceService.movePosition(positionId, direction);
+    }
+
+    public GaebEditorPositionEntity insertEmptyPositionAfter(
+            UUID documentId, UUID positionId, String positionNumber) {
+        requirePositionForProject(positionId, documentId);
+        return persistenceService.insertEmptyPositionAfter(positionId, positionNumber);
+    }
+
     public GaebEditorPositionEntity copyPosition(UUID documentId, UUID positionId, String newOz) {
         requirePositionForProject(positionId, documentId);
         return persistenceService.copyPosition(positionId, newOz);

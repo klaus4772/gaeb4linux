@@ -27,6 +27,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HexFormat;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -395,14 +396,54 @@ public class GaebEditorPersistenceService {
     public void deletePosition(UUID positionId) {
         GaebEditorPositionEntity position = requirePosition(positionId);
         requireEditable(position);
+        for (GaebEditorPositionEntity descendant : findDescendants(position)) {
+            descendant.setDeleted(true);
+        }
         position.setDeleted(true);
         refreshWorkingVersion(position.getDocument().getId());
+    }
+
+    public int countPositionDescendants(UUID positionId) {
+        return findDescendants(requirePosition(positionId)).size();
+    }
+
+    public boolean movePosition(UUID positionId, int direction) {
+        if (direction != -1 && direction != 1) {
+            throw new IllegalArgumentException("Direction must be -1 or 1");
+        }
+        GaebEditorPositionEntity position = requirePosition(positionId);
+        requireEditable(position);
+        List<GaebEditorPositionEntity> siblings = loadPositions(position.getDocument().getId()).stream()
+                .filter(candidate -> candidate.getBoqIndex() == position.getBoqIndex())
+                .filter(candidate -> Objects.equals(parentNumber(candidate.getPositionNumber()),
+                        parentNumber(position.getPositionNumber())))
+                .toList();
+        int index = siblings.indexOf(position);
+        int adjacentIndex = index + direction;
+        if (index < 0 || adjacentIndex < 0 || adjacentIndex >= siblings.size()) {
+            return false;
+        }
+        GaebEditorPositionEntity adjacent = siblings.get(adjacentIndex);
+        int sortOrder = position.getSortOrder();
+        position.setSortOrder(adjacent.getSortOrder());
+        adjacent.setSortOrder(sortOrder);
+        refreshWorkingVersion(position.getDocument().getId());
+        return true;
+    }
+
+    public boolean movePositionUp(UUID positionId) {
+        return movePosition(positionId, -1);
+    }
+
+    public boolean movePositionDown(UUID positionId) {
+        return movePosition(positionId, 1);
     }
 
     public GaebEditorPositionEntity copyPosition(UUID positionId, String newPositionNumber) {
         GaebEditorPositionEntity source = requirePosition(positionId);
         requireEditable(source);
-        int nextSortOrder = positionRepository.countByDocumentId(source.getDocument().getId());
+        requireNonEmptyOz(newPositionNumber);
+        int nextSortOrder = openInsertionSlotAfter(source);
 
         GaebEditorPositionEntity copy = new GaebEditorPositionEntity(
                 UUID.randomUUID(),
@@ -417,6 +458,7 @@ public class GaebEditorPersistenceService {
                 source.getUnit(),
                 source.getUnitPrice(),
                 Instant.now());
+        copy.setOriginalPositionNumber(null);
         copy.setCopiedFromPositionId(source.getId());
         positionRepository.save(copy);
 
@@ -465,6 +507,30 @@ public class GaebEditorPersistenceService {
                 Instant.now());
         GaebEditorPositionEntity saved = positionRepository.save(created);
         refreshWorkingVersion(documentId);
+        return saved;
+    }
+
+    public GaebEditorPositionEntity insertEmptyPositionAfter(UUID positionId, String positionNumber) {
+        GaebEditorPositionEntity source = requirePosition(positionId);
+        requireEditable(source);
+        requireNonEmptyOz(positionNumber);
+        int insertionOrder = openInsertionSlotAfter(source);
+        GaebEditorPositionEntity inserted = new GaebEditorPositionEntity(
+                UUID.randomUUID(),
+                source.getDocument(),
+                source.getBoqIndex(),
+                source.getBoqTitle(),
+                insertionOrder,
+                positionNumber,
+                null,
+                null,
+                null,
+                null,
+                null,
+                Instant.now());
+        inserted.setOriginalPositionNumber(null);
+        GaebEditorPositionEntity saved = positionRepository.save(inserted);
+        refreshWorkingVersion(source.getDocument().getId());
         return saved;
     }
 
@@ -521,6 +587,38 @@ public class GaebEditorPersistenceService {
         if (positionNumber == null || positionNumber.trim().isEmpty()) {
             throw new IllegalArgumentException("OZ must not be empty");
         }
+    }
+
+    private List<GaebEditorPositionEntity> findDescendants(GaebEditorPositionEntity position) {
+        String number = position.getPositionNumber();
+        if (number == null || number.isBlank()) {
+            return List.of();
+        }
+        String prefix = number + ".";
+        return loadPositions(position.getDocument().getId()).stream()
+                .filter(candidate -> candidate.getBoqIndex() == position.getBoqIndex())
+                .filter(candidate -> candidate.getPositionNumber() != null
+                        && candidate.getPositionNumber().startsWith(prefix))
+                .toList();
+    }
+
+    private int openInsertionSlotAfter(GaebEditorPositionEntity source) {
+        List<GaebEditorPositionEntity> positions = loadPositions(source.getDocument().getId());
+        int insertionOrder = source.getSortOrder() + 1;
+        for (GaebEditorPositionEntity candidate : positions) {
+            if (candidate.getSortOrder() >= insertionOrder) {
+                candidate.setSortOrder(candidate.getSortOrder() + 1);
+            }
+        }
+        return insertionOrder;
+    }
+
+    private static String parentNumber(String positionNumber) {
+        if (positionNumber == null) {
+            return null;
+        }
+        int lastDot = positionNumber.lastIndexOf('.');
+        return lastDot > 0 ? positionNumber.substring(0, lastDot) : null;
     }
 
     private GaebDocumentEntity requireDocument(UUID documentId) {

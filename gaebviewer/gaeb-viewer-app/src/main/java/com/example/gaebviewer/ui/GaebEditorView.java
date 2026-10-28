@@ -9,7 +9,14 @@ import com.example.gaebviewer.application.editor.NewLvOzLevelCommand;
 import com.example.gaebviewer.application.editor.PositionCreateCommand;
 import com.example.gaebviewer.application.editor.PositionUpdateCommand;
 import com.example.gaebviewer.application.editor.ProjectNumberService;
+import com.example.gaebviewer.application.gaeb.GaebExportFormat;
+import com.example.gaebviewer.application.gaeb.GaebExportService;
+import com.example.gaebviewer.application.gaeb.GaebFormatConverter;
+import com.example.gaebviewer.application.gaeb.GaebPdfExportService;
+import com.example.gaebviewer.application.gaeb.GaebSchemaVersion;
 import com.example.gaebviewer.application.gaeb.PriceNumberParser;
+import com.example.gaebviewer.domain.GaebPosition;
+import com.example.gaebviewer.domain.GaebTextComplement;
 import com.example.gaebviewer.infrastructure.editor.persistence.GaebDocumentEntity;
 import com.example.gaebviewer.infrastructure.editor.persistence.GaebEditorPositionEntity;
 import com.example.gaebviewer.infrastructure.editor.persistence.GaebEditorTextComplementEntity;
@@ -60,6 +67,9 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
     private final GaebEditorSettingsService settingsService;
     private final GaebMasterDataService masterDataService;
     private final ProjectNumberService projectNumberService;
+    private final GaebExportService gaebExportService;
+    private final GaebFormatConverter gaebFormatConverter;
+    private final GaebPdfExportService gaebPdfExportService;
 
     private final TreeGrid<GaebEditorPositionEntity> positionGrid = new TreeGrid<>();
     private final TextField ordnungszahlField = new TextField("Ordnungszahl");
@@ -73,10 +83,16 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
     private final Button addButton = new Button("Position hinzufügen");
     private final Button deleteButton = new Button("Position löschen");
     private final Button copyButton = new Button("Position kopieren");
+    private final Button insertPositionButton = new Button("Leere Position einfügen");
+    private final Button moveUpButton = new Button("↑ Nach oben");
+    private final Button moveDownButton = new Button("↓ Nach unten");
     private final Anchor originalDownloadAnchor = new Anchor();
     private final Button originalDownloadButton = new Button("Original-Datei herunterladen");
     private final Anchor workingDownloadAnchor = new Anchor();
     private final Button workingDownloadButton = new Button("Arbeitsstand herunterladen");
+    private final Select<GaebExportFormat> formatSelect = new Select<>();
+    private final Button exportButton = new Button("Speichern");
+    private final Anchor exportAnchor = new Anchor();
     private final Span documentInfo = new Span();
     private final Span stateInfo = new Span();
     private final Checkbox editableCheckbox = new Checkbox("LV änderbar", true);
@@ -91,11 +107,17 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
     public GaebEditorView(EditorApplicationService editorApplicationService,
                           GaebEditorSettingsService settingsService,
                           GaebMasterDataService masterDataService,
-                          ProjectNumberService projectNumberService) {
+                          ProjectNumberService projectNumberService,
+                          GaebExportService gaebExportService,
+                          GaebFormatConverter gaebFormatConverter,
+                          GaebPdfExportService gaebPdfExportService) {
         this.editorApplicationService = editorApplicationService;
         this.settingsService = settingsService;
         this.masterDataService = masterDataService;
         this.projectNumberService = projectNumberService;
+        this.gaebExportService = gaebExportService;
+        this.gaebFormatConverter = gaebFormatConverter;
+        this.gaebPdfExportService = gaebPdfExportService;
 
         setSizeFull();
         setPadding(true);
@@ -128,11 +150,21 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
         workingDownloadAnchor.add(workingDownloadButton);
         workingDownloadButton.setEnabled(false);
         workingDownloadButton.addThemeVariants(ButtonVariant.LUMO_CONTRAST);
+        formatSelect.setLabel("Zielformat");
+        formatSelect.setItems(GaebExportFormat.values());
+        formatSelect.setItemLabelGenerator(GaebExportFormat::getLabel);
+        formatSelect.setEnabled(false);
+        formatSelect.addValueChangeListener(e -> updateExportAvailability());
+        exportAnchor.getElement().setAttribute("download", true);
+        exportAnchor.add(exportButton);
+        exportButton.setEnabled(false);
+        exportButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         newLvButton.addClickListener(e -> openNewLvDialog());
         editableCheckbox.addValueChangeListener(e -> onEditableModeToggle(e.getValue()));
 
         HorizontalLayout toolbar = new HorizontalLayout(
-                upload, editableCheckbox, newLvButton, stateInfo, documentInfo, originalDownloadAnchor, workingDownloadAnchor);
+                upload, editableCheckbox, newLvButton, stateInfo, documentInfo, originalDownloadAnchor,
+                workingDownloadAnchor, formatSelect, exportAnchor);
         toolbar.setWidthFull();
         toolbar.setAlignItems(Alignment.CENTER);
         toolbar.setFlexGrow(1, upload);
@@ -141,7 +173,8 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
         configureGrid();
         configureDetailPanel();
 
-        HorizontalLayout actionRow = new HorizontalLayout(saveButton, addButton, copyButton, deleteButton);
+        HorizontalLayout actionRow = new HorizontalLayout(
+                saveButton, addButton, insertPositionButton, copyButton, moveUpButton, moveDownButton, deleteButton);
         saveButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         addButton.addThemeVariants(ButtonVariant.LUMO_SUCCESS);
         deleteButton.addThemeVariants(ButtonVariant.LUMO_ERROR);
@@ -195,6 +228,9 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
         deleteButton.addClickListener(e -> deleteCurrentPosition());
         copyButton.addClickListener(e -> openCopyDialog());
         addButton.addClickListener(e -> openAddDialog());
+        insertPositionButton.addClickListener(e -> openInsertEmptyDialog());
+        moveUpButton.addClickListener(e -> moveCurrentPosition(-1));
+        moveDownButton.addClickListener(e -> moveCurrentPosition(1));
     }
 
     private void importFile(MemoryBuffer buffer, String fileName, Upload upload) {
@@ -212,6 +248,7 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
             updateOriginalDownloadResource();
             workingDownloadButton.setEnabled(true);
             updateWorkingDownloadResource();
+            setExportFormat(document);
 
             Notification.show("Projekt " + document.getProjectNumber() + " importiert.");
             setUiState(document.isEditable() ? "editable" : "readOnly");
@@ -374,6 +411,7 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
                 updateOriginalDownloadResource();
                 workingDownloadButton.setEnabled(true);
                 updateWorkingDownloadResource();
+                setExportFormat(document);
                 Notification.show("Neues LV als Projekt " + document.getProjectNumber() + " erstellt.");
                 setUiState("editable");
                 dialog.close();
@@ -543,6 +581,9 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
         deleteButton.setEnabled(editableMode);
         copyButton.setEnabled(editableMode);
         addButton.setEnabled(currentDocumentEditable && currentDocumentId != null);
+        insertPositionButton.setEnabled(editableMode);
+        moveUpButton.setEnabled(editableMode);
+        moveDownButton.setEnabled(editableMode);
     }
 
     private void saveCurrentPosition() {
@@ -584,15 +625,26 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
         if (currentPosition == null) {
             return;
         }
+        UUID positionId = currentPosition.getId();
+        int descendantCount = editorApplicationService.countPositionDescendants(currentDocumentId, positionId);
         Dialog dialog = new Dialog();
-        dialog.setHeaderTitle("Position löschen");
-        Span confirmation = new Span("Position " + nullToEmpty(currentPosition.getPositionNumber()) + " wirklich löschen?");
-        Button delete = new Button("Löschen", e -> {
+        dialog.setHeaderTitle(descendantCount > 0
+                ? "Titel und untergeordnete Positionen löschen?"
+                : "Position löschen?");
+        Span confirmation = descendantCount > 0
+                ? new Span("Dieser Titel enthält " + descendantCount
+                        + " untergeordnete Position(en). Wenn Sie fortfahren, werden der Titel und alle "
+                        + "darunterliegenden Positionen gelöscht.")
+                : new Span("Position " + nullToEmpty(currentPosition.getPositionNumber())
+                        + " wirklich löschen?");
+        Button delete = new Button("OK", e -> {
             setUiState("saving");
             try {
-                editorApplicationService.deletePosition(currentDocumentId, currentPosition.getId());
+                editorApplicationService.deletePosition(currentDocumentId, positionId);
                 dialog.close();
-                Notification.show("Position gelöscht.");
+                Notification.show(descendantCount > 0
+                        ? "Titel und untergeordnete Positionen gelöscht."
+                        : "Position gelöscht.");
                 setUiState("saved");
                 reloadPositions();
             } catch (Exception ex) {
@@ -604,6 +656,70 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
         Button cancel = new Button("Abbrechen", e -> dialog.close());
         dialog.add(new VerticalLayout(confirmation, new HorizontalLayout(delete, cancel)));
         dialog.open();
+    }
+
+    private void openInsertEmptyDialog() {
+        if (currentPosition == null || !currentDocumentEditable) {
+            return;
+        }
+        UUID positionId = currentPosition.getId();
+        Dialog dialog = new Dialog();
+        dialog.setHeaderTitle("Leere Position einfügen");
+        TextField ozField = new TextField("Ordnungszahl");
+        ozField.setRequiredIndicatorVisible(true);
+        ozField.setValue(nullToEmpty(currentPosition.getPositionNumber()) + ".1");
+        ozField.setWidthFull();
+
+        Button insert = new Button("Einfügen", e -> {
+            String positionNumber = ozField.getValue().trim();
+            if (positionNumber.isEmpty()) {
+                ozField.setInvalid(true);
+                ozField.setErrorMessage("Bitte eine Ordnungszahl eingeben.");
+                return;
+            }
+            setUiState("saving");
+            try {
+                GaebEditorPositionEntity inserted = editorApplicationService.insertEmptyPositionAfter(
+                        currentDocumentId, positionId, positionNumber);
+                dialog.close();
+                Notification.show("Leere Position eingefügt.");
+                setUiState("saved");
+                reloadAndReselect(inserted.getId());
+            } catch (Exception ex) {
+                setUiState("validationError");
+                Notification.show("Fehler beim Einfügen: " + ex.getMessage());
+            }
+        });
+        insert.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+        Button cancel = new Button("Abbrechen", e -> dialog.close());
+        dialog.add(new VerticalLayout(ozField, new HorizontalLayout(insert, cancel)));
+        dialog.open();
+    }
+
+    private void moveCurrentPosition(int direction) {
+        if (currentPosition == null) {
+            return;
+        }
+        UUID positionId = currentPosition.getId();
+        setUiState("saving");
+        try {
+            boolean moved = editorApplicationService.movePosition(currentDocumentId, positionId, direction);
+            if (moved) {
+                Notification.show(direction < 0
+                        ? "Position nach oben verschoben."
+                        : "Position nach unten verschoben.");
+                setUiState("saved");
+                reloadAndReselect(positionId);
+            } else {
+                setUiState("saved");
+                Notification.show(direction < 0
+                        ? "Position ist bereits die erste in diesem Abschnitt."
+                        : "Position ist bereits die letzte in diesem Abschnitt.");
+            }
+        } catch (Exception ex) {
+            setUiState("validationError");
+            Notification.show("Fehler beim Verschieben: " + ex.getMessage());
+        }
     }
 
     private void openAddDialog() {
@@ -739,6 +855,85 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
         workingDownloadAnchor.setHref(resource);
     }
 
+    private void setExportFormat(GaebDocumentEntity document) {
+        formatSelect.setValue(GaebExportFormat.fromSchemaVersion(
+                GaebSchemaVersion.fromString(document.getGaebVersion())));
+        formatSelect.setEnabled(true);
+        updateExportAvailability();
+    }
+
+    private void updateExportAvailability() {
+        if (currentDocumentId == null || formatSelect.getValue() == null) {
+            exportButton.setEnabled(false);
+            exportAnchor.getElement().removeAttribute("href");
+            return;
+        }
+
+        UUID documentId = currentDocumentId;
+        GaebExportFormat format = formatSelect.getValue();
+        GaebDocumentEntity document = editorApplicationService.loadDocument(documentId).orElseThrow();
+        String baseName = stripExtension(currentFileName);
+        StreamResource resource = new StreamResource(baseName + format.getFileExtension(), () -> {
+            List<GaebEditorPositionEntity> positions = editorApplicationService.loadPositions(documentId);
+            if (format == GaebExportFormat.PDF) {
+                List<GaebPosition> exportPositions = positions.stream()
+                        .map(this::toGaebPosition)
+                        .toList();
+                return new ByteArrayInputStream(
+                        gaebPdfExportService.export(exportPositions, document.getProjectName()));
+            }
+
+            List<GaebPosition> originalPositions = positions.stream()
+                    .filter(position -> position.getOriginalPositionNumber() != null)
+                    .map(this::toOriginalGaebPosition)
+                    .toList();
+            byte[] updatedXml = gaebExportService.exportWithPrices(
+                    editorApplicationService.exportOriginalBytes(documentId), originalPositions);
+            return new ByteArrayInputStream(
+                    gaebFormatConverter.convert(updatedXml, format.getGaebVersion()));
+        });
+        exportAnchor.setHref(resource);
+        exportButton.setEnabled(true);
+    }
+
+    private GaebPosition toGaebPosition(GaebEditorPositionEntity entity) {
+        GaebPosition position = new GaebPosition();
+        position.setNumber(entity.getPositionNumber());
+        position.setShortText(entity.getShortText());
+        position.setLongText(entity.getLongText());
+        position.setQuantity(entity.getQuantity());
+        position.setUnit(entity.getUnit());
+        position.setUnitPrice(entity.getUnitPrice());
+        return position;
+    }
+
+    private GaebPosition toOriginalGaebPosition(GaebEditorPositionEntity entity) {
+        GaebPosition position = toGaebPosition(entity);
+        position.setNumber(entity.getOriginalPositionNumber());
+        List<GaebTextComplement> complements = editorApplicationService.loadTextComplements(entity.getId()).stream()
+                .map(stored -> {
+                    GaebTextComplement complement = new GaebTextComplement();
+                    complement.setMarkLabel(stored.getMarkLabel());
+                    complement.setCaption(stored.getCaption());
+                    complement.setBody(stored.getBody());
+                    complement.setPlaceholder(stored.getPlaceholder());
+                    complement.setTail(stored.getTail());
+                    complement.setRequired(stored.isRequired());
+                    return complement;
+                })
+                .toList();
+        position.setBidderTextComplements(complements);
+        return position;
+    }
+
+    private String stripExtension(String fileName) {
+        if (fileName == null || fileName.isBlank()) {
+            return "export";
+        }
+        int dot = fileName.lastIndexOf('.');
+        return dot > 0 ? fileName.substring(0, dot) : fileName;
+    }
+
     private String formatNumber(BigDecimal value) {
         return value == null ? "" : value.toPlainString();
     }
@@ -785,6 +980,7 @@ public class GaebEditorView extends VerticalLayout implements BeforeEnterObserve
                 updateOriginalDownloadResource();
                 workingDownloadButton.setEnabled(true);
                 updateWorkingDownloadResource();
+                setExportFormat(document);
             });
         } catch (IllegalArgumentException ignored) {
             Notification.show("Ungültige Dokument-ID.");
